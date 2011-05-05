@@ -1404,7 +1404,7 @@ options {
 	"/*"
 	(	
 			STRING_LITERAL
-		|	CHAR_LITERAL
+		|	ALTCHAR_LITERAL
 		|	'\n' { newline(); }
 		|	'*' ~'/'
 		|	~'*'
@@ -1420,6 +1420,16 @@ options {
 	:
 	'\'' 
 	( ESC | ~'\'' ) 
+	'\''
+	;
+
+ALTCHAR_LITERAL 	
+options {
+  paraphrase = "a character literal which can contain more than one char";
+}
+	:
+	'\'' 
+	(ESC | ~'\'' )* 
 	'\''
 	;
 
