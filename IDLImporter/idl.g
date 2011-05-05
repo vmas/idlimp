@@ -66,6 +66,9 @@ tokens {
 	V1_ENUM = "v1_enum";
 	INT3264 = "__int3264";
 	INT64 = "__int64";
+	UUID = "uuid";
+	SCRIPTABLE = "scriptable";
+
 }
 
 {
@@ -223,8 +226,8 @@ attribute_list [IDictionary attributes]
 	: attribute[attributes] (COMMA attribute[attributes])*
 	;
 
-attribute [IDictionary attributes]
-	: "uuid" uuid:uuid_literal
+attribute [IDictionary attributes]	
+	:  UUID uuid:uuid_literal
 		{ attributes.Add("Guid", new CodeAttributeArgument(new CodePrimitiveExpression(uuid_AST.ToStringList().Replace(" ", "")))); }
 	| "version" LPAREN (~RPAREN)+ RPAREN 
 	| "async_uuid" uuid_literal
@@ -272,6 +275,7 @@ attribute [IDictionary attributes]
 	| "oleautomation"
 	| "restricted" 
 		{ attributes.Add("restricted", new CodeAttributeArgument()); }
+	| SCRIPTABLE
 	;
 	
 non_rparen
@@ -1004,6 +1008,8 @@ function_attribute [IDictionary attributes]
 	| string_type
 	| "ignore"
 	| "context_handle"
+	| "noscript"
+	| "notxpcom"
 	| "propget"
 		{
 			attributes.Add("propget", new CodeAttributeArgument());
@@ -1040,7 +1046,7 @@ param_dcl returns [CodeParameterDeclarationExpression param]
 		Hashtable attributes = new Hashtable();
 		string name = string.Empty;
 	}
-	: (LBRACKET param_attributes[attributes] RBRACKET)? ("const")? strType:param_type_spec ("const")? (name=declarator[attributes])?
+	: (LBRACKET param_attributes[attributes] RBRACKET)? ("const")? ("in")? ("out")? strType:param_type_spec ("const")? (name=declarator[attributes])?
 		{
 			string str = null;
 			if (#strType != null && name != string.Empty) 
@@ -1395,6 +1401,21 @@ options {
 	(~'\n')* '\n'
 	{ $setType(Token.SKIP); newline(); }
 	;
+
+OTHER_LANG_BLOCK
+options {
+  paraphrase = "Other lang block like C++";
+}
+	: 
+	"%{"
+	(		'\n' { newline(); }
+		|	'%' ~'}'
+		|	~'%'
+	)*
+	"%}"
+	{ $setType(Token.SKIP);  }
+	;
+
 
 ML_COMMENT 
 options {
