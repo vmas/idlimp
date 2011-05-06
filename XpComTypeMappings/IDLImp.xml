@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
+  <ParamTypeConversion>
+    <Attribute>~out</Attribute>
+    <Match>nsIIDRef</Match>
+    <Replace>ref Guid</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Attribute>retval</Attribute>
+    <Match>nsQIResult</Match>
+    <Replace>Object</Replace>
+  </ParamTypeConversion>
+</IDLConversions>
