@@ -526,28 +526,13 @@ tryAgain:
 							theRetToken = returnToken_;
 							break;
 						}
-						case 'A':  case 'B':  case 'C':  case 'D':
-						case 'E':  case 'F':  case 'G':  case 'H':
-						case 'I':  case 'J':  case 'K':  case 'L':
-						case 'M':  case 'N':  case 'O':  case 'P':
-						case 'Q':  case 'R':  case 'S':  case 'T':
-						case 'U':  case 'V':  case 'W':  case 'X':
-						case 'Y':  case 'Z':  case '_':  case 'a':
-						case 'b':  case 'c':  case 'd':  case 'e':
-						case 'f':  case 'g':  case 'h':  case 'i':
-						case 'j':  case 'k':  case 'l':  case 'm':
-						case 'n':  case 'o':  case 'p':  case 'q':
-						case 'r':  case 's':  case 't':  case 'u':
-						case 'v':  case 'w':  case 'x':  case 'y':
-						case 'z':
-						{
-							mIDENT(true);
-							theRetToken = returnToken_;
-							break;
-						}
 						default:
-							if ((cached_LA1=='\'') && (tokenSet_0_.member(cached_LA2)) && (tokenSet_1_.member(LA(3))) && (true))
+							if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d'))
 							{
+								mUUID(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='\'') && (tokenSet_0_.member(cached_LA2)) && (tokenSet_1_.member(LA(3))) && (true)) {
 								mCHAR_LITERAL(true);
 								theRetToken = returnToken_;
 							}
@@ -625,6 +610,10 @@ tryAgain:
 							}
 							else if (((cached_LA1 >= '0' && cached_LA1 <= '9')) && (true)) {
 								mINT(true);
+								theRetToken = returnToken_;
+							}
+							else if ((tokenSet_2_.member(cached_LA1)) && (true) && (true) && (true)) {
+								mIDENT(true);
 								theRetToken = returnToken_;
 							}
 						else
@@ -1113,7 +1102,7 @@ tryAgain:
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((tokenSet_2_.member(cached_LA1)))
+				if ((tokenSet_3_.member(cached_LA1)))
 				{
 					matchNot('\n');
 				}
@@ -1144,7 +1133,7 @@ _loop285_breakloop:			;
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((tokenSet_2_.member(cached_LA1)))
+				if ((tokenSet_3_.member(cached_LA1)))
 				{
 					matchNot('\n');
 				}
@@ -1175,7 +1164,7 @@ _loop288_breakloop:			;
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((cached_LA1=='%') && (tokenSet_3_.member(cached_LA2)))
+				if ((cached_LA1=='%') && (tokenSet_4_.member(cached_LA2)))
 				{
 					match('%');
 					matchNot('}');
@@ -1184,7 +1173,7 @@ _loop288_breakloop:			;
 					match('\n');
 					newline();
 				}
-				else if ((tokenSet_4_.member(cached_LA1))) {
+				else if ((tokenSet_5_.member(cached_LA1))) {
 					matchNot('%');
 				}
 				else
@@ -1233,12 +1222,12 @@ _loop291_breakloop:			;
 					break;
 				}
 				default:
-					if ((cached_LA1=='*') && (tokenSet_5_.member(cached_LA2)))
+					if ((cached_LA1=='*') && (tokenSet_6_.member(cached_LA2)))
 					{
 						match('*');
 						matchNot('/');
 					}
-					else if ((tokenSet_6_.member(cached_LA1))) {
+					else if ((tokenSet_7_.member(cached_LA1))) {
 						matchNot('*');
 					}
 				else
@@ -1275,7 +1264,7 @@ _loop294_breakloop:			;
 				{
 					mESC(false);
 				}
-				else if ((tokenSet_7_.member(cached_LA1))) {
+				else if ((tokenSet_8_.member(cached_LA1))) {
 					matchNot('"');
 				}
 				else
@@ -1310,7 +1299,7 @@ _loop302_breakloop:			;
 				{
 					mESC(false);
 				}
-				else if ((tokenSet_8_.member(cached_LA1))) {
+				else if ((tokenSet_9_.member(cached_LA1))) {
 					matchNot('\'');
 				}
 				else
@@ -1341,7 +1330,7 @@ _loop299_breakloop:			;
 			{
 				mESC(false);
 			}
-			else if ((tokenSet_8_.member(cached_LA1))) {
+			else if ((tokenSet_9_.member(cached_LA1))) {
 				matchNot('\'');
 			}
 			else
@@ -1487,7 +1476,7 @@ _loop299_breakloop:			;
 				match('x');
 				mHEXDIGIT(false);
 				{
-					if ((tokenSet_9_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
+					if ((tokenSet_10_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
 					{
 						mHEXDIGIT(false);
 					}
@@ -1621,7 +1610,7 @@ _loop299_breakloop:			;
 			int _cnt317=0;
 			for (;;)
 			{
-				if ((tokenSet_9_.member(cached_LA1)))
+				if ((tokenSet_10_.member(cached_LA1)))
 				{
 					mHEXDIGIT(false);
 				}
@@ -1772,6 +1761,20 @@ _loop328_breakloop:					;
 		returnToken_ = _token;
 	}
 	
+	public void mUUID(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = UUID;
+		
+		match("uuid");
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
 	public void mIDENT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1854,11 +1857,11 @@ _loop328_breakloop:					;
 				}
 				default:
 				{
-					goto _loop332_breakloop;
+					goto _loop333_breakloop;
 				}
 				 }
 			}
-_loop332_breakloop:			;
+_loop333_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
@@ -1887,14 +1890,20 @@ _loop332_breakloop:			;
 	public static readonly BitSet tokenSet_1_ = new BitSet(mk_tokenSet_1_());
 	private static long[] mk_tokenSet_2_()
 	{
+		long[] data = { 0L, 576460745995190270L, 0L, 0L, 0L};
+		return data;
+	}
+	public static readonly BitSet tokenSet_2_ = new BitSet(mk_tokenSet_2_());
+	private static long[] mk_tokenSet_3_()
+	{
 		long[] data = new long[8];
 		data[0]=-1025L;
 		for (int i = 1; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
-	public static readonly BitSet tokenSet_2_ = new BitSet(mk_tokenSet_2_());
-	private static long[] mk_tokenSet_3_()
+	public static readonly BitSet tokenSet_3_ = new BitSet(mk_tokenSet_3_());
+	private static long[] mk_tokenSet_4_()
 	{
 		long[] data = new long[8];
 		data[0]=-1L;
@@ -1903,20 +1912,11 @@ _loop332_breakloop:			;
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
-	public static readonly BitSet tokenSet_3_ = new BitSet(mk_tokenSet_3_());
-	private static long[] mk_tokenSet_4_()
-	{
-		long[] data = new long[8];
-		data[0]=-137438954497L;
-		for (int i = 1; i<=3; i++) { data[i]=-1L; }
-		for (int i = 4; i<=7; i++) { data[i]=0L; }
-		return data;
-	}
 	public static readonly BitSet tokenSet_4_ = new BitSet(mk_tokenSet_4_());
 	private static long[] mk_tokenSet_5_()
 	{
 		long[] data = new long[8];
-		data[0]=-140737488355329L;
+		data[0]=-137438954497L;
 		for (int i = 1; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
@@ -1925,7 +1925,7 @@ _loop332_breakloop:			;
 	private static long[] mk_tokenSet_6_()
 	{
 		long[] data = new long[8];
-		data[0]=-4964982195201L;
+		data[0]=-140737488355329L;
 		for (int i = 1; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
@@ -1934,9 +1934,8 @@ _loop332_breakloop:			;
 	private static long[] mk_tokenSet_7_()
 	{
 		long[] data = new long[8];
-		data[0]=-17179869185L;
-		data[1]=-268435457L;
-		for (int i = 2; i<=3; i++) { data[i]=-1L; }
+		data[0]=-4964982195201L;
+		for (int i = 1; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
@@ -1944,7 +1943,7 @@ _loop332_breakloop:			;
 	private static long[] mk_tokenSet_8_()
 	{
 		long[] data = new long[8];
-		data[0]=-549755813889L;
+		data[0]=-17179869185L;
 		data[1]=-268435457L;
 		for (int i = 2; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
@@ -1953,10 +1952,20 @@ _loop332_breakloop:			;
 	public static readonly BitSet tokenSet_8_ = new BitSet(mk_tokenSet_8_());
 	private static long[] mk_tokenSet_9_()
 	{
-		long[] data = { 287948901175001088L, 541165879422L, 0L, 0L, 0L};
+		long[] data = new long[8];
+		data[0]=-549755813889L;
+		data[1]=-268435457L;
+		for (int i = 2; i<=3; i++) { data[i]=-1L; }
+		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
 	public static readonly BitSet tokenSet_9_ = new BitSet(mk_tokenSet_9_());
+	private static long[] mk_tokenSet_10_()
+	{
+		long[] data = { 287948901175001088L, 541165879422L, 0L, 0L, 0L};
+		return data;
+	}
+	public static readonly BitSet tokenSet_10_ = new BitSet(mk_tokenSet_10_());
 	
 }
 }

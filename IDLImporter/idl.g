@@ -1145,7 +1145,8 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: IDENT
+	: UUID
+	| IDENT
   	;
 
 cpp_quote
@@ -1568,6 +1569,9 @@ options {
 }
 	: '.' (DIGIT)+ (('e' | 'E') ('+' | '-')? (DIGIT)+)?
     ;
+
+UUID
+	: "uuid";
 
 IDENT
 options {
