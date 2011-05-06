@@ -66,9 +66,6 @@ tokens {
 	V1_ENUM = "v1_enum";
 	INT3264 = "__int3264";
 	INT64 = "__int64";
-	UUID = "uuid";
-	SCRIPTABLE = "scriptable";
-
 }
 
 {
@@ -1145,7 +1142,7 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: UUID
+	: UUID | SCRIPTABLE	
 	| IDENT
   	;
 
@@ -1572,6 +1569,9 @@ options {
 
 UUID
 	: "uuid";
+
+SCRIPTABLE
+	: "scriptable";
 
 IDENT
 options {

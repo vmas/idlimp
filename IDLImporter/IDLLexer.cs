@@ -67,58 +67,58 @@ namespace SIL.FieldWorks.Tools
 		public const int V1_ENUM = 4;
 		public const int INT3264 = 5;
 		public const int INT64 = 6;
-		public const int UUID = 7;
-		public const int SCRIPTABLE = 8;
-		public const int SEMI = 9;
-		public const int LBRACKET = 10;
-		public const int RBRACKET = 11;
-		public const int LITERAL_module = 12;
-		public const int LBRACE = 13;
-		public const int RBRACE = 14;
-		public const int LITERAL_import = 15;
-		public const int COMMA = 16;
-		public const int LITERAL_library = 17;
-		public const int LITERAL_coclass = 18;
-		public const int LITERAL_version = 19;
-		public const int LPAREN = 20;
-		public const int RPAREN = 21;
-		public const int LITERAL_async_uuid = 22;
-		public const int LITERAL_local = 23;
-		public const int LITERAL_object = 24;
-		public const int LITERAL_pointer_default = 25;
-		public const int LITERAL_endpoint = 26;
-		public const int LITERAL_odl = 27;
-		public const int LITERAL_optimize = 28;
-		public const int LITERAL_proxy = 29;
-		public const int LITERAL_aggregatable = 30;
-		public const int LITERAL_appobject = 31;
-		public const int LITERAL_bindable = 32;
-		public const int LITERAL_control = 33;
-		public const int LITERAL_custom = 34;
-		public const int LITERAL_default = 35;
-		public const int LITERAL_defaultbind = 36;
-		public const int LITERAL_defaultcollelem = 37;
-		public const int LITERAL_defaultvtable = 38;
-		public const int LITERAL_displaybind = 39;
-		public const int LITERAL_dllname = 40;
-		public const int LITERAL_dual = 41;
-		public const int LITERAL_entry = 42;
-		public const int LITERAL_helpcontext = 43;
-		public const int LITERAL_helpfile = 44;
-		public const int LITERAL_helpstring = 45;
-		public const int LITERAL_helpstringdll = 46;
-		public const int LITERAL_hidden = 47;
-		public const int LITERAL_id = 48;
-		public const int LITERAL_idempotent = 49;
-		public const int LITERAL_immediatebind = 50;
-		public const int LITERAL_lcid = 51;
-		public const int LITERAL_licensed = 52;
-		public const int LITERAL_message = 53;
-		public const int LITERAL_nonbrowsable = 54;
-		public const int LITERAL_noncreatable = 55;
-		public const int LITERAL_nonextensible = 56;
-		public const int LITERAL_oleautomation = 57;
-		public const int LITERAL_restricted = 58;
+		public const int SEMI = 7;
+		public const int LBRACKET = 8;
+		public const int RBRACKET = 9;
+		public const int LITERAL_module = 10;
+		public const int LBRACE = 11;
+		public const int RBRACE = 12;
+		public const int LITERAL_import = 13;
+		public const int COMMA = 14;
+		public const int LITERAL_library = 15;
+		public const int LITERAL_coclass = 16;
+		public const int UUID = 17;
+		public const int LITERAL_version = 18;
+		public const int LPAREN = 19;
+		public const int RPAREN = 20;
+		public const int LITERAL_async_uuid = 21;
+		public const int LITERAL_local = 22;
+		public const int LITERAL_object = 23;
+		public const int LITERAL_pointer_default = 24;
+		public const int LITERAL_endpoint = 25;
+		public const int LITERAL_odl = 26;
+		public const int LITERAL_optimize = 27;
+		public const int LITERAL_proxy = 28;
+		public const int LITERAL_aggregatable = 29;
+		public const int LITERAL_appobject = 30;
+		public const int LITERAL_bindable = 31;
+		public const int LITERAL_control = 32;
+		public const int LITERAL_custom = 33;
+		public const int LITERAL_default = 34;
+		public const int LITERAL_defaultbind = 35;
+		public const int LITERAL_defaultcollelem = 36;
+		public const int LITERAL_defaultvtable = 37;
+		public const int LITERAL_displaybind = 38;
+		public const int LITERAL_dllname = 39;
+		public const int LITERAL_dual = 40;
+		public const int LITERAL_entry = 41;
+		public const int LITERAL_helpcontext = 42;
+		public const int LITERAL_helpfile = 43;
+		public const int LITERAL_helpstring = 44;
+		public const int LITERAL_helpstringdll = 45;
+		public const int LITERAL_hidden = 46;
+		public const int LITERAL_id = 47;
+		public const int LITERAL_idempotent = 48;
+		public const int LITERAL_immediatebind = 49;
+		public const int LITERAL_lcid = 50;
+		public const int LITERAL_licensed = 51;
+		public const int LITERAL_message = 52;
+		public const int LITERAL_nonbrowsable = 53;
+		public const int LITERAL_noncreatable = 54;
+		public const int LITERAL_nonextensible = 55;
+		public const int LITERAL_oleautomation = 56;
+		public const int LITERAL_restricted = 57;
+		public const int SCRIPTABLE = 58;
 		public const int LITERAL_importlib = 59;
 		public const int LITERAL_interface = 60;
 		public const int LITERAL_dispinterface = 61;
@@ -261,29 +261,29 @@ namespace SIL.FieldWorks.Tools
 			caseSensitiveLiterals = true;
 			setCaseSensitive(true);
 			literals = new Hashtable(100, (float) 0.4, null, Comparer.Default);
-			literals.Add("local", 23);
+			literals.Add("local", 22);
 			literals.Add("size_is", 146);
 			literals.Add("optional", 142);
-			literals.Add("proxy", 29);
+			literals.Add("proxy", 28);
 			literals.Add("last_is", 150);
 			literals.Add("byte", 97);
 			literals.Add("public", 90);
 			literals.Add("represent_as", 88);
 			literals.Add("case", 117);
-			literals.Add("message", 53);
+			literals.Add("message", 52);
 			literals.Add("short", 106);
 			literals.Add("uidefault", 135);
 			literals.Add("raises", 153);
-			literals.Add("defaultbind", 36);
-			literals.Add("object", 24);
+			literals.Add("defaultbind", 35);
+			literals.Add("object", 23);
 			literals.Add("ignore", 129);
 			literals.Add("readonly", 124);
-			literals.Add("lcid", 51);
+			literals.Add("lcid", 50);
 			literals.Add("propputref", 134);
 			literals.Add("octet", 94);
 			literals.Add("wire_marshal", 87);
-			literals.Add("licensed", 52);
-			literals.Add("module", 12);
+			literals.Add("licensed", 51);
+			literals.Add("module", 10);
 			literals.Add("unsigned", 93);
 			literals.Add("const", 64);
 			literals.Add("float", 111);
@@ -294,51 +294,50 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("retval", 140);
 			literals.Add("defaultvalue", 141);
 			literals.Add("ptr", 104);
-			literals.Add("appobject", 31);
+			literals.Add("appobject", 30);
 			literals.Add("first_is", 149);
-			literals.Add("noncreatable", 55);
-			literals.Add("control", 33);
+			literals.Add("noncreatable", 54);
+			literals.Add("control", 32);
 			literals.Add("handle", 84);
-			literals.Add("optimize", 28);
+			literals.Add("optimize", 27);
 			literals.Add("importlib", 59);
 			literals.Add("small", 105);
 			literals.Add("ref", 102);
 			literals.Add("handle_t", 99);
 			literals.Add("cpp_quote", 162);
 			literals.Add("notxpcom", 131);
-			literals.Add("custom", 34);
+			literals.Add("custom", 33);
 			literals.Add("range", 145);
 			literals.Add("out", 139);
 			literals.Add("callback", 127);
-			literals.Add("library", 17);
-			literals.Add("displaybind", 39);
+			literals.Add("library", 15);
+			literals.Add("displaybind", 38);
 			literals.Add("native", 82);
 			literals.Add("iid_is", 144);
 			literals.Add("hyper", 109);
 			literals.Add("L", 157);
-			literals.Add("entry", 42);
+			literals.Add("entry", 41);
 			literals.Add("FALSE", 79);
 			literals.Add("usesgetlasterror", 136);
-			literals.Add("oleautomation", 57);
+			literals.Add("oleautomation", 56);
 			literals.Add("propput", 133);
-			literals.Add("version", 19);
+			literals.Add("version", 18);
 			literals.Add("typedef", 81);
-			literals.Add("nonbrowsable", 54);
+			literals.Add("nonbrowsable", 53);
 			literals.Add("interface", 60);
 			literals.Add("sequence", 119);
-			literals.Add("uuid", 7);
 			literals.Add("switch_type", 91);
-			literals.Add("pointer_default", 25);
+			literals.Add("pointer_default", 24);
 			literals.Add("broadcast", 128);
-			literals.Add("immediatebind", 50);
-			literals.Add("coclass", 18);
-			literals.Add("aggregatable", 30);
+			literals.Add("immediatebind", 49);
+			literals.Add("coclass", 16);
+			literals.Add("aggregatable", 29);
 			literals.Add("midl_pragma_warning", 163);
 			literals.Add("dispinterface", 61);
 			literals.Add("any", 95);
 			literals.Add("double", 112);
 			literals.Add("SAFEARRAY", 155);
-			literals.Add("nonextensible", 56);
+			literals.Add("nonextensible", 55);
 			literals.Add("noscript", 130);
 			literals.Add("union", 115);
 			literals.Add("__int3264", 5);
@@ -352,42 +351,41 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("max_is", 147);
 			literals.Add("requestedit", 143);
 			literals.Add("char", 110);
-			literals.Add("defaultvtable", 38);
+			literals.Add("defaultvtable", 37);
 			literals.Add("string", 122);
-			literals.Add("default", 35);
-			literals.Add("odl", 27);
-			literals.Add("id", 48);
-			literals.Add("dual", 41);
-			literals.Add("helpstringdll", 46);
+			literals.Add("default", 34);
+			literals.Add("odl", 26);
+			literals.Add("id", 47);
+			literals.Add("dual", 40);
+			literals.Add("helpstringdll", 45);
 			literals.Add("false", 80);
 			literals.Add("user_marshal", 89);
-			literals.Add("restricted", 58);
-			literals.Add("helpfile", 44);
-			literals.Add("bindable", 32);
-			literals.Add("dllname", 40);
+			literals.Add("restricted", 57);
+			literals.Add("helpfile", 43);
+			literals.Add("bindable", 31);
+			literals.Add("dllname", 39);
 			literals.Add("attribute", 125);
 			literals.Add("v1_enum", 4);
-			literals.Add("async_uuid", 22);
+			literals.Add("async_uuid", 21);
 			literals.Add("struct", 114);
 			literals.Add("__int64", 6);
-			literals.Add("helpcontext", 43);
+			literals.Add("helpcontext", 42);
 			literals.Add("signed", 92);
-			literals.Add("import", 15);
-			literals.Add("endpoint", 26);
+			literals.Add("import", 13);
+			literals.Add("endpoint", 25);
 			literals.Add("in", 138);
 			literals.Add("TRUE", 77);
 			literals.Add("void", 96);
 			literals.Add("wchar_t", 98);
 			literals.Add("transmit_as", 86);
 			literals.Add("switch", 116);
-			literals.Add("defaultcollelem", 37);
-			literals.Add("helpstring", 45);
+			literals.Add("defaultcollelem", 36);
+			literals.Add("helpstring", 44);
 			literals.Add("true", 78);
 			literals.Add("long", 107);
-			literals.Add("hidden", 47);
-			literals.Add("scriptable", 8);
+			literals.Add("hidden", 46);
 			literals.Add("unique", 103);
-			literals.Add("idempotent", 49);
+			literals.Add("idempotent", 48);
 			literals.Add("vararg", 137);
 		}
 		
@@ -530,6 +528,10 @@ tryAgain:
 							if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d'))
 							{
 								mUUID(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i')) {
+								mSCRIPTABLE(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1=='\'') && (tokenSet_0_.member(cached_LA2)) && (tokenSet_1_.member(LA(3))) && (true)) {
@@ -1775,6 +1777,20 @@ _loop328_breakloop:					;
 		returnToken_ = _token;
 	}
 	
+	public void mSCRIPTABLE(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = SCRIPTABLE;
+		
+		match("scriptable");
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
 	public void mIDENT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1857,11 +1873,11 @@ _loop328_breakloop:					;
 				}
 				default:
 				{
-					goto _loop333_breakloop;
+					goto _loop334_breakloop;
 				}
 				 }
 			}
-_loop333_breakloop:			;
+_loop334_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
