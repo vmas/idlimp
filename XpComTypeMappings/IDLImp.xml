@@ -8,6 +8,18 @@
   <ParamTypeConversion>
     <Attribute>retval</Attribute>
     <Match>nsQIResult</Match>
-    <Replace>Object</Replace>
+    <Replace>System.Object</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>    
+    <Match>void</Match>
+    <Replace>System.Void</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>    
+    <Match>long</Match>
+    <Replace>System.Int64</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>boolean</Match>
+    <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
 </IDLConversions>
