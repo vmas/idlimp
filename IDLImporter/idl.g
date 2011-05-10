@@ -964,17 +964,34 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 		string name; 
 		Hashtable attributes = new Hashtable();
 		membersRet = new CodeTypeMemberCollection();
+		Hashtable funcAttributes = new Hashtable();
 	}
 	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
 		{
-			name = name.Substring(0,1).ToUpper() + name.Substring(1);
-			var getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(#type.getText())};			
-			membersRet.Add(getter);
+			
+					
+			name = IDLConversions.UpperFirstLetter(name);			
+			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(#type.getText())};			
+
+			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();			
+			param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
+				
+			m_Conv.HandleSizeIs(getter, funcAttributes);
+			getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
+
+			membersRet.Add(getter);			
 
 			if (!fReadonly)
 			{
 				var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("void")};
 				setter.Parameters.Add(new CodeParameterDeclarationExpression(#type.getText(), "a" + name));
+
+				param = new CodeParameterDeclarationExpression();			
+				param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
+				
+				m_Conv.HandleSizeIs(setter, funcAttributes);
+				setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
+
 				membersRet.Add(setter);
 			}
 		}
@@ -995,9 +1012,8 @@ function_dcl [CodeTypeMemberCollection types] returns [CodeTypeMember memberRet]
 		memberRet = member;
 	}
 	: (function_attribute_list[funcAttributes])? rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")?
-		{
-			string name = #name.getText();
-			member.Name = name = name.Substring(0,1).ToUpper() + name.Substring(1);
+		{			
+			member.Name = IDLConversions.UpperFirstLetter(#name.getText());
 			member.Parameters.AddRange(pars);
 
 			if (#rt == null)

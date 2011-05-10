@@ -265,9 +265,9 @@ namespace SIL.FieldWorks.Tools
 		/// <returns>Function or property description</returns>
 		/// ------------------------------------------------------------------------------------
 		public CodeTypeMember HandleFunction_dcl(CodeMemberMethod member, CodeTypeReference rt,
-			CodeTypeMemberCollection types, Hashtable attributes)
+			CodeTypeMemberCollection types, Hashtable attributes, bool fPreserveSigDefault = false)
 		{
-			bool fPreserveSig = false;
+			bool fPreserveSig = fPreserveSigDefault;
 			CodeTypeMember memberRet = member;
 
 			if (attributes["custom"] != null)
@@ -955,6 +955,16 @@ namespace SIL.FieldWorks.Tools
 
 				return coll;
 			}
+		}
+
+		/// <summary>
+		/// Returns indentical string apart from first letter is uppercased.
+		/// </summary>
+		/// <param name="str"></param>
+		/// <returns></returns>
+		public static string UpperFirstLetter(string str)
+		{
+			return str.Substring(0, 1).ToUpper() + str.Substring(1);
 		}
 
 		#endregion
