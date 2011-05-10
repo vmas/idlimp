@@ -975,6 +975,7 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 
 			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();			
 			param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
+			getter.ReturnType = param.Type;
 				
 			m_Conv.HandleSizeIs(getter, funcAttributes);
 			getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
@@ -983,12 +984,13 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 
 			if (!fReadonly)
 			{
-				var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("void")};
+				var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("System.Void")};
 				setter.Parameters.Add(new CodeParameterDeclarationExpression(#type.getText(), "a" + name));
 
 				param = new CodeParameterDeclarationExpression();			
 				param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
-				
+				setter.Parameters[0].Type = param.Type;
+
 				m_Conv.HandleSizeIs(setter, funcAttributes);
 				setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
 

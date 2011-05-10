@@ -3297,6 +3297,7 @@ _loop36_breakloop:					;
 					
 								CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();			
 								param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
+								getter.ReturnType = param.Type;
 									
 								m_Conv.HandleSizeIs(getter, funcAttributes);
 								getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
@@ -3305,12 +3306,13 @@ _loop36_breakloop:					;
 					
 								if (!fReadonly)
 								{
-									var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("void")};
+									var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("System.Void")};
 									setter.Parameters.Add(new CodeParameterDeclarationExpression(type_AST.getText(), "a" + name));
 					
 									param = new CodeParameterDeclarationExpression();			
 									param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
-									
+									setter.Parameters[0] = param.Type;
+					
 									m_Conv.HandleSizeIs(setter, funcAttributes);
 									setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
 					
