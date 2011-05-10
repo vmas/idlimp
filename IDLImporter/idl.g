@@ -327,6 +327,7 @@ interf_declr [CodeTypeReferenceCollection baseTypes]
 
 interface_body [CodeTypeDeclaration type] returns [bool fForwardDeclaration]
 	{ 
+		CodeTypeMemberCollection members = null;
 		CodeTypeMember member = null; 
 		CodeTypeMember ignored;
 		fForwardDeclaration = false;
@@ -334,7 +335,11 @@ interface_body [CodeTypeDeclaration type] returns [bool fForwardDeclaration]
 	: ignored=type_dcl SEMI
 	| const_dcl SEMI
 	| except_dcl SEMI
-	| attr_dcl SEMI
+	| members=attr_dcl[type.Members] SEMI
+		{
+			if (members != null)				
+				type.Members.AddRange(members);
+		}
     | cpp_quote!	
 	| member=function_dcl[type.Members] SEMI
 		{
@@ -953,12 +958,26 @@ array_bound
 	;
 
 
-attr_dcl
+attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection membersRet] 
 	{ 
-		string ignored; 
+		bool fReadonly = false;
+		string name; 
 		Hashtable attributes = new Hashtable();
+		membersRet = new CodeTypeMemberCollection();
 	}
-	: ("readonly")? "attribute" param_type_spec ignored=declarator_list[attributes]
+	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
+		{
+			name = name.Substring(0,1).ToUpper() + name.Substring(1);
+			var getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(#type.getText())};			
+			membersRet.Add(getter);
+
+			if (!fReadonly)
+			{
+				var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("void")};
+				setter.Parameters.Add(new CodeParameterDeclarationExpression(#type.getText(), "a" + name));
+				membersRet.Add(setter);
+			}
+		}
 	;
 
 except_dcl
@@ -977,7 +996,8 @@ function_dcl [CodeTypeMemberCollection types] returns [CodeTypeMember memberRet]
 	}
 	: (function_attribute_list[funcAttributes])? rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")?
 		{
-			member.Name = #name.getText();
+			string name = #name.getText();
+			member.Name = name = name.Substring(0,1).ToUpper() + name.Substring(1);
 			member.Parameters.AddRange(pars);
 
 			if (#rt == null)

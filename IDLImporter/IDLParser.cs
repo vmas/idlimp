@@ -3069,6 +3069,7 @@ _loop36_breakloop:					;
 			ASTPair currentAST = new ASTPair();
 			AST interface_body_AST = null;
 			
+					CodeTypeMemberCollection members = null;
 					CodeTypeMember member = null; 
 					CodeTypeMember ignored;
 					fForwardDeclaration = false;
@@ -3127,7 +3128,7 @@ _loop36_breakloop:					;
 				case LITERAL_readonly:
 				case LITERAL_attribute:
 				{
-					attr_dcl();
+					members=attr_dcl(type.Members);
 					if (0 == inputState.guessing)
 					{
 						astFactory.addASTChild(ref currentAST, returnAST);
@@ -3136,6 +3137,13 @@ _loop36_breakloop:					;
 					tmp145_AST = astFactory.create(LT(1));
 					astFactory.addASTChild(ref currentAST, tmp145_AST);
 					match(SEMI);
+					if (0==inputState.guessing)
+					{
+						
+									if (members != null)				
+										type.Members.AddRange(members);
+								
+					}
 					interface_body_AST = currentAST.root;
 					break;
 				}
@@ -3218,17 +3226,23 @@ _loop36_breakloop:					;
 		}
 	}
 	
-	public void attr_dcl() //throws RecognitionException, TokenStreamException
+	public CodeTypeMemberCollection  attr_dcl(
+		CodeTypeMemberCollection types
+	) //throws RecognitionException, TokenStreamException
 {
+		CodeTypeMemberCollection membersRet;
 		
 		traceIn("attr_dcl");
 		try { // debugging
 			returnAST = null;
 			ASTPair currentAST = new ASTPair();
 			AST attr_dcl_AST = null;
+			AST type_AST = null;
 			
-					string ignored; 
+					bool fReadonly = false;
+					string name; 
 					Hashtable attributes = new Hashtable();
+					membersRet = new CodeTypeMemberCollection();
 				
 			
 			try {      // for error handling
@@ -3241,6 +3255,10 @@ _loop36_breakloop:					;
 						tmp147_AST = astFactory.create(LT(1));
 						astFactory.addASTChild(ref currentAST, tmp147_AST);
 						match(LITERAL_readonly);
+						if (0==inputState.guessing)
+						{
+							fReadonly=true;
+						}
 						break;
 					}
 					case LITERAL_attribute:
@@ -3260,12 +3278,28 @@ _loop36_breakloop:					;
 				param_type_spec();
 				if (0 == inputState.guessing)
 				{
+					type_AST = (AST)returnAST;
 					astFactory.addASTChild(ref currentAST, returnAST);
 				}
-				ignored=declarator_list(attributes);
+				name=declarator_list(attributes);
 				if (0 == inputState.guessing)
 				{
 					astFactory.addASTChild(ref currentAST, returnAST);
+				}
+				if (0==inputState.guessing)
+				{
+					
+								name = name.Substring(0,1).ToUpper() + name.Substring(1);
+								var getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(type_AST.getText())};			
+								membersRet.Add(getter);
+					
+								if (!fReadonly)
+								{
+									var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("void")};
+									setter.Parameters.Add(new CodeParameterDeclarationExpression(type_AST.getText(), "a" + name));
+									membersRet.Add(setter);
+								}
+							
 				}
 				attr_dcl_AST = currentAST.root;
 			}
@@ -3282,6 +3316,7 @@ _loop36_breakloop:					;
 				}
 			}
 			returnAST = attr_dcl_AST;
+			return membersRet;
 		}
 		finally
 		{ // debugging
@@ -3420,7 +3455,8 @@ _loop36_breakloop:					;
 				if (0==inputState.guessing)
 				{
 					
-								member.Name = name_AST.getText();
+								string name = name_AST.getText();
+								member.Name = name = name.Substring(0,1).ToUpper() + name.Substring(1);
 								member.Parameters.AddRange(pars);
 					
 								if (rt_AST == null)
