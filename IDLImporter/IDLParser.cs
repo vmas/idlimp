@@ -3311,7 +3311,7 @@ _loop36_breakloop:					;
 					
 									param = new CodeParameterDeclarationExpression();			
 									param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
-									setter.Parameters[0] = param.Type;
+									setter.Parameters[0].Type = param.Type;
 					
 									m_Conv.HandleSizeIs(setter, funcAttributes);
 									setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
