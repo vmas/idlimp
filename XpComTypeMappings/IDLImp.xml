@@ -22,4 +22,12 @@
     <Match>boolean</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
+  <!-- Interfaces : any type beginning with 'nsI'  -->
+  <ParamTypeConversion>
+    <Attribute>~size_is</Attribute>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
+    <Match>^\s*(?&lt;type&gt;nsI[^\s]+)</Match>
+    <Replace>${type}</Replace>
+  </ParamTypeConversion>
 </IDLConversions>

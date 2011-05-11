@@ -976,6 +976,13 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();			
 			param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
 			getter.ReturnType = param.Type;
+			getter.CustomAttributes = param.CustomAttributes;
+			// Review: The approach to add "return:" is hacky! a similar thing is also 
+			// done in HandleFunction_dcl
+			if (getter.CustomAttributes.Count > 0)
+			{
+				getter.CustomAttributes[0].Name = "return: " + getter.CustomAttributes[0].Name;
+			}
 				
 			m_Conv.HandleSizeIs(getter, funcAttributes);
 			getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
@@ -990,6 +997,7 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 				param = new CodeParameterDeclarationExpression();			
 				param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
 				setter.Parameters[0].Type = param.Type;
+				setter.Parameters[0].CustomAttributes = param.CustomAttributes;
 
 				m_Conv.HandleSizeIs(setter, funcAttributes);
 				setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
