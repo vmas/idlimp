@@ -16,7 +16,7 @@
   </ParamTypeConversion>
   <ParamTypeConversion>    
     <Match>long</Match>
-    <Replace>System.Int64</Replace>
+    <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>boolean</Match>
