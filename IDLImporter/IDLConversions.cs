@@ -497,6 +497,8 @@ namespace SIL.FieldWorks.Tools
 			{
 				switch (str)
 				{
+					// nsISupports in xpcom is akin to IUnknown
+					case "nsISupports":
 					case "IUnknown":
 					case "IDispatch":
 						if (type.UserData["InterfaceType"] != null)
@@ -504,7 +506,7 @@ namespace SIL.FieldWorks.Tools
 							type.UserData["InterfaceType"] = "ComInterfaceType.InterfaceIsDual";
 						}
 						else
-							type.UserData.Add("InterfaceType", "ComInterfaceType.InterfaceIs" + str);
+							type.UserData.Add("InterfaceType", "ComInterfaceType.InterfaceIsIUnknown");
 						break;
 					default: 
 					{
