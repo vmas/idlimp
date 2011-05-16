@@ -23,8 +23,8 @@
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>    
+    <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>DOMString</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>

@@ -3295,28 +3295,41 @@ _loop36_breakloop:					;
 								name = IDLConversions.UpperFirstLetter(name);			
 								CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(type_AST.getText())};			
 					
-								CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();			
-								param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
-								getter.ReturnType = param.Type;
-								getter.CustomAttributes = param.CustomAttributes;
-								// Review: The approach to add "return:" is hacky! a similar thing is also 
-								// done in HandleFunction_dcl
-								if (getter.CustomAttributes.Count > 0)
+								CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
+								IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(type_AST.getText(), param, attributes);
+								param.Type = results.newType;			
+					
+								// if this attribute explicitly doesn't want to be a retval
+								if (results.attributesRemoved.Contains("retval"))
+								{			
+									getter.ReturnType = new CodeTypeReference("System.Void");
+									getter.Parameters.Add(new CodeParameterDeclarationExpression(param.Type, "a" + name));				
+									getter.Parameters[0].CustomAttributes = param.CustomAttributes;
+								}
+								else
 								{
-									getter.CustomAttributes[0].Name = "return: " + getter.CustomAttributes[0].Name;
+									getter.ReturnType = param.Type;
+									getter.CustomAttributes = param.CustomAttributes;
+					
+									// Review: The approach to add "return:" is hacky! a similar thing is also 
+									// done in HandleFunction_dcl
+									if (getter.CustomAttributes.Count > 0)
+									{
+										getter.CustomAttributes[0].Name = "return: " + getter.CustomAttributes[0].Name;
+									}
 								}
 									
-								m_Conv.HandleSizeIs(getter, funcAttributes);
-								getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
+									m_Conv.HandleSizeIs(getter, funcAttributes);
+									getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
 					
-								membersRet.Add(getter);			
+									membersRet.Add(getter);			
 					
 								if (!fReadonly)
 								{
 									var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("System.Void")};
 									setter.Parameters.Add(new CodeParameterDeclarationExpression(type_AST.getText(), "a" + name));
 					
-									param = new CodeParameterDeclarationExpression();			
+									param = new CodeParameterDeclarationExpression();
 									param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
 									setter.Parameters[0].Type = param.Type;
 									setter.Parameters[0].CustomAttributes = param.CustomAttributes;

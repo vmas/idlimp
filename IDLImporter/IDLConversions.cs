@@ -979,9 +979,35 @@ namespace SIL.FieldWorks.Tools
 		/// <param name="sParameter">original parameter string</param>
 		/// <param name="param">parameter description</param>
 		/// <returns></returns>
-		public CodeTypeReference ConvertParamType(string sOriginalParameter, 
+		public CodeTypeReference ConvertParamType(string sOriginalParameter,
 			CodeParameterDeclarationExpression param, IDictionary attributes)
 		{
+			return ConvertParamTypeExtended(sOriginalParameter, param, attributes).newType;
+		}
+
+		// TODO: make this code more OO.
+		public class ConvertParaTypeResults
+		{
+			public CodeTypeReference newType;
+			public string sOriginalParameter;
+			public string sNewParameter;
+			public List<string> attributesAdded = new List<string>();
+			public List<string> attributesRemoved = new List<string>();
+		}
+
+		/// <summary>
+		/// Make conversions based on attributes
+		/// </summary>
+		/// <param name="type">Type of parameter</param>
+		/// <param name="sParameter">original parameter string</param>
+		/// <param name="param">parameter description</param>
+		/// <returns></returns>
+		public ConvertParaTypeResults ConvertParamTypeExtended(string sOriginalParameter, 
+			CodeParameterDeclarationExpression param, IDictionary attributes)
+		{
+			var results = new ConvertParaTypeResults();
+			results.sOriginalParameter = sOriginalParameter;
+
 			CodeTypeReference type = new CodeTypeReference(string.Empty);
 			string sParameter = sOriginalParameter;
 
@@ -1050,6 +1076,7 @@ namespace SIL.FieldWorks.Tools
 						if (fMatch)
 						{
 							sParameter = entry.Regex.Replace(sParameter, entry.Replace);
+							results.sNewParameter = sParameter;
 
 							if (entry.NewAttributes != null)
 							{
@@ -1061,10 +1088,12 @@ namespace SIL.FieldWorks.Tools
 
 									if (attribute[0] == '-')
 									{
+										results.attributesRemoved.Add(attribute.Substring(1));
 										attributes.Remove(attribute.Substring(1));
 									}
 									else if (iAttribute == 1 && param != null)
 									{
+										results.attributesRemoved.Add(attribute);
 										// we only deal with one attribute to add
 										if (entry.NewAttrValue == null)
 										{
@@ -1150,7 +1179,8 @@ namespace SIL.FieldWorks.Tools
 			}
 			attributes.Clear();
 
-			return type;
+			results.newType = type;
+			return results;
 		}
 
 		public static string ConvertParamName(string input)
