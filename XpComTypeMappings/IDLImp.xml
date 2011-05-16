@@ -22,6 +22,12 @@
     <Match>boolean</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>    
+    <Match>DOMString</Match>
+    <Replace>nsAString</Replace>
+  </ParamTypeConversion>
   <!-- Interfaces : any type beginning with 'nsI'  -->
   <ParamTypeConversion>
     <Attribute>~size_is</Attribute>
