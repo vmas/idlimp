@@ -3299,7 +3299,7 @@ _loop36_breakloop:					;
 								IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(type_AST.getText(), param, attributes);
 								param.Type = results.newType;			
 					
-								// if this attribute explicitly doesn't want to be a retval
+								// if this config files explicitly doesn't want this attribute to be a retval, then add type as first parameter.
 								if (results.attributesRemoved.Contains("retval"))
 								{			
 									getter.ReturnType = new CodeTypeReference("System.Void");
@@ -3313,6 +3313,8 @@ _loop36_breakloop:					;
 					
 									// Review: The approach to add "return:" is hacky! a similar thing is also 
 									// done in HandleFunction_dcl
+									// TODO: expand the xml configuration spec (IDLImp.xml) to allow modifying method
+									// attribute and not just type attributes.
 									if (getter.CustomAttributes.Count > 0)
 									{
 										getter.CustomAttributes[0].Name = "return: " + getter.CustomAttributes[0].Name;
