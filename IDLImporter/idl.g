@@ -966,10 +966,8 @@ attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection memb
 		membersRet = new CodeTypeMemberCollection();
 		Hashtable funcAttributes = new Hashtable();
 	}
-	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
-		{
-			
-					
+	: (function_attribute_list[funcAttributes])? ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
+		{								
 			name = IDLConversions.UpperFirstLetter(name);			
 			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(#type.getText())};			
 
