@@ -43,7 +43,7 @@ LITERAL_helpfile="helpfile"=43
 LITERAL_helpstring="helpstring"=44
 LITERAL_helpstringdll="helpstringdll"=45
 LITERAL_hidden="hidden"=46
-LITERAL_id="id"=47
+ID=47
 LITERAL_idempotent="idempotent"=48
 LITERAL_immediatebind="immediatebind"=49
 LITERAL_lcid="lcid"=50

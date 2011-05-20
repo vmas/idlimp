@@ -260,7 +260,7 @@ attribute [IDictionary attributes]
 	| "helpstring" LPAREN string_literal RPAREN 
 	| "helpstringdll" LPAREN string_literal RPAREN 
 	| "hidden" 
-	| "id" LPAREN ( integer_literal | identifier ) RPAREN
+	| ID LPAREN ( integer_literal | identifier ) RPAREN
 	| "idempotent"
 	| "immediatebind"
 	| "lcid" LPAREN integer_literal RPAREN 
@@ -1201,7 +1201,7 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: UUID | SCRIPTABLE	
+	: UUID | SCRIPTABLE	| ID
 	| IDENT
   	;
 
@@ -1631,6 +1631,9 @@ UUID
 
 SCRIPTABLE
 	: "scriptable";
+
+ID
+	: "id";
 
 IDENT
 options {

@@ -107,7 +107,7 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_helpstring = 44;
 		public const int LITERAL_helpstringdll = 45;
 		public const int LITERAL_hidden = 46;
-		public const int LITERAL_id = 47;
+		public const int ID = 47;
 		public const int LITERAL_idempotent = 48;
 		public const int LITERAL_immediatebind = 49;
 		public const int LITERAL_lcid = 50;
@@ -355,7 +355,6 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("string", 122);
 			literals.Add("default", 34);
 			literals.Add("odl", 26);
-			literals.Add("id", 47);
 			literals.Add("dual", 40);
 			literals.Add("helpstringdll", 45);
 			literals.Add("false", 80);
@@ -580,6 +579,10 @@ tryAgain:
 							}
 							else if ((cached_LA1=='.') && ((cached_LA2 >= '0' && cached_LA2 <= '9'))) {
 								mFLOAT(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='i') && (cached_LA2=='d') && (true) && (true)) {
+								mID(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1==':') && (true)) {
@@ -1791,6 +1794,20 @@ _loop329_breakloop:					;
 		returnToken_ = _token;
 	}
 	
+	public void mID(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = ID;
+		
+		match("id");
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
 	public void mIDENT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1873,11 +1890,11 @@ _loop329_breakloop:					;
 				}
 				default:
 				{
-					goto _loop335_breakloop;
+					goto _loop336_breakloop;
 				}
 				 }
 			}
-_loop335_breakloop:			;
+_loop336_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))

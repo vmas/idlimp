@@ -79,7 +79,7 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_helpstring = 44;
 		public const int LITERAL_helpstringdll = 45;
 		public const int LITERAL_hidden = 46;
-		public const int LITERAL_id = 47;
+		public const int ID = 47;
 		public const int LITERAL_idempotent = 48;
 		public const int LITERAL_immediatebind = 49;
 		public const int LITERAL_lcid = 50;
