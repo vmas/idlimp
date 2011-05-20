@@ -205,12 +205,11 @@ namespace SIL.FieldWorks.Tools
 		public const int SL_COMMENT = 170;
 		public const int OTHER_LANG_BLOCK = 171;
 		public const int ML_COMMENT = 172;
-		public const int ALTCHAR_LITERAL = 173;
-		public const int ESC = 174;
-		public const int VOCAB = 175;
-		public const int DIGIT = 176;
-		public const int OCTDIGIT = 177;
-		public const int HEXDIGIT = 178;
+		public const int ESC = 173;
+		public const int VOCAB = 174;
+		public const int DIGIT = 175;
+		public const int OCTDIGIT = 176;
+		public const int HEXDIGIT = 177;
 		
 	}
 }

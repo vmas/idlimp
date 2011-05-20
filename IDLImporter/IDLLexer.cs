@@ -233,12 +233,11 @@ namespace SIL.FieldWorks.Tools
 		public const int SL_COMMENT = 170;
 		public const int OTHER_LANG_BLOCK = 171;
 		public const int ML_COMMENT = 172;
-		public const int ALTCHAR_LITERAL = 173;
-		public const int ESC = 174;
-		public const int VOCAB = 175;
-		public const int DIGIT = 176;
-		public const int OCTDIGIT = 177;
-		public const int HEXDIGIT = 178;
+		public const int ESC = 173;
+		public const int VOCAB = 174;
+		public const int DIGIT = 175;
+		public const int OCTDIGIT = 176;
+		public const int HEXDIGIT = 177;
 		
 		public IDLLexer(Stream ins) : this(new ByteBuffer(ins))
 		{
@@ -523,6 +522,12 @@ tryAgain:
 							theRetToken = returnToken_;
 							break;
 						}
+						case '\'':
+						{
+							mCHAR_LITERAL(true);
+							theRetToken = returnToken_;
+							break;
+						}
 						default:
 							if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d'))
 							{
@@ -531,10 +536,6 @@ tryAgain:
 							}
 							else if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i')) {
 								mSCRIPTABLE(true);
-								theRetToken = returnToken_;
-							}
-							else if ((cached_LA1=='\'') && (tokenSet_0_.member(cached_LA2)) && (tokenSet_1_.member(LA(3))) && (true)) {
-								mCHAR_LITERAL(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1=='.') && (cached_LA2=='.')) {
@@ -567,10 +568,6 @@ tryAgain:
 							}
 							else if ((cached_LA1=='"') && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff'))) {
 								mSTRING_LITERAL(true);
-								theRetToken = returnToken_;
-							}
-							else if ((cached_LA1=='\'') && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true)) {
-								mALTCHAR_LITERAL(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1=='0') && (cached_LA2=='X'||cached_LA2=='x')) {
@@ -617,7 +614,7 @@ tryAgain:
 								mINT(true);
 								theRetToken = returnToken_;
 							}
-							else if ((tokenSet_2_.member(cached_LA1)) && (true) && (true) && (true)) {
+							else if ((tokenSet_0_.member(cached_LA1)) && (true) && (true) && (true)) {
 								mIDENT(true);
 								theRetToken = returnToken_;
 							}
@@ -1107,7 +1104,7 @@ tryAgain:
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((tokenSet_3_.member(cached_LA1)))
+				if ((tokenSet_1_.member(cached_LA1)))
 				{
 					matchNot('\n');
 				}
@@ -1138,7 +1135,7 @@ _loop288_breakloop:			;
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((tokenSet_3_.member(cached_LA1)))
+				if ((tokenSet_1_.member(cached_LA1)))
 				{
 					matchNot('\n');
 				}
@@ -1169,7 +1166,7 @@ _loop291_breakloop:			;
 		{    // ( ... )*
 			for (;;)
 			{
-				if ((cached_LA1=='%') && (tokenSet_4_.member(cached_LA2)))
+				if ((cached_LA1=='%') && (tokenSet_2_.member(cached_LA2)))
 				{
 					match('%');
 					matchNot('}');
@@ -1178,7 +1175,7 @@ _loop291_breakloop:			;
 					match('\n');
 					newline();
 				}
-				else if ((tokenSet_5_.member(cached_LA1))) {
+				else if ((tokenSet_3_.member(cached_LA1))) {
 					matchNot('%');
 				}
 				else
@@ -1217,7 +1214,7 @@ _loop294_breakloop:			;
 				}
 				case '\'':
 				{
-					mALTCHAR_LITERAL(false);
+					match('\'');
 					break;
 				}
 				case '\n':
@@ -1227,12 +1224,12 @@ _loop294_breakloop:			;
 					break;
 				}
 				default:
-					if ((cached_LA1=='*') && (tokenSet_6_.member(cached_LA2)))
+					if ((cached_LA1=='*') && (tokenSet_4_.member(cached_LA2)))
 					{
 						match('*');
 						matchNot('/');
 					}
-					else if ((tokenSet_7_.member(cached_LA1))) {
+					else if ((tokenSet_5_.member(cached_LA1))) {
 						matchNot('*');
 					}
 				else
@@ -1269,43 +1266,8 @@ _loop297_breakloop:			;
 				{
 					mESC(false);
 				}
-				else if ((tokenSet_8_.member(cached_LA1))) {
+				else if ((tokenSet_6_.member(cached_LA1))) {
 					matchNot('"');
-				}
-				else
-				{
-					goto _loop305_breakloop;
-				}
-				
-			}
-_loop305_breakloop:			;
-		}    // ( ... )*
-		_saveIndex = text.Length;
-		match('"');
-		text.Length = _saveIndex;
-		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
-		{
-			_token = makeToken(_ttype);
-			_token.setText(text.ToString(_begin, text.Length-_begin));
-		}
-		returnToken_ = _token;
-	}
-	
-	public void mALTCHAR_LITERAL(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
-{
-		int _ttype; IToken _token=null; int _begin=text.Length;
-		_ttype = ALTCHAR_LITERAL;
-		
-		match('\'');
-		{    // ( ... )*
-			for (;;)
-			{
-				if ((cached_LA1=='\\'))
-				{
-					mESC(false);
-				}
-				else if ((tokenSet_9_.member(cached_LA1))) {
-					matchNot('\'');
 				}
 				else
 				{
@@ -1315,7 +1277,9 @@ _loop305_breakloop:			;
 			}
 _loop302_breakloop:			;
 		}    // ( ... )*
-		match('\'');
+		_saveIndex = text.Length;
+		match('"');
+		text.Length = _saveIndex;
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
 			_token = makeToken(_ttype);
@@ -1335,7 +1299,7 @@ _loop302_breakloop:			;
 			{
 				mESC(false);
 			}
-			else if ((tokenSet_9_.member(cached_LA1))) {
+			else if ((tokenSet_7_.member(cached_LA1))) {
 				matchNot('\'');
 			}
 			else
@@ -1481,7 +1445,7 @@ _loop302_breakloop:			;
 				match('x');
 				mHEXDIGIT(false);
 				{
-					if ((tokenSet_10_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
+					if ((tokenSet_8_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
 					{
 						mHEXDIGIT(false);
 					}
@@ -1612,12 +1576,42 @@ _loop302_breakloop:			;
 			
 		}
 		{ // ( ... )+
+			int _cnt317=0;
+			for (;;)
+			{
+				if ((tokenSet_8_.member(cached_LA1)))
+				{
+					mHEXDIGIT(false);
+				}
+				else
+				{
+					if (_cnt317 >= 1) { goto _loop317_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+				}
+				
+				_cnt317++;
+			}
+_loop317_breakloop:			;
+		}    // ( ... )+
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
+	public void mINT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = INT;
+		
+		{ // ( ... )+
 			int _cnt320=0;
 			for (;;)
 			{
-				if ((tokenSet_10_.member(cached_LA1)))
+				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
 				{
-					mHEXDIGIT(false);
+					mDIGIT(false);
 				}
 				else
 				{
@@ -1636,11 +1630,12 @@ _loop320_breakloop:			;
 		returnToken_ = _token;
 	}
 	
-	public void mINT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+	public void mFLOAT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
-		_ttype = INT;
+		_ttype = FLOAT;
 		
+		match('.');
 		{ // ( ... )+
 			int _cnt323=0;
 			for (;;)
@@ -1657,37 +1652,6 @@ _loop320_breakloop:			;
 				_cnt323++;
 			}
 _loop323_breakloop:			;
-		}    // ( ... )+
-		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
-		{
-			_token = makeToken(_ttype);
-			_token.setText(text.ToString(_begin, text.Length-_begin));
-		}
-		returnToken_ = _token;
-	}
-	
-	public void mFLOAT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
-{
-		int _ttype; IToken _token=null; int _begin=text.Length;
-		_ttype = FLOAT;
-		
-		match('.');
-		{ // ( ... )+
-			int _cnt326=0;
-			for (;;)
-			{
-				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
-				{
-					mDIGIT(false);
-				}
-				else
-				{
-					if (_cnt326 >= 1) { goto _loop326_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
-				}
-				
-				_cnt326++;
-			}
-_loop326_breakloop:			;
 		}    // ( ... )+
 		{
 			if ((cached_LA1=='E'||cached_LA1=='e'))
@@ -1737,7 +1701,7 @@ _loop326_breakloop:			;
 					 }
 				}
 				{ // ( ... )+
-					int _cnt331=0;
+					int _cnt328=0;
 					for (;;)
 					{
 						if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1746,12 +1710,12 @@ _loop326_breakloop:			;
 						}
 						else
 						{
-							if (_cnt331 >= 1) { goto _loop331_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+							if (_cnt328 >= 1) { goto _loop328_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 						}
 						
-						_cnt331++;
+						_cnt328++;
 					}
-_loop331_breakloop:					;
+_loop328_breakloop:					;
 				}    // ( ... )+
 			}
 			else {
@@ -1890,11 +1854,11 @@ _loop331_breakloop:					;
 				}
 				default:
 				{
-					goto _loop338_breakloop;
+					goto _loop335_breakloop;
 				}
 				 }
 			}
-_loop338_breakloop:			;
+_loop335_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
@@ -1908,26 +1872,11 @@ _loop338_breakloop:			;
 	
 	private static long[] mk_tokenSet_0_()
 	{
-		long[] data = new long[8];
-		data[0]=-549755813889L;
-		for (int i = 1; i<=3; i++) { data[i]=-1L; }
-		for (int i = 4; i<=7; i++) { data[i]=0L; }
+		long[] data = { 0L, 576460745995190270L, 0L, 0L, 0L};
 		return data;
 	}
 	public static readonly BitSet tokenSet_0_ = new BitSet(mk_tokenSet_0_());
 	private static long[] mk_tokenSet_1_()
-	{
-		long[] data = { -9219149345268432896L, 95772161741946880L, 0L, 0L, 0L};
-		return data;
-	}
-	public static readonly BitSet tokenSet_1_ = new BitSet(mk_tokenSet_1_());
-	private static long[] mk_tokenSet_2_()
-	{
-		long[] data = { 0L, 576460745995190270L, 0L, 0L, 0L};
-		return data;
-	}
-	public static readonly BitSet tokenSet_2_ = new BitSet(mk_tokenSet_2_());
-	private static long[] mk_tokenSet_3_()
 	{
 		long[] data = new long[8];
 		data[0]=-1025L;
@@ -1935,8 +1884,8 @@ _loop338_breakloop:			;
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
-	public static readonly BitSet tokenSet_3_ = new BitSet(mk_tokenSet_3_());
-	private static long[] mk_tokenSet_4_()
+	public static readonly BitSet tokenSet_1_ = new BitSet(mk_tokenSet_1_());
+	private static long[] mk_tokenSet_2_()
 	{
 		long[] data = new long[8];
 		data[0]=-1L;
@@ -1945,11 +1894,29 @@ _loop338_breakloop:			;
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
+	public static readonly BitSet tokenSet_2_ = new BitSet(mk_tokenSet_2_());
+	private static long[] mk_tokenSet_3_()
+	{
+		long[] data = new long[8];
+		data[0]=-137438954497L;
+		for (int i = 1; i<=3; i++) { data[i]=-1L; }
+		for (int i = 4; i<=7; i++) { data[i]=0L; }
+		return data;
+	}
+	public static readonly BitSet tokenSet_3_ = new BitSet(mk_tokenSet_3_());
+	private static long[] mk_tokenSet_4_()
+	{
+		long[] data = new long[8];
+		data[0]=-140737488355329L;
+		for (int i = 1; i<=3; i++) { data[i]=-1L; }
+		for (int i = 4; i<=7; i++) { data[i]=0L; }
+		return data;
+	}
 	public static readonly BitSet tokenSet_4_ = new BitSet(mk_tokenSet_4_());
 	private static long[] mk_tokenSet_5_()
 	{
 		long[] data = new long[8];
-		data[0]=-137438954497L;
+		data[0]=-4964982195201L;
 		for (int i = 1; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
@@ -1958,32 +1925,14 @@ _loop338_breakloop:			;
 	private static long[] mk_tokenSet_6_()
 	{
 		long[] data = new long[8];
-		data[0]=-140737488355329L;
-		for (int i = 1; i<=3; i++) { data[i]=-1L; }
-		for (int i = 4; i<=7; i++) { data[i]=0L; }
-		return data;
-	}
-	public static readonly BitSet tokenSet_6_ = new BitSet(mk_tokenSet_6_());
-	private static long[] mk_tokenSet_7_()
-	{
-		long[] data = new long[8];
-		data[0]=-4964982195201L;
-		for (int i = 1; i<=3; i++) { data[i]=-1L; }
-		for (int i = 4; i<=7; i++) { data[i]=0L; }
-		return data;
-	}
-	public static readonly BitSet tokenSet_7_ = new BitSet(mk_tokenSet_7_());
-	private static long[] mk_tokenSet_8_()
-	{
-		long[] data = new long[8];
 		data[0]=-17179869185L;
 		data[1]=-268435457L;
 		for (int i = 2; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
-	public static readonly BitSet tokenSet_8_ = new BitSet(mk_tokenSet_8_());
-	private static long[] mk_tokenSet_9_()
+	public static readonly BitSet tokenSet_6_ = new BitSet(mk_tokenSet_6_());
+	private static long[] mk_tokenSet_7_()
 	{
 		long[] data = new long[8];
 		data[0]=-549755813889L;
@@ -1992,13 +1941,13 @@ _loop338_breakloop:			;
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
-	public static readonly BitSet tokenSet_9_ = new BitSet(mk_tokenSet_9_());
-	private static long[] mk_tokenSet_10_()
+	public static readonly BitSet tokenSet_7_ = new BitSet(mk_tokenSet_7_());
+	private static long[] mk_tokenSet_8_()
 	{
 		long[] data = { 287948901175001088L, 541165879422L, 0L, 0L, 0L};
 		return data;
 	}
-	public static readonly BitSet tokenSet_10_ = new BitSet(mk_tokenSet_10_());
+	public static readonly BitSet tokenSet_8_ = new BitSet(mk_tokenSet_8_());
 	
 }
 }
