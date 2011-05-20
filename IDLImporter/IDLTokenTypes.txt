@@ -80,7 +80,7 @@ LITERAL_true="true"=80
 LITERAL_FALSE="FALSE"=81
 LITERAL_false="false"=82
 LITERAL_typedef="typedef"=83
-LITERAL_native="native"=84
+NATIVE=84
 LITERAL_context_handle="context_handle"=85
 LITERAL_handle="handle"=86
 LITERAL_pipe="pipe"=87
@@ -102,7 +102,7 @@ INT("an integer value")=102
 HEX("a hexadecimal value value")=103
 LITERAL_ref="ref"=104
 LITERAL_unique="unique"=105
-LITERAL_ptr="ptr"=106
+PTR=106
 LITERAL_small="small"=107
 LITERAL_short="short"=108
 LITERAL_long="long"=109

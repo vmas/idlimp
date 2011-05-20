@@ -568,7 +568,7 @@ type_dcl returns [CodeTypeMember type]
 	| union_type		
 	| type=enum_type		
 	| /* empty */  
-	| "native" ignored=declarator[attributes] 
+	| NATIVE ignored=declarator[attributes] 
 	;
 
 type_attributes
@@ -1630,6 +1630,9 @@ ID
 
 PTR
 	: "ptr";
+
+NATIVE
+	: "native";
 
 IDENT
 options {

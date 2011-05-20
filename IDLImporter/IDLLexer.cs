@@ -144,7 +144,7 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_FALSE = 81;
 		public const int LITERAL_false = 82;
 		public const int LITERAL_typedef = 83;
-		public const int LITERAL_native = 84;
+		public const int NATIVE = 84;
 		public const int LITERAL_context_handle = 85;
 		public const int LITERAL_handle = 86;
 		public const int LITERAL_pipe = 87;
@@ -166,7 +166,7 @@ namespace SIL.FieldWorks.Tools
 		public const int HEX = 103;
 		public const int LITERAL_ref = 104;
 		public const int LITERAL_unique = 105;
-		public const int LITERAL_ptr = 106;
+		public const int PTR = 106;
 		public const int LITERAL_small = 107;
 		public const int LITERAL_short = 108;
 		public const int LITERAL_long = 109;
@@ -292,7 +292,6 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("source", 153);
 			literals.Add("retval", 141);
 			literals.Add("defaultvalue", 142);
-			literals.Add("ptr", 106);
 			literals.Add("appobject", 30);
 			literals.Add("first_is", 150);
 			literals.Add("noncreatable", 54);
@@ -311,7 +310,6 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("callback", 127);
 			literals.Add("library", 15);
 			literals.Add("displaybind", 38);
-			literals.Add("native", 84);
 			literals.Add("iid_is", 145);
 			literals.Add("hyper", 111);
 			literals.Add("L", 157);
@@ -536,6 +534,14 @@ tryAgain:
 							}
 							else if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i')) {
 								mSCRIPTABLE(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='n') && (cached_LA2=='a') && (LA(3)=='t') && (LA(4)=='i')) {
+								mNATIVE(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='p') && (cached_LA2=='t') && (LA(3)=='r') && (true)) {
+								mPTR(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1=='.') && (cached_LA2=='.')) {
@@ -1772,6 +1778,34 @@ _loop332_breakloop:					;
 		returnToken_ = _token;
 	}
 	
+	public void mPTR(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = PTR;
+		
+		match("ptr");
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
+	public void mNATIVE(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = NATIVE;
+		
+		match("native");
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
 	public void mIDENT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1854,11 +1888,11 @@ _loop332_breakloop:					;
 				}
 				default:
 				{
-					goto _loop339_breakloop;
+					goto _loop341_breakloop;
 				}
 				 }
 			}
-_loop339_breakloop:			;
+_loop341_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))

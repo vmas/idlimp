@@ -116,7 +116,7 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_FALSE = 81;
 		public const int LITERAL_false = 82;
 		public const int LITERAL_typedef = 83;
-		public const int LITERAL_native = 84;
+		public const int NATIVE = 84;
 		public const int LITERAL_context_handle = 85;
 		public const int LITERAL_handle = 86;
 		public const int LITERAL_pipe = 87;
@@ -138,7 +138,7 @@ namespace SIL.FieldWorks.Tools
 		public const int HEX = 103;
 		public const int LITERAL_ref = 104;
 		public const int LITERAL_unique = 105;
-		public const int LITERAL_ptr = 106;
+		public const int PTR = 106;
 		public const int LITERAL_small = 107;
 		public const int LITERAL_short = 108;
 		public const int LITERAL_long = 109;
