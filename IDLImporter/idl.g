@@ -651,7 +651,7 @@ attr_var
 ptr_attr 
 	: "ref" 
 	| "unique" 
-	| "ptr" 
+	| PTR 
 	;
 
 integer_type
@@ -1627,6 +1627,9 @@ SCRIPTABLE
 
 ID
 	: "id";
+
+PTR
+	: "ptr";
 
 IDENT
 options {
