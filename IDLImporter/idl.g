@@ -1135,6 +1135,7 @@ param_attribute [IDictionary attributes]
 	| "iid_is" LPAREN attr_vars RPAREN 
 	| "range" LPAREN integer_literal COMMA integer_literal RPAREN
 	| "array"
+	| "const"
 	| field_attribute[attributes]
 	;
 
