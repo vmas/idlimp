@@ -1134,6 +1134,7 @@ param_attribute [IDictionary attributes]
 	| "requestedit"
 	| "iid_is" LPAREN attr_vars RPAREN 
 	| "range" LPAREN integer_literal COMMA integer_literal RPAREN
+	| "array"
 	| field_attribute[attributes]
 	;
 

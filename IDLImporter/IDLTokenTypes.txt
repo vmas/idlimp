@@ -143,34 +143,35 @@ LITERAL_optional="optional"=143
 LITERAL_requestedit="requestedit"=144
 LITERAL_iid_is="iid_is"=145
 LITERAL_range="range"=146
-LITERAL_size_is="size_is"=147
-LITERAL_max_is="max_is"=148
-LITERAL_length_is="length_is"=149
-LITERAL_first_is="first_is"=150
-LITERAL_last_is="last_is"=151
-LITERAL_switch_is="switch_is"=152
-LITERAL_source="source"=153
-LITERAL_context="context"=154
-LITERAL_SAFEARRAY="SAFEARRAY"=155
-OCTAL=156
-LITERAL_L="L"=157
-STRING_LITERAL("a string literal")=158
-CHAR_LITERAL("a character literal")=159
-FLOAT("an floating point value")=160
-IDENT("an identifer")=161
-LITERAL_cpp_quote="cpp_quote"=162
-LITERAL_midl_pragma_warning="midl_pragma_warning"=163
-QUESTION("?")=164
-DOT(".")=165
-NOT("!")=166
-QUOTE("double quotes")=167
-WS_("white space")=168
-PREPROC_DIRECTIVE("a preprocessor directive")=169
-SL_COMMENT("a comment")=170
-OTHER_LANG_BLOCK("Other lang block like C++")=171
-ML_COMMENT("a comment")=172
-ESC("an escape sequence")=173
-VOCAB("an escaped character value")=174
-DIGIT("a digit")=175
-OCTDIGIT("an octal digit")=176
-HEXDIGIT("a hexadecimal digit")=177
+LITERAL_array="array"=147
+LITERAL_size_is="size_is"=148
+LITERAL_max_is="max_is"=149
+LITERAL_length_is="length_is"=150
+LITERAL_first_is="first_is"=151
+LITERAL_last_is="last_is"=152
+LITERAL_switch_is="switch_is"=153
+LITERAL_source="source"=154
+LITERAL_context="context"=155
+LITERAL_SAFEARRAY="SAFEARRAY"=156
+OCTAL=157
+LITERAL_L="L"=158
+STRING_LITERAL("a string literal")=159
+CHAR_LITERAL("a character literal")=160
+FLOAT("an floating point value")=161
+IDENT("an identifer")=162
+LITERAL_cpp_quote="cpp_quote"=163
+LITERAL_midl_pragma_warning="midl_pragma_warning"=164
+QUESTION("?")=165
+DOT(".")=166
+NOT("!")=167
+QUOTE("double quotes")=168
+WS_("white space")=169
+PREPROC_DIRECTIVE("a preprocessor directive")=170
+SL_COMMENT("a comment")=171
+OTHER_LANG_BLOCK("Other lang block like C++")=172
+ML_COMMENT("a comment")=173
+ESC("an escape sequence")=174
+VOCAB("an escaped character value")=175
+DIGIT("a digit")=176
+OCTDIGIT("an octal digit")=177
+HEXDIGIT("a hexadecimal digit")=178
