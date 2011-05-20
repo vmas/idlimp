@@ -655,7 +655,7 @@ ptr_attr
 	;
 
 integer_type
-	:  ("small" | "short" | "long" | "int" | "hyper" | INT3264 | INT64) ("int")?
+	:  ("octet" | "small" | "short" | ("long")+ | "int" | "hyper" | INT3264 | INT64) ("int")?
 	;
 
 char_type
