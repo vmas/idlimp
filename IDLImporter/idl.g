@@ -1034,7 +1034,7 @@ function_dcl [CodeTypeMemberCollection types] returns [CodeTypeMember memberRet]
 		Hashtable funcAttributes = new Hashtable();
 		memberRet = member;
 	}
-	: (function_attribute_list[funcAttributes])? rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")?
+	: (function_attribute_list[funcAttributes])? rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")? (raises)?
 		{			
 			member.Name = IDLConversions.UpperFirstLetter(#name.getText());
 			member.Parameters.AddRange(pars);
@@ -1084,6 +1084,10 @@ function_attribute [IDictionary attributes]
 	| attribute[attributes]
 	;
 	
+raises
+	: "raises" LPAREN! identifier RPAREN!
+	;
+
 parameter_dcls returns [CodeParameterDeclarationExpressionCollection paramColl]
 	{ 
 		paramColl = new CodeParameterDeclarationExpressionCollection(); 

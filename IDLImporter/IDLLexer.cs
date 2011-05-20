@@ -198,22 +198,22 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_uidefault = 135;
 		public const int LITERAL_usesgetlasterror = 136;
 		public const int LITERAL_vararg = 137;
-		public const int LITERAL_in = 138;
-		public const int LITERAL_out = 139;
-		public const int LITERAL_retval = 140;
-		public const int LITERAL_defaultvalue = 141;
-		public const int LITERAL_optional = 142;
-		public const int LITERAL_requestedit = 143;
-		public const int LITERAL_iid_is = 144;
-		public const int LITERAL_range = 145;
-		public const int LITERAL_size_is = 146;
-		public const int LITERAL_max_is = 147;
-		public const int LITERAL_length_is = 148;
-		public const int LITERAL_first_is = 149;
-		public const int LITERAL_last_is = 150;
-		public const int LITERAL_switch_is = 151;
-		public const int LITERAL_source = 152;
-		public const int LITERAL_raises = 153;
+		public const int LITERAL_raises = 138;
+		public const int LITERAL_in = 139;
+		public const int LITERAL_out = 140;
+		public const int LITERAL_retval = 141;
+		public const int LITERAL_defaultvalue = 142;
+		public const int LITERAL_optional = 143;
+		public const int LITERAL_requestedit = 144;
+		public const int LITERAL_iid_is = 145;
+		public const int LITERAL_range = 146;
+		public const int LITERAL_size_is = 147;
+		public const int LITERAL_max_is = 148;
+		public const int LITERAL_length_is = 149;
+		public const int LITERAL_first_is = 150;
+		public const int LITERAL_last_is = 151;
+		public const int LITERAL_switch_is = 152;
+		public const int LITERAL_source = 153;
 		public const int LITERAL_context = 154;
 		public const int LITERAL_SAFEARRAY = 155;
 		public const int OCTAL = 156;
@@ -262,10 +262,10 @@ namespace SIL.FieldWorks.Tools
 			setCaseSensitive(true);
 			literals = new Hashtable(100, (float) 0.4, null, Comparer.Default);
 			literals.Add("local", 22);
-			literals.Add("size_is", 146);
-			literals.Add("optional", 142);
+			literals.Add("size_is", 147);
+			literals.Add("optional", 143);
 			literals.Add("proxy", 28);
-			literals.Add("last_is", 150);
+			literals.Add("last_is", 151);
 			literals.Add("byte", 97);
 			literals.Add("public", 90);
 			literals.Add("represent_as", 88);
@@ -273,7 +273,7 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("message", 52);
 			literals.Add("short", 106);
 			literals.Add("uidefault", 135);
-			literals.Add("raises", 153);
+			literals.Add("raises", 138);
 			literals.Add("defaultbind", 35);
 			literals.Add("object", 23);
 			literals.Add("ignore", 129);
@@ -289,13 +289,13 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("float", 111);
 			literals.Add("context_handle", 83);
 			literals.Add("context", 154);
-			literals.Add("length_is", 148);
-			literals.Add("source", 152);
-			literals.Add("retval", 140);
-			literals.Add("defaultvalue", 141);
+			literals.Add("length_is", 149);
+			literals.Add("source", 153);
+			literals.Add("retval", 141);
+			literals.Add("defaultvalue", 142);
 			literals.Add("ptr", 104);
 			literals.Add("appobject", 30);
-			literals.Add("first_is", 149);
+			literals.Add("first_is", 150);
 			literals.Add("noncreatable", 54);
 			literals.Add("control", 32);
 			literals.Add("handle", 84);
@@ -307,13 +307,13 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("cpp_quote", 162);
 			literals.Add("notxpcom", 131);
 			literals.Add("custom", 33);
-			literals.Add("range", 145);
-			literals.Add("out", 139);
+			literals.Add("range", 146);
+			literals.Add("out", 140);
 			literals.Add("callback", 127);
 			literals.Add("library", 15);
 			literals.Add("displaybind", 38);
 			literals.Add("native", 82);
-			literals.Add("iid_is", 144);
+			literals.Add("iid_is", 145);
 			literals.Add("hyper", 109);
 			literals.Add("L", 157);
 			literals.Add("entry", 41);
@@ -346,10 +346,10 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("propget", 132);
 			literals.Add("int", 108);
 			literals.Add("exception", 126);
-			literals.Add("switch_is", 151);
+			literals.Add("switch_is", 152);
 			literals.Add("boolean", 113);
-			literals.Add("max_is", 147);
-			literals.Add("requestedit", 143);
+			literals.Add("max_is", 148);
+			literals.Add("requestedit", 144);
 			literals.Add("char", 110);
 			literals.Add("defaultvtable", 37);
 			literals.Add("string", 122);
@@ -372,7 +372,7 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("signed", 92);
 			literals.Add("import", 13);
 			literals.Add("endpoint", 25);
-			literals.Add("in", 138);
+			literals.Add("in", 139);
 			literals.Add("TRUE", 77);
 			literals.Add("void", 96);
 			literals.Add("wchar_t", 98);
@@ -1113,11 +1113,11 @@ tryAgain:
 				}
 				else
 				{
-					goto _loop286_breakloop;
+					goto _loop288_breakloop;
 				}
 				
 			}
-_loop286_breakloop:			;
+_loop288_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		newline(); _ttype = Token.SKIP;
@@ -1144,11 +1144,11 @@ _loop286_breakloop:			;
 				}
 				else
 				{
-					goto _loop289_breakloop;
+					goto _loop291_breakloop;
 				}
 				
 			}
-_loop289_breakloop:			;
+_loop291_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		_ttype = Token.SKIP; newline();
@@ -1183,11 +1183,11 @@ _loop289_breakloop:			;
 				}
 				else
 				{
-					goto _loop292_breakloop;
+					goto _loop294_breakloop;
 				}
 				
 			}
-_loop292_breakloop:			;
+_loop294_breakloop:			;
 		}    // ( ... )*
 		match("%}");
 		_ttype = Token.SKIP;
@@ -1237,11 +1237,11 @@ _loop292_breakloop:			;
 					}
 				else
 				{
-					goto _loop295_breakloop;
+					goto _loop297_breakloop;
 				}
 				break; }
 			}
-_loop295_breakloop:			;
+_loop297_breakloop:			;
 		}    // ( ... )*
 		match("*/");
 		_ttype = Token.SKIP;
@@ -1274,11 +1274,11 @@ _loop295_breakloop:			;
 				}
 				else
 				{
-					goto _loop303_breakloop;
+					goto _loop305_breakloop;
 				}
 				
 			}
-_loop303_breakloop:			;
+_loop305_breakloop:			;
 		}    // ( ... )*
 		_saveIndex = text.Length;
 		match('"');
@@ -1309,11 +1309,11 @@ _loop303_breakloop:			;
 				}
 				else
 				{
-					goto _loop300_breakloop;
+					goto _loop302_breakloop;
 				}
 				
 			}
-_loop300_breakloop:			;
+_loop302_breakloop:			;
 		}    // ( ... )*
 		match('\'');
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
@@ -1612,7 +1612,7 @@ _loop300_breakloop:			;
 			
 		}
 		{ // ( ... )+
-			int _cnt318=0;
+			int _cnt320=0;
 			for (;;)
 			{
 				if ((tokenSet_10_.member(cached_LA1)))
@@ -1621,12 +1621,12 @@ _loop300_breakloop:			;
 				}
 				else
 				{
-					if (_cnt318 >= 1) { goto _loop318_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt320 >= 1) { goto _loop320_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt318++;
+				_cnt320++;
 			}
-_loop318_breakloop:			;
+_loop320_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1642,7 +1642,7 @@ _loop318_breakloop:			;
 		_ttype = INT;
 		
 		{ // ( ... )+
-			int _cnt321=0;
+			int _cnt323=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1651,12 +1651,12 @@ _loop318_breakloop:			;
 				}
 				else
 				{
-					if (_cnt321 >= 1) { goto _loop321_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt323 >= 1) { goto _loop323_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt321++;
+				_cnt323++;
 			}
-_loop321_breakloop:			;
+_loop323_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1673,7 +1673,7 @@ _loop321_breakloop:			;
 		
 		match('.');
 		{ // ( ... )+
-			int _cnt324=0;
+			int _cnt326=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1682,12 +1682,12 @@ _loop321_breakloop:			;
 				}
 				else
 				{
-					if (_cnt324 >= 1) { goto _loop324_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt326 >= 1) { goto _loop326_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt324++;
+				_cnt326++;
 			}
-_loop324_breakloop:			;
+_loop326_breakloop:			;
 		}    // ( ... )+
 		{
 			if ((cached_LA1=='E'||cached_LA1=='e'))
@@ -1737,7 +1737,7 @@ _loop324_breakloop:			;
 					 }
 				}
 				{ // ( ... )+
-					int _cnt329=0;
+					int _cnt331=0;
 					for (;;)
 					{
 						if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1746,12 +1746,12 @@ _loop324_breakloop:			;
 						}
 						else
 						{
-							if (_cnt329 >= 1) { goto _loop329_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+							if (_cnt331 >= 1) { goto _loop331_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 						}
 						
-						_cnt329++;
+						_cnt331++;
 					}
-_loop329_breakloop:					;
+_loop331_breakloop:					;
 				}    // ( ... )+
 			}
 			else {
@@ -1890,11 +1890,11 @@ _loop329_breakloop:					;
 				}
 				default:
 				{
-					goto _loop336_breakloop;
+					goto _loop338_breakloop;
 				}
 				 }
 			}
-_loop336_breakloop:			;
+_loop338_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
