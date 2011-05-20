@@ -331,17 +331,18 @@ interface_body [CodeTypeDeclaration type] returns [bool fForwardDeclaration]
 		CodeTypeMember member = null; 
 		CodeTypeMember ignored;
 		fForwardDeclaration = false;
+		Hashtable funcAttributes = new Hashtable();
 	}
 	: ignored=type_dcl SEMI
 	| const_dcl SEMI
 	| except_dcl SEMI
-	| members=attr_dcl[type.Members] SEMI
+	| ( (function_attribute_list[funcAttributes])? ("readonly")? "attribute" ) => (function_attribute_list[funcAttributes])? members=attr_dcl[type.Members, funcAttributes] SEMI
 		{
 			if (members != null)				
 				type.Members.AddRange(members);
 		}
     | cpp_quote!	
-	| member=function_dcl[type.Members] SEMI
+	| (function_attribute_list[funcAttributes])? member=function_dcl[type.Members, funcAttributes] SEMI
 		{
 			if (member != null)
 				type.Members.Add(member);
@@ -958,21 +959,20 @@ array_bound
 	;
 
 
-attr_dcl [CodeTypeMemberCollection types] returns [CodeTypeMemberCollection membersRet] 
+attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [CodeTypeMemberCollection membersRet] 
 	{ 
 		bool fReadonly = false;
 		string name; 
 		Hashtable attributes = new Hashtable();
-		membersRet = new CodeTypeMemberCollection();
-		Hashtable funcAttributes = new Hashtable();
+		membersRet = new CodeTypeMemberCollection();		
 	}
-	: (function_attribute_list[funcAttributes])? ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
-		{								
-			name = IDLConversions.UpperFirstLetter(name);			
-			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name, ReturnType=new CodeTypeReference(#type.getText())};			
+	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
+		{
+			name = IDLConversions.UpperFirstLetter(name);						
+			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name/*, ReturnType=new CodeTypeReference(#type.getText())*/};			
 
 			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
-			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#type.getText(), param, attributes);
+			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#type.ToStringList(), param, attributes);
 			param.Type = results.newType;			
 
 			// if this config files explicitly doesn't want this attribute to be a retval, then add type as first parameter.
@@ -1027,14 +1027,13 @@ except_dcl
 	     LBRACE (member[ignored])* RBRACE
 	;
 
-function_dcl [CodeTypeMemberCollection types] returns [CodeTypeMember memberRet] 
+function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns [CodeTypeMember memberRet] 
 	{ 
 		CodeParameterDeclarationExpressionCollection pars;
 		CodeMemberMethod member = new CodeMemberMethod(); 
-		Hashtable funcAttributes = new Hashtable();
 		memberRet = member;
 	}
-	: (function_attribute_list[funcAttributes])? rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")? (raises)?
+	: rt:param_type_spec ("const")? name:identifier pars=parameter_dcls ("const")? (raises)?
 		{			
 			member.Name = IDLConversions.UpperFirstLetter(#name.getText());
 			member.Parameters.AddRange(pars);

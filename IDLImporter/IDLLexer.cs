@@ -122,70 +122,70 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_importlib = 59;
 		public const int LITERAL_interface = 60;
 		public const int LITERAL_dispinterface = 61;
-		public const int COLON = 62;
-		public const int SCOPEOP = 63;
-		public const int LITERAL_const = 64;
-		public const int ASSIGN = 65;
-		public const int STAR = 66;
-		public const int OR = 67;
-		public const int XOR = 68;
-		public const int AND = 69;
-		public const int LSHIFT = 70;
-		public const int RSHIFT = 71;
-		public const int PLUS = 72;
-		public const int MINUS = 73;
-		public const int DIV = 74;
-		public const int MOD = 75;
-		public const int TILDE = 76;
-		public const int LITERAL_TRUE = 77;
-		public const int LITERAL_true = 78;
-		public const int LITERAL_FALSE = 79;
-		public const int LITERAL_false = 80;
-		public const int LITERAL_typedef = 81;
-		public const int LITERAL_native = 82;
-		public const int LITERAL_context_handle = 83;
-		public const int LITERAL_handle = 84;
-		public const int LITERAL_pipe = 85;
-		public const int LITERAL_transmit_as = 86;
-		public const int LITERAL_wire_marshal = 87;
-		public const int LITERAL_represent_as = 88;
-		public const int LITERAL_user_marshal = 89;
-		public const int LITERAL_public = 90;
-		public const int LITERAL_switch_type = 91;
-		public const int LITERAL_signed = 92;
-		public const int LITERAL_unsigned = 93;
-		public const int LITERAL_octet = 94;
-		public const int LITERAL_any = 95;
-		public const int LITERAL_void = 96;
-		public const int LITERAL_byte = 97;
-		public const int LITERAL_wchar_t = 98;
-		public const int LITERAL_handle_t = 99;
-		public const int INT = 100;
-		public const int HEX = 101;
-		public const int LITERAL_ref = 102;
-		public const int LITERAL_unique = 103;
-		public const int LITERAL_ptr = 104;
-		public const int LITERAL_small = 105;
-		public const int LITERAL_short = 106;
-		public const int LITERAL_long = 107;
-		public const int LITERAL_int = 108;
-		public const int LITERAL_hyper = 109;
-		public const int LITERAL_char = 110;
-		public const int LITERAL_float = 111;
-		public const int LITERAL_double = 112;
-		public const int LITERAL_boolean = 113;
-		public const int LITERAL_struct = 114;
-		public const int LITERAL_union = 115;
-		public const int LITERAL_switch = 116;
-		public const int LITERAL_case = 117;
-		public const int LITERAL_enum = 118;
-		public const int LITERAL_sequence = 119;
-		public const int LT_ = 120;
-		public const int GT = 121;
-		public const int LITERAL_string = 122;
-		public const int RANGE = 123;
-		public const int LITERAL_readonly = 124;
-		public const int LITERAL_attribute = 125;
+		public const int LITERAL_readonly = 62;
+		public const int LITERAL_attribute = 63;
+		public const int COLON = 64;
+		public const int SCOPEOP = 65;
+		public const int LITERAL_const = 66;
+		public const int ASSIGN = 67;
+		public const int STAR = 68;
+		public const int OR = 69;
+		public const int XOR = 70;
+		public const int AND = 71;
+		public const int LSHIFT = 72;
+		public const int RSHIFT = 73;
+		public const int PLUS = 74;
+		public const int MINUS = 75;
+		public const int DIV = 76;
+		public const int MOD = 77;
+		public const int TILDE = 78;
+		public const int LITERAL_TRUE = 79;
+		public const int LITERAL_true = 80;
+		public const int LITERAL_FALSE = 81;
+		public const int LITERAL_false = 82;
+		public const int LITERAL_typedef = 83;
+		public const int LITERAL_native = 84;
+		public const int LITERAL_context_handle = 85;
+		public const int LITERAL_handle = 86;
+		public const int LITERAL_pipe = 87;
+		public const int LITERAL_transmit_as = 88;
+		public const int LITERAL_wire_marshal = 89;
+		public const int LITERAL_represent_as = 90;
+		public const int LITERAL_user_marshal = 91;
+		public const int LITERAL_public = 92;
+		public const int LITERAL_switch_type = 93;
+		public const int LITERAL_signed = 94;
+		public const int LITERAL_unsigned = 95;
+		public const int LITERAL_octet = 96;
+		public const int LITERAL_any = 97;
+		public const int LITERAL_void = 98;
+		public const int LITERAL_byte = 99;
+		public const int LITERAL_wchar_t = 100;
+		public const int LITERAL_handle_t = 101;
+		public const int INT = 102;
+		public const int HEX = 103;
+		public const int LITERAL_ref = 104;
+		public const int LITERAL_unique = 105;
+		public const int LITERAL_ptr = 106;
+		public const int LITERAL_small = 107;
+		public const int LITERAL_short = 108;
+		public const int LITERAL_long = 109;
+		public const int LITERAL_int = 110;
+		public const int LITERAL_hyper = 111;
+		public const int LITERAL_char = 112;
+		public const int LITERAL_float = 113;
+		public const int LITERAL_double = 114;
+		public const int LITERAL_boolean = 115;
+		public const int LITERAL_struct = 116;
+		public const int LITERAL_union = 117;
+		public const int LITERAL_switch = 118;
+		public const int LITERAL_case = 119;
+		public const int LITERAL_enum = 120;
+		public const int LITERAL_sequence = 121;
+		public const int LT_ = 122;
+		public const int GT = 123;
+		public const int LITERAL_string = 124;
+		public const int RANGE = 125;
 		public const int LITERAL_exception = 126;
 		public const int LITERAL_callback = 127;
 		public const int LITERAL_broadcast = 128;
@@ -265,44 +265,44 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("optional", 143);
 			literals.Add("proxy", 28);
 			literals.Add("last_is", 151);
-			literals.Add("byte", 97);
-			literals.Add("public", 90);
-			literals.Add("represent_as", 88);
-			literals.Add("case", 117);
+			literals.Add("byte", 99);
+			literals.Add("public", 92);
+			literals.Add("represent_as", 90);
+			literals.Add("case", 119);
 			literals.Add("message", 52);
-			literals.Add("short", 106);
+			literals.Add("short", 108);
 			literals.Add("uidefault", 135);
 			literals.Add("raises", 138);
 			literals.Add("defaultbind", 35);
 			literals.Add("object", 23);
 			literals.Add("ignore", 129);
-			literals.Add("readonly", 124);
+			literals.Add("readonly", 62);
 			literals.Add("lcid", 50);
 			literals.Add("propputref", 134);
-			literals.Add("octet", 94);
-			literals.Add("wire_marshal", 87);
+			literals.Add("octet", 96);
+			literals.Add("wire_marshal", 89);
 			literals.Add("licensed", 51);
 			literals.Add("module", 10);
-			literals.Add("unsigned", 93);
-			literals.Add("const", 64);
-			literals.Add("float", 111);
-			literals.Add("context_handle", 83);
+			literals.Add("unsigned", 95);
+			literals.Add("const", 66);
+			literals.Add("float", 113);
+			literals.Add("context_handle", 85);
 			literals.Add("context", 154);
 			literals.Add("length_is", 149);
 			literals.Add("source", 153);
 			literals.Add("retval", 141);
 			literals.Add("defaultvalue", 142);
-			literals.Add("ptr", 104);
+			literals.Add("ptr", 106);
 			literals.Add("appobject", 30);
 			literals.Add("first_is", 150);
 			literals.Add("noncreatable", 54);
 			literals.Add("control", 32);
-			literals.Add("handle", 84);
+			literals.Add("handle", 86);
 			literals.Add("optimize", 27);
 			literals.Add("importlib", 59);
-			literals.Add("small", 105);
-			literals.Add("ref", 102);
-			literals.Add("handle_t", 99);
+			literals.Add("small", 107);
+			literals.Add("ref", 104);
+			literals.Add("handle_t", 101);
 			literals.Add("cpp_quote", 162);
 			literals.Add("notxpcom", 131);
 			literals.Add("custom", 33);
@@ -311,21 +311,21 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("callback", 127);
 			literals.Add("library", 15);
 			literals.Add("displaybind", 38);
-			literals.Add("native", 82);
+			literals.Add("native", 84);
 			literals.Add("iid_is", 145);
-			literals.Add("hyper", 109);
+			literals.Add("hyper", 111);
 			literals.Add("L", 157);
 			literals.Add("entry", 41);
-			literals.Add("FALSE", 79);
+			literals.Add("FALSE", 81);
 			literals.Add("usesgetlasterror", 136);
 			literals.Add("oleautomation", 56);
 			literals.Add("propput", 133);
 			literals.Add("version", 18);
-			literals.Add("typedef", 81);
+			literals.Add("typedef", 83);
 			literals.Add("nonbrowsable", 53);
 			literals.Add("interface", 60);
-			literals.Add("sequence", 119);
-			literals.Add("switch_type", 91);
+			literals.Add("sequence", 121);
+			literals.Add("switch_type", 93);
 			literals.Add("pointer_default", 24);
 			literals.Add("broadcast", 128);
 			literals.Add("immediatebind", 49);
@@ -333,56 +333,56 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("aggregatable", 29);
 			literals.Add("midl_pragma_warning", 163);
 			literals.Add("dispinterface", 61);
-			literals.Add("any", 95);
-			literals.Add("double", 112);
+			literals.Add("any", 97);
+			literals.Add("double", 114);
 			literals.Add("SAFEARRAY", 155);
 			literals.Add("nonextensible", 55);
 			literals.Add("noscript", 130);
-			literals.Add("union", 115);
+			literals.Add("union", 117);
 			literals.Add("__int3264", 5);
-			literals.Add("enum", 118);
-			literals.Add("pipe", 85);
+			literals.Add("enum", 120);
+			literals.Add("pipe", 87);
 			literals.Add("propget", 132);
-			literals.Add("int", 108);
+			literals.Add("int", 110);
 			literals.Add("exception", 126);
 			literals.Add("switch_is", 152);
-			literals.Add("boolean", 113);
+			literals.Add("boolean", 115);
 			literals.Add("max_is", 148);
 			literals.Add("requestedit", 144);
-			literals.Add("char", 110);
+			literals.Add("char", 112);
 			literals.Add("defaultvtable", 37);
-			literals.Add("string", 122);
+			literals.Add("string", 124);
 			literals.Add("default", 34);
 			literals.Add("odl", 26);
 			literals.Add("dual", 40);
 			literals.Add("helpstringdll", 45);
-			literals.Add("false", 80);
-			literals.Add("user_marshal", 89);
+			literals.Add("false", 82);
+			literals.Add("user_marshal", 91);
 			literals.Add("restricted", 57);
 			literals.Add("helpfile", 43);
 			literals.Add("bindable", 31);
 			literals.Add("dllname", 39);
-			literals.Add("attribute", 125);
+			literals.Add("attribute", 63);
 			literals.Add("v1_enum", 4);
 			literals.Add("async_uuid", 21);
-			literals.Add("struct", 114);
+			literals.Add("struct", 116);
 			literals.Add("__int64", 6);
 			literals.Add("helpcontext", 42);
-			literals.Add("signed", 92);
+			literals.Add("signed", 94);
 			literals.Add("import", 13);
 			literals.Add("endpoint", 25);
 			literals.Add("in", 139);
-			literals.Add("TRUE", 77);
-			literals.Add("void", 96);
-			literals.Add("wchar_t", 98);
-			literals.Add("transmit_as", 86);
-			literals.Add("switch", 116);
+			literals.Add("TRUE", 79);
+			literals.Add("void", 98);
+			literals.Add("wchar_t", 100);
+			literals.Add("transmit_as", 88);
+			literals.Add("switch", 118);
 			literals.Add("defaultcollelem", 36);
 			literals.Add("helpstring", 44);
-			literals.Add("true", 78);
-			literals.Add("long", 107);
+			literals.Add("true", 80);
+			literals.Add("long", 109);
 			literals.Add("hidden", 46);
-			literals.Add("unique", 103);
+			literals.Add("unique", 105);
 			literals.Add("idempotent", 48);
 			literals.Add("vararg", 137);
 		}
@@ -1110,11 +1110,11 @@ tryAgain:
 				}
 				else
 				{
-					goto _loop288_breakloop;
+					goto _loop292_breakloop;
 				}
 				
 			}
-_loop288_breakloop:			;
+_loop292_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		newline(); _ttype = Token.SKIP;
@@ -1141,11 +1141,11 @@ _loop288_breakloop:			;
 				}
 				else
 				{
-					goto _loop291_breakloop;
+					goto _loop295_breakloop;
 				}
 				
 			}
-_loop291_breakloop:			;
+_loop295_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		_ttype = Token.SKIP; newline();
@@ -1180,11 +1180,11 @@ _loop291_breakloop:			;
 				}
 				else
 				{
-					goto _loop294_breakloop;
+					goto _loop298_breakloop;
 				}
 				
 			}
-_loop294_breakloop:			;
+_loop298_breakloop:			;
 		}    // ( ... )*
 		match("%}");
 		_ttype = Token.SKIP;
@@ -1234,11 +1234,11 @@ _loop294_breakloop:			;
 					}
 				else
 				{
-					goto _loop297_breakloop;
+					goto _loop301_breakloop;
 				}
 				break; }
 			}
-_loop297_breakloop:			;
+_loop301_breakloop:			;
 		}    // ( ... )*
 		match("*/");
 		_ttype = Token.SKIP;
@@ -1271,11 +1271,11 @@ _loop297_breakloop:			;
 				}
 				else
 				{
-					goto _loop302_breakloop;
+					goto _loop306_breakloop;
 				}
 				
 			}
-_loop302_breakloop:			;
+_loop306_breakloop:			;
 		}    // ( ... )*
 		_saveIndex = text.Length;
 		match('"');
@@ -1576,7 +1576,7 @@ _loop302_breakloop:			;
 			
 		}
 		{ // ( ... )+
-			int _cnt317=0;
+			int _cnt321=0;
 			for (;;)
 			{
 				if ((tokenSet_8_.member(cached_LA1)))
@@ -1585,12 +1585,12 @@ _loop302_breakloop:			;
 				}
 				else
 				{
-					if (_cnt317 >= 1) { goto _loop317_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt321 >= 1) { goto _loop321_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt317++;
+				_cnt321++;
 			}
-_loop317_breakloop:			;
+_loop321_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1606,7 +1606,7 @@ _loop317_breakloop:			;
 		_ttype = INT;
 		
 		{ // ( ... )+
-			int _cnt320=0;
+			int _cnt324=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1615,12 +1615,12 @@ _loop317_breakloop:			;
 				}
 				else
 				{
-					if (_cnt320 >= 1) { goto _loop320_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt324 >= 1) { goto _loop324_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt320++;
+				_cnt324++;
 			}
-_loop320_breakloop:			;
+_loop324_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1637,7 +1637,7 @@ _loop320_breakloop:			;
 		
 		match('.');
 		{ // ( ... )+
-			int _cnt323=0;
+			int _cnt327=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1646,12 +1646,12 @@ _loop320_breakloop:			;
 				}
 				else
 				{
-					if (_cnt323 >= 1) { goto _loop323_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt327 >= 1) { goto _loop327_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt323++;
+				_cnt327++;
 			}
-_loop323_breakloop:			;
+_loop327_breakloop:			;
 		}    // ( ... )+
 		{
 			if ((cached_LA1=='E'||cached_LA1=='e'))
@@ -1701,7 +1701,7 @@ _loop323_breakloop:			;
 					 }
 				}
 				{ // ( ... )+
-					int _cnt328=0;
+					int _cnt332=0;
 					for (;;)
 					{
 						if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1710,12 +1710,12 @@ _loop323_breakloop:			;
 						}
 						else
 						{
-							if (_cnt328 >= 1) { goto _loop328_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+							if (_cnt332 >= 1) { goto _loop332_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 						}
 						
-						_cnt328++;
+						_cnt332++;
 					}
-_loop328_breakloop:					;
+_loop332_breakloop:					;
 				}    // ( ... )+
 			}
 			else {
@@ -1854,11 +1854,11 @@ _loop328_breakloop:					;
 				}
 				default:
 				{
-					goto _loop335_breakloop;
+					goto _loop339_breakloop;
 				}
 				 }
 			}
-_loop335_breakloop:			;
+_loop339_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
