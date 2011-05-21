@@ -280,6 +280,7 @@ attribute [IDictionary attributes]
 	| "scriptable"
 	| "deprecated"
 	| "Undefined" LPAREN identifier RPAREN
+	| "noscript"
 	;
 	
 non_rparen
@@ -1071,8 +1072,7 @@ function_attribute [IDictionary attributes]
 	| ptr_attr
 	| string_type
 	| "ignore"
-	| "context_handle"
-	| "noscript"
+	| "context_handle"	
 	| "notxpcom"
 	| "propget"
 		{
