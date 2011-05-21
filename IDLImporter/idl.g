@@ -276,6 +276,7 @@ attribute [IDictionary attributes]
 		{ attributes.Add("restricted", new CodeAttributeArgument()); }
 	| "ref"
 	| "ptr"
+	| "function"
 	| SCRIPTABLE
 	;
 	
