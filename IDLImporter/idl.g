@@ -1218,7 +1218,7 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: UUID | SCRIPTABLE	| ID
+	: UUID | SCRIPTABLE	| ID | "range"
 	| IDENT
   	;
 
