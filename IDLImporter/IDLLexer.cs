@@ -146,7 +146,7 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_FALSE = 83;
 		public const int LITERAL_false = 84;
 		public const int LITERAL_typedef = 85;
-		public const int NATIVE = 86;
+		public const int LITERAL_native = 86;
 		public const int LITERAL_context_handle = 87;
 		public const int LITERAL_handle = 88;
 		public const int LITERAL_pipe = 89;
@@ -199,48 +199,49 @@ namespace SIL.FieldWorks.Tools
 		public const int LITERAL_uidefault = 136;
 		public const int LITERAL_usesgetlasterror = 137;
 		public const int LITERAL_vararg = 138;
-		public const int LITERAL_raises = 139;
-		public const int LITERAL_in = 140;
-		public const int LITERAL_out = 141;
-		public const int LITERAL_inout = 142;
-		public const int LITERAL_retval = 143;
-		public const int LITERAL_defaultvalue = 144;
-		public const int LITERAL_optional = 145;
-		public const int LITERAL_requestedit = 146;
-		public const int LITERAL_iid_is = 147;
-		public const int LITERAL_range = 148;
-		public const int LITERAL_array = 149;
-		public const int LITERAL_size_is = 150;
-		public const int LITERAL_max_is = 151;
-		public const int LITERAL_length_is = 152;
-		public const int LITERAL_first_is = 153;
-		public const int LITERAL_last_is = 154;
-		public const int LITERAL_switch_is = 155;
-		public const int LITERAL_source = 156;
-		public const int LITERAL_context = 157;
-		public const int LITERAL_SAFEARRAY = 158;
-		public const int OCTAL = 159;
-		public const int LITERAL_L = 160;
-		public const int STRING_LITERAL = 161;
-		public const int CHAR_LITERAL = 162;
-		public const int FLOAT = 163;
-		public const int IDENT = 164;
-		public const int LITERAL_cpp_quote = 165;
-		public const int LITERAL_midl_pragma_warning = 166;
-		public const int QUESTION = 167;
-		public const int DOT = 168;
-		public const int NOT = 169;
-		public const int QUOTE = 170;
-		public const int WS_ = 171;
-		public const int PREPROC_DIRECTIVE = 172;
-		public const int SL_COMMENT = 173;
-		public const int OTHER_LANG_BLOCK = 174;
-		public const int ML_COMMENT = 175;
-		public const int ESC = 176;
-		public const int VOCAB = 177;
-		public const int DIGIT = 178;
-		public const int OCTDIGIT = 179;
-		public const int HEXDIGIT = 180;
+		public const int LITERAL_optional_argc = 139;
+		public const int LITERAL_raises = 140;
+		public const int LITERAL_in = 141;
+		public const int LITERAL_out = 142;
+		public const int LITERAL_inout = 143;
+		public const int LITERAL_retval = 144;
+		public const int LITERAL_defaultvalue = 145;
+		public const int LITERAL_optional = 146;
+		public const int LITERAL_requestedit = 147;
+		public const int LITERAL_iid_is = 148;
+		public const int LITERAL_range = 149;
+		public const int LITERAL_array = 150;
+		public const int LITERAL_size_is = 151;
+		public const int LITERAL_max_is = 152;
+		public const int LITERAL_length_is = 153;
+		public const int LITERAL_first_is = 154;
+		public const int LITERAL_last_is = 155;
+		public const int LITERAL_switch_is = 156;
+		public const int LITERAL_source = 157;
+		public const int LITERAL_context = 158;
+		public const int LITERAL_SAFEARRAY = 159;
+		public const int OCTAL = 160;
+		public const int LITERAL_L = 161;
+		public const int STRING_LITERAL = 162;
+		public const int CHAR_LITERAL = 163;
+		public const int FLOAT = 164;
+		public const int IDENT = 165;
+		public const int LITERAL_cpp_quote = 166;
+		public const int LITERAL_midl_pragma_warning = 167;
+		public const int QUESTION = 168;
+		public const int DOT = 169;
+		public const int NOT = 170;
+		public const int QUOTE = 171;
+		public const int WS_ = 172;
+		public const int PREPROC_DIRECTIVE = 173;
+		public const int SL_COMMENT = 174;
+		public const int OTHER_LANG_BLOCK = 175;
+		public const int ML_COMMENT = 176;
+		public const int ESC = 177;
+		public const int VOCAB = 178;
+		public const int DIGIT = 179;
+		public const int OCTDIGIT = 180;
+		public const int HEXDIGIT = 181;
 		
 		public IDLLexer(Stream ins) : this(new ByteBuffer(ins))
 		{
@@ -264,10 +265,10 @@ namespace SIL.FieldWorks.Tools
 			setCaseSensitive(true);
 			literals = new Hashtable(100, (float) 0.4, null, Comparer.Default);
 			literals.Add("local", 22);
-			literals.Add("size_is", 150);
-			literals.Add("optional", 145);
+			literals.Add("size_is", 151);
+			literals.Add("optional", 146);
 			literals.Add("proxy", 28);
-			literals.Add("last_is", 154);
+			literals.Add("last_is", 155);
 			literals.Add("byte", 101);
 			literals.Add("public", 94);
 			literals.Add("represent_as", 92);
@@ -275,7 +276,7 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("message", 52);
 			literals.Add("short", 109);
 			literals.Add("uidefault", 136);
-			literals.Add("raises", 139);
+			literals.Add("raises", 140);
 			literals.Add("defaultbind", 35);
 			literals.Add("object", 23);
 			literals.Add("ignore", 130);
@@ -290,15 +291,16 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("const", 68);
 			literals.Add("float", 114);
 			literals.Add("context_handle", 87);
-			literals.Add("context", 157);
-			literals.Add("length_is", 152);
-			literals.Add("inout", 142);
-			literals.Add("source", 156);
-			literals.Add("retval", 143);
-			literals.Add("defaultvalue", 144);
+			literals.Add("context", 158);
+			literals.Add("length_is", 153);
+			literals.Add("inout", 143);
+			literals.Add("source", 157);
+			literals.Add("retval", 144);
+			literals.Add("defaultvalue", 145);
 			literals.Add("ptr", 59);
 			literals.Add("appobject", 30);
-			literals.Add("first_is", 153);
+			literals.Add("first_is", 154);
+			literals.Add("optional_argc", 139);
 			literals.Add("noncreatable", 54);
 			literals.Add("control", 32);
 			literals.Add("handle", 88);
@@ -307,17 +309,18 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("small", 108);
 			literals.Add("ref", 58);
 			literals.Add("handle_t", 103);
-			literals.Add("cpp_quote", 165);
+			literals.Add("cpp_quote", 166);
 			literals.Add("notxpcom", 132);
 			literals.Add("custom", 33);
-			literals.Add("range", 148);
-			literals.Add("out", 141);
+			literals.Add("range", 149);
+			literals.Add("out", 142);
 			literals.Add("callback", 128);
 			literals.Add("library", 15);
 			literals.Add("displaybind", 38);
-			literals.Add("iid_is", 147);
+			literals.Add("native", 86);
+			literals.Add("iid_is", 148);
 			literals.Add("hyper", 112);
-			literals.Add("L", 160);
+			literals.Add("L", 161);
 			literals.Add("entry", 41);
 			literals.Add("FALSE", 83);
 			literals.Add("usesgetlasterror", 137);
@@ -328,18 +331,18 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("nonbrowsable", 53);
 			literals.Add("interface", 62);
 			literals.Add("sequence", 122);
-			literals.Add("array", 149);
+			literals.Add("array", 150);
 			literals.Add("switch_type", 95);
 			literals.Add("pointer_default", 24);
 			literals.Add("broadcast", 129);
 			literals.Add("immediatebind", 49);
 			literals.Add("coclass", 16);
 			literals.Add("aggregatable", 29);
-			literals.Add("midl_pragma_warning", 166);
+			literals.Add("midl_pragma_warning", 167);
 			literals.Add("dispinterface", 63);
 			literals.Add("any", 99);
 			literals.Add("double", 115);
-			literals.Add("SAFEARRAY", 158);
+			literals.Add("SAFEARRAY", 159);
 			literals.Add("nonextensible", 55);
 			literals.Add("noscript", 131);
 			literals.Add("union", 118);
@@ -349,10 +352,10 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("propget", 133);
 			literals.Add("int", 111);
 			literals.Add("exception", 127);
-			literals.Add("switch_is", 155);
+			literals.Add("switch_is", 156);
 			literals.Add("boolean", 116);
-			literals.Add("max_is", 151);
-			literals.Add("requestedit", 146);
+			literals.Add("max_is", 152);
+			literals.Add("requestedit", 147);
 			literals.Add("char", 113);
 			literals.Add("defaultvtable", 37);
 			literals.Add("string", 125);
@@ -375,7 +378,7 @@ namespace SIL.FieldWorks.Tools
 			literals.Add("signed", 96);
 			literals.Add("import", 13);
 			literals.Add("endpoint", 25);
-			literals.Add("in", 140);
+			literals.Add("in", 141);
 			literals.Add("TRUE", 81);
 			literals.Add("void", 100);
 			literals.Add("wchar_t", 102);
@@ -536,10 +539,6 @@ tryAgain:
 							if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i') && (LA(5)=='p') && (LA(6)=='t') && (LA(7)=='a') && (LA(8)=='b') && (LA(9)=='l') && (LA(10)=='e'))
 							{
 								mSCRIPTABLE(true);
-								theRetToken = returnToken_;
-							}
-							else if ((cached_LA1=='n') && (cached_LA2=='a') && (LA(3)=='t') && (LA(4)=='i') && (LA(5)=='v') && (LA(6)=='e') && (true) && (true) && (true) && (true)) {
-								mNATIVE(true);
 								theRetToken = returnToken_;
 							}
 							else if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d') && (true) && (true) && (true) && (true) && (true) && (true)) {
@@ -1798,20 +1797,6 @@ _loop342_breakloop:					;
 		returnToken_ = _token;
 	}
 	
-	public void mNATIVE(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
-{
-		int _ttype; IToken _token=null; int _begin=text.Length;
-		_ttype = NATIVE;
-		
-		match("native");
-		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
-		{
-			_token = makeToken(_ttype);
-			_token.setText(text.ToString(_begin, text.Length-_begin));
-		}
-		returnToken_ = _token;
-	}
-	
 	public void mIDENT(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1894,11 +1879,11 @@ _loop342_breakloop:					;
 				}
 				default:
 				{
-					goto _loop351_breakloop;
+					goto _loop350_breakloop;
 				}
 				 }
 			}
-_loop351_breakloop:			;
+_loop350_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))

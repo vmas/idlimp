@@ -572,7 +572,7 @@ type_dcl returns [CodeTypeMember type]
 	| union_type		
 	| type=enum_type		
 	| /* empty */  
-	| NATIVE ignored=declarator[attributes] 
+	| "native" ignored=declarator[attributes] 
 	;
 
 type_attributes
@@ -643,7 +643,7 @@ base_type_spec
 		| "wchar_t"
 	) (STAR)*
 	| "handle_t"
-	| NATIVE
+	| "native"
 	;
 
 attr_vars
@@ -1086,6 +1086,7 @@ function_attribute [IDictionary attributes]
 	| "uidefault"
 	| "usesgetlasterror"
 	| "vararg"
+	| "optional_argc"
 	| attribute[attributes]
 	;
 	
@@ -1642,9 +1643,6 @@ ID
 
 PTR
 	: "ptr";
-
-NATIVE
-	: "native";
 
 IDENT
 options {
