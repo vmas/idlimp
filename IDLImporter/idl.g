@@ -94,7 +94,7 @@ definition
 		CodeTypeMember type = null; 
 		CodeTypeDeclaration decl = null;
 	}
-	:   ( type=type_dcl SEMI!
+	:   ( (type_dcl SEMI!) => type=type_dcl SEMI!
 			{ 
 			#if DEBUG_IDLGRAMMAR
 				System.Diagnostics.Debug.WriteLine(string.Format("\nType declaration found {0}\n\n", type != null ? type.Name : "<empty>"));
@@ -163,7 +163,7 @@ definition
 						attributes.Clear();
 					}
 				}
-			| param_type_spec identifier parameter_dcls
+			| param_type_spec identifier parameter_dcls SEMI!
 			   /* just ignore */
  			)
 	    | m:module SEMI!
@@ -1107,7 +1107,7 @@ parameter_dcls returns [CodeParameterDeclarationExpressionCollection paramColl]
 	;
 
 param_nonattribute_modifiers
-	: ("const")? ("in")? ("out")? ("inout")?
+	: ("const")? ( ("in") | ("out") | ("inout") )?
 	;
 
 param_dcl returns [CodeParameterDeclarationExpression param]
@@ -1191,7 +1191,7 @@ uuid_literal
 param_type_spec
 	: (base_type_spec 
 		| string_type
-		| scoped_name (STAR)* // TODO
+		| scoped_name (LT_ identifier GT)? (STAR)* // TODO
 		| "SAFEARRAY" LPAREN base_type_spec RPAREN
 		)
 	;
