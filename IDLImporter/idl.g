@@ -278,6 +278,7 @@ attribute [IDictionary attributes]
 	| "ptr"
 	| "function"
 	| "scriptable"
+	| "deprecated"
 	;
 	
 non_rparen
