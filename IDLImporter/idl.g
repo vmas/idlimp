@@ -1232,7 +1232,7 @@ midl_pragma_warning
 class IDLLexer extends Lexer;
 options {
 	exportVocab=IDL;
-	k=4;
+	k=10;
 }
 
 SEMI

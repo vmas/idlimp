@@ -533,20 +533,20 @@ tryAgain:
 							break;
 						}
 						default:
-							if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d'))
+							if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i') && (LA(5)=='p') && (LA(6)=='t') && (LA(7)=='a') && (LA(8)=='b') && (LA(9)=='l') && (LA(10)=='e'))
 							{
-								mUUID(true);
-								theRetToken = returnToken_;
-							}
-							else if ((cached_LA1=='s') && (cached_LA2=='c') && (LA(3)=='r') && (LA(4)=='i')) {
 								mSCRIPTABLE(true);
 								theRetToken = returnToken_;
 							}
-							else if ((cached_LA1=='n') && (cached_LA2=='a') && (LA(3)=='t') && (LA(4)=='i')) {
+							else if ((cached_LA1=='n') && (cached_LA2=='a') && (LA(3)=='t') && (LA(4)=='i') && (LA(5)=='v') && (LA(6)=='e') && (true) && (true) && (true) && (true)) {
 								mNATIVE(true);
 								theRetToken = returnToken_;
 							}
-							else if ((cached_LA1=='p') && (cached_LA2=='t') && (LA(3)=='r') && (true)) {
+							else if ((cached_LA1=='u') && (cached_LA2=='u') && (LA(3)=='i') && (LA(4)=='d') && (true) && (true) && (true) && (true) && (true) && (true)) {
+								mUUID(true);
+								theRetToken = returnToken_;
+							}
+							else if ((cached_LA1=='p') && (cached_LA2=='t') && (LA(3)=='r') && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 								mPTR(true);
 								theRetToken = returnToken_;
 							}
@@ -590,7 +590,7 @@ tryAgain:
 								mFLOAT(true);
 								theRetToken = returnToken_;
 							}
-							else if ((cached_LA1=='i') && (cached_LA2=='d') && (true) && (true)) {
+							else if ((cached_LA1=='i') && (cached_LA2=='d') && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 								mID(true);
 								theRetToken = returnToken_;
 							}
@@ -626,7 +626,7 @@ tryAgain:
 								mINT(true);
 								theRetToken = returnToken_;
 							}
-							else if ((tokenSet_0_.member(cached_LA1)) && (true) && (true) && (true)) {
+							else if ((tokenSet_0_.member(cached_LA1)) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 								mIDENT(true);
 								theRetToken = returnToken_;
 							}
@@ -1425,15 +1425,15 @@ _loop316_breakloop:			;
 					 }
 				}
 				{
-					if (((cached_LA1 >= '0' && cached_LA1 <= '7')) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
+					if (((cached_LA1 >= '0' && cached_LA1 <= '7')) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true))
 					{
 						mOCTDIGIT(false);
 						{
-							if (((cached_LA1 >= '0' && cached_LA1 <= '7')) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
+							if (((cached_LA1 >= '0' && cached_LA1 <= '7')) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true))
 							{
 								mOCTDIGIT(false);
 							}
-							else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true)) {
+							else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 							}
 							else
 							{
@@ -1442,7 +1442,7 @@ _loop316_breakloop:			;
 							
 						}
 					}
-					else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true)) {
+					else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 					}
 					else
 					{
@@ -1457,11 +1457,11 @@ _loop316_breakloop:			;
 				match('x');
 				mHEXDIGIT(false);
 				{
-					if ((tokenSet_8_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true))
+					if ((tokenSet_8_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true))
 					{
 						mHEXDIGIT(false);
 					}
-					else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true)) {
+					else if (((cached_LA1 >= '\u0000' && cached_LA1 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true)) {
 					}
 					else
 					{
