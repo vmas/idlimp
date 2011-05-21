@@ -163,6 +163,8 @@ definition
 						attributes.Clear();
 					}
 				}
+			| param_type_spec identifier parameter_dcls
+			   /* just ignore */
  			)
 	    | m:module SEMI!
 			{ 
@@ -272,6 +274,7 @@ attribute [IDictionary attributes]
 	| "oleautomation"
 	| "restricted" 
 		{ attributes.Add("restricted", new CodeAttributeArgument()); }
+	| "ref"
 	| SCRIPTABLE
 	;
 	
@@ -639,6 +642,7 @@ base_type_spec
 		| "wchar_t"
 	) (STAR)*
 	| "handle_t"
+	| NATIVE
 	;
 
 attr_vars
