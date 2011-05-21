@@ -1106,7 +1106,7 @@ param_dcl returns [CodeParameterDeclarationExpression param]
 		Hashtable attributes = new Hashtable();
 		string name = string.Empty;
 	}
-	: (LBRACKET param_attributes[attributes] RBRACKET)? ("const")? ("in")? ("out")? strType:param_type_spec ("const")? (name=declarator[attributes])?
+	: (LBRACKET param_attributes[attributes] RBRACKET)* ("const")? ("in")? ("out")? strType:param_type_spec ("const")? (name=declarator[attributes])?
 		{
 			string str = null;
 			if (#strType != null && name != string.Empty) 
