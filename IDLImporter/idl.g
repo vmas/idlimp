@@ -279,6 +279,7 @@ attribute [IDictionary attributes]
 	| "function"
 	| "scriptable"
 	| "deprecated"
+	| "Undefined" LPAREN identifier RPAREN
 	;
 	
 non_rparen
