@@ -226,7 +226,7 @@ attribute_list [IDictionary attributes]
 	;
 
 attribute [IDictionary attributes]	
-	:  UUID uuid:uuid_literal
+	:  "uuid" uuid:uuid_literal
 		{ attributes.Add("Guid", new CodeAttributeArgument(new CodePrimitiveExpression(uuid_AST.ToStringList().Replace(" ", "")))); }
 	| "version" LPAREN (~RPAREN)+ RPAREN 
 	| "async_uuid" uuid_literal
@@ -262,7 +262,7 @@ attribute [IDictionary attributes]
 	| "helpstring" LPAREN string_literal RPAREN 
 	| "helpstringdll" LPAREN string_literal RPAREN 
 	| "hidden" 
-	| ID LPAREN ( integer_literal | identifier ) RPAREN
+	| "id" LPAREN ( integer_literal | identifier ) RPAREN
 	| "idempotent"
 	| "immediatebind"
 	| "lcid" LPAREN integer_literal RPAREN 
@@ -277,7 +277,7 @@ attribute [IDictionary attributes]
 	| "ref"
 	| "ptr"
 	| "function"
-	| SCRIPTABLE
+	| "scriptable"
 	;
 	
 non_rparen
@@ -658,7 +658,7 @@ attr_var
 ptr_attr 
 	: "ref" 
 	| "unique" 
-	| PTR 
+	| "ptr" 
 	;
 
 integer_type
@@ -1218,7 +1218,7 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: UUID | SCRIPTABLE	| ID | "range"
+	: "uuid" | "scriptable"	| "id" | "range" | "ptr"
 	| IDENT
   	;
 
@@ -1632,18 +1632,6 @@ options {
 }
 	: '.' (DIGIT)+ (('e' | 'E') ('+' | '-')? (DIGIT)+)?
     ;
-
-UUID
-	: "uuid";
-
-SCRIPTABLE
-	: "scriptable";
-
-ID
-	: "id";
-
-PTR
-	: "ptr";
 
 IDENT
 options {
