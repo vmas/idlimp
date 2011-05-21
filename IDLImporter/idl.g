@@ -626,9 +626,10 @@ simple_type_spec
 	;
 
 base_type_spec
-	: (  ("signed" | "unsigned")? 
+	: ( (("signed" | "unsigned")? ( integer_type | char_type)) => ("signed" | "unsigned")? 
 			( integer_type
-			| char_type) 
+			| char_type)
+		| ("signed" | "unsigned")
 		| boolean_type
 		| floating_pt_type
 		| "octet"
