@@ -1091,6 +1091,7 @@ function_attribute [IDictionary attributes]
 	| "vararg"
 	| "optional_argc"
 	| "implicit_jscontext"
+	| "binaryname" LPAREN! identifier RPAREN!
 	| attribute[attributes]
 	;
 	
