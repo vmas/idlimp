@@ -78,7 +78,7 @@ specification [CodeNamespace cnamespace, IDLConversions conv]
 		m_Namespace = cnamespace; 
 		m_Conv = conv;
 	}
-	:   (definition)+ EOF
+	:   (definition)* EOF		
   	;
   	exception
   	catch [RecognitionException ex]

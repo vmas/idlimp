@@ -306,8 +306,7 @@ namespace SIL.FieldWorks.Tools
 			
 		
 		try {      // for error handling
-			{ // ( ... )+
-				int _cnt3=0;
+			{    // ( ... )*
 				for (;;)
 				{
 					if ((tokenSet_0_.member(LA(1))))
@@ -320,13 +319,12 @@ namespace SIL.FieldWorks.Tools
 					}
 					else
 					{
-						if (_cnt3 >= 1) { goto _loop3_breakloop; } else { throw new NoViableAltException(LT(1), getFilename());; }
+						goto _loop3_breakloop;
 					}
 					
-					_cnt3++;
 				}
 _loop3_breakloop:				;
-			}    // ( ... )+
+			}    // ( ... )*
 			AST tmp1_AST = null;
 			tmp1_AST = astFactory.create(LT(1));
 			astFactory.addASTChild(ref currentAST, tmp1_AST);
