@@ -1152,6 +1152,7 @@ param_attribute [IDictionary attributes]
 	| "range" LPAREN integer_literal COMMA integer_literal RPAREN
 	| "array"
 	| "const"
+	| "Null" LPAREN identifier RPAREN
 	| field_attribute[attributes]
 	;
 
