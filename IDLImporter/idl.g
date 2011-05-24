@@ -1221,7 +1221,7 @@ floating_pt_or_integer_literal
     ;
 
 identifier
-	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array"
+	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| IDENT
   	;
 
