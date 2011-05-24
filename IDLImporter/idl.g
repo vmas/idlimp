@@ -281,6 +281,7 @@ attribute [IDictionary attributes]
 	| "deprecated"
 	| "Undefined" LPAREN identifier RPAREN
 	| "noscript"
+	| "Null" LPAREN identifier RPAREN
 	;
 	
 non_rparen
@@ -1151,8 +1152,7 @@ param_attribute [IDictionary attributes]
 	| "iid_is" LPAREN attr_vars RPAREN 
 	| "range" LPAREN integer_literal COMMA integer_literal RPAREN
 	| "array"
-	| "const"
-	| "Null" LPAREN identifier RPAREN
+	| "const"	
 	| field_attribute[attributes]
 	;
 
