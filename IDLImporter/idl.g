@@ -1090,6 +1090,7 @@ function_attribute [IDictionary attributes]
 	| "usesgetlasterror"
 	| "vararg"
 	| "optional_argc"
+	| "implicit_jscontext"
 	| attribute[attributes]
 	;
 	

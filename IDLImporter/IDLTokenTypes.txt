@@ -138,45 +138,46 @@ LITERAL_uidefault="uidefault"=138
 LITERAL_usesgetlasterror="usesgetlasterror"=139
 LITERAL_vararg="vararg"=140
 LITERAL_optional_argc="optional_argc"=141
-LITERAL_raises="raises"=142
-LITERAL_in="in"=143
-LITERAL_out="out"=144
-LITERAL_inout="inout"=145
-LITERAL_retval="retval"=146
-LITERAL_defaultvalue="defaultvalue"=147
-LITERAL_optional="optional"=148
-LITERAL_requestedit="requestedit"=149
-LITERAL_iid_is="iid_is"=150
-LITERAL_range="range"=151
-LITERAL_array="array"=152
-LITERAL_size_is="size_is"=153
-LITERAL_max_is="max_is"=154
-LITERAL_length_is="length_is"=155
-LITERAL_first_is="first_is"=156
-LITERAL_last_is="last_is"=157
-LITERAL_switch_is="switch_is"=158
-LITERAL_source="source"=159
-LITERAL_context="context"=160
-LITERAL_SAFEARRAY="SAFEARRAY"=161
-OCTAL=162
-LITERAL_L="L"=163
-STRING_LITERAL("a string literal")=164
-CHAR_LITERAL("a character literal")=165
-FLOAT("an floating point value")=166
-IDENT("an identifer")=167
-LITERAL_cpp_quote="cpp_quote"=168
-LITERAL_midl_pragma_warning="midl_pragma_warning"=169
-QUESTION("?")=170
-DOT(".")=171
-NOT("!")=172
-QUOTE("double quotes")=173
-WS_("white space")=174
-PREPROC_DIRECTIVE("a preprocessor directive")=175
-SL_COMMENT("a comment")=176
-OTHER_LANG_BLOCK("Other lang block like C++")=177
-ML_COMMENT("a comment")=178
-ESC("an escape sequence")=179
-VOCAB("an escaped character value")=180
-DIGIT("a digit")=181
-OCTDIGIT("an octal digit")=182
-HEXDIGIT("a hexadecimal digit")=183
+LITERAL_implicit_jscontext="implicit_jscontext"=142
+LITERAL_raises="raises"=143
+LITERAL_in="in"=144
+LITERAL_out="out"=145
+LITERAL_inout="inout"=146
+LITERAL_retval="retval"=147
+LITERAL_defaultvalue="defaultvalue"=148
+LITERAL_optional="optional"=149
+LITERAL_requestedit="requestedit"=150
+LITERAL_iid_is="iid_is"=151
+LITERAL_range="range"=152
+LITERAL_array="array"=153
+LITERAL_size_is="size_is"=154
+LITERAL_max_is="max_is"=155
+LITERAL_length_is="length_is"=156
+LITERAL_first_is="first_is"=157
+LITERAL_last_is="last_is"=158
+LITERAL_switch_is="switch_is"=159
+LITERAL_source="source"=160
+LITERAL_context="context"=161
+LITERAL_SAFEARRAY="SAFEARRAY"=162
+OCTAL=163
+LITERAL_L="L"=164
+STRING_LITERAL("a string literal")=165
+CHAR_LITERAL("a character literal")=166
+FLOAT("an floating point value")=167
+IDENT("an identifer")=168
+LITERAL_cpp_quote="cpp_quote"=169
+LITERAL_midl_pragma_warning="midl_pragma_warning"=170
+QUESTION("?")=171
+DOT(".")=172
+NOT("!")=173
+QUOTE("double quotes")=174
+WS_("white space")=175
+PREPROC_DIRECTIVE("a preprocessor directive")=176
+SL_COMMENT("a comment")=177
+OTHER_LANG_BLOCK("Other lang block like C++")=178
+ML_COMMENT("a comment")=179
+ESC("an escape sequence")=180
+VOCAB("an escaped character value")=181
+DIGIT("a digit")=182
+OCTDIGIT("an octal digit")=183
+HEXDIGIT("a hexadecimal digit")=184
