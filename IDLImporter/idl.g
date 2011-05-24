@@ -1194,7 +1194,7 @@ uuid_literal
 param_type_spec
 	: (base_type_spec 
 		| string_type
-		| scoped_name (LT_ identifier GT)? (STAR)* // TODO
+		| scoped_name (LT_ identifier (COMMA identifier)* GT)? (STAR)* // TODO
 		| "SAFEARRAY" LPAREN base_type_spec RPAREN
 		)
 	;
