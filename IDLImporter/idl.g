@@ -1504,7 +1504,7 @@ options {
 	: 
 	"/*"
 	(	
-			STRING_LITERAL
+			'"'
 		|	'\''		
 		|	'\n' { newline(); }
 		|	'*' ~'/'		

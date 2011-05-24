@@ -1233,7 +1233,7 @@ _loop314_breakloop:			;
 				{
 				case '"':
 				{
-					mSTRING_LITERAL(false);
+					match('"');
 					break;
 				}
 				case '\'':
@@ -1274,44 +1274,6 @@ _loop317_breakloop:			;
 		returnToken_ = _token;
 	}
 	
-	public void mSTRING_LITERAL(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
-{
-		int _ttype; IToken _token=null; int _begin=text.Length;
-		_ttype = STRING_LITERAL;
-		
-		int _saveIndex = 0;
-		_saveIndex = text.Length;
-		match('"');
-		text.Length = _saveIndex;
-		{    // ( ... )*
-			for (;;)
-			{
-				if ((cached_LA1=='\\'))
-				{
-					mESC(false);
-				}
-				else if ((tokenSet_5_.member(cached_LA1))) {
-					matchNot('"');
-				}
-				else
-				{
-					goto _loop322_breakloop;
-				}
-				
-			}
-_loop322_breakloop:			;
-		}    // ( ... )*
-		_saveIndex = text.Length;
-		match('"');
-		text.Length = _saveIndex;
-		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
-		{
-			_token = makeToken(_ttype);
-			_token.setText(text.ToString(_begin, text.Length-_begin));
-		}
-		returnToken_ = _token;
-	}
-	
 	public void mCHAR_LITERAL(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
 {
 		int _ttype; IToken _token=null; int _begin=text.Length;
@@ -1323,7 +1285,7 @@ _loop322_breakloop:			;
 			{
 				mESC(false);
 			}
-			else if ((tokenSet_6_.member(cached_LA1))) {
+			else if ((tokenSet_5_.member(cached_LA1))) {
 				matchNot('\'');
 			}
 			else
@@ -1469,7 +1431,7 @@ _loop322_breakloop:			;
 				match('x');
 				mHEXDIGIT(false);
 				{
-					if ((tokenSet_7_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true))
+					if ((tokenSet_6_.member(cached_LA1)) && ((cached_LA2 >= '\u0000' && cached_LA2 <= '\u00ff')) && (true) && (true) && (true) && (true) && (true) && (true) && (true) && (true))
 					{
 						mHEXDIGIT(false);
 					}
@@ -1489,6 +1451,44 @@ _loop322_breakloop:			;
 			}
 			 }
 		}
+		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
+		{
+			_token = makeToken(_ttype);
+			_token.setText(text.ToString(_begin, text.Length-_begin));
+		}
+		returnToken_ = _token;
+	}
+	
+	public void mSTRING_LITERAL(bool _createToken) //throws RecognitionException, CharStreamException, TokenStreamException
+{
+		int _ttype; IToken _token=null; int _begin=text.Length;
+		_ttype = STRING_LITERAL;
+		
+		int _saveIndex = 0;
+		_saveIndex = text.Length;
+		match('"');
+		text.Length = _saveIndex;
+		{    // ( ... )*
+			for (;;)
+			{
+				if ((cached_LA1=='\\'))
+				{
+					mESC(false);
+				}
+				else if ((tokenSet_7_.member(cached_LA1))) {
+					matchNot('"');
+				}
+				else
+				{
+					goto _loop322_breakloop;
+				}
+				
+			}
+_loop322_breakloop:			;
+		}    // ( ... )*
+		_saveIndex = text.Length;
+		match('"');
+		text.Length = _saveIndex;
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
 			_token = makeToken(_ttype);
@@ -1603,7 +1603,7 @@ _loop322_breakloop:			;
 			int _cnt337=0;
 			for (;;)
 			{
-				if ((tokenSet_7_.member(cached_LA1)))
+				if ((tokenSet_6_.member(cached_LA1)))
 				{
 					mHEXDIGIT(false);
 				}
@@ -1901,7 +1901,7 @@ _loop352_breakloop:			;
 	private static long[] mk_tokenSet_5_()
 	{
 		long[] data = new long[8];
-		data[0]=-17179869185L;
+		data[0]=-549755813889L;
 		data[1]=-268435457L;
 		for (int i = 2; i<=3; i++) { data[i]=-1L; }
 		for (int i = 4; i<=7; i++) { data[i]=0L; }
@@ -1910,17 +1910,17 @@ _loop352_breakloop:			;
 	public static readonly BitSet tokenSet_5_ = new BitSet(mk_tokenSet_5_());
 	private static long[] mk_tokenSet_6_()
 	{
-		long[] data = new long[8];
-		data[0]=-549755813889L;
-		data[1]=-268435457L;
-		for (int i = 2; i<=3; i++) { data[i]=-1L; }
-		for (int i = 4; i<=7; i++) { data[i]=0L; }
+		long[] data = { 287948901175001088L, 541165879422L, 0L, 0L, 0L};
 		return data;
 	}
 	public static readonly BitSet tokenSet_6_ = new BitSet(mk_tokenSet_6_());
 	private static long[] mk_tokenSet_7_()
 	{
-		long[] data = { 287948901175001088L, 541165879422L, 0L, 0L, 0L};
+		long[] data = new long[8];
+		data[0]=-17179869185L;
+		data[1]=-268435457L;
+		for (int i = 2; i<=3; i++) { data[i]=-1L; }
+		for (int i = 4; i<=7; i++) { data[i]=0L; }
 		return data;
 	}
 	public static readonly BitSet tokenSet_7_ = new BitSet(mk_tokenSet_7_());
