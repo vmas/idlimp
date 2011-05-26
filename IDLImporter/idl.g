@@ -1122,7 +1122,7 @@ param_dcl returns [CodeParameterDeclarationExpression param]
 		Hashtable attributes = new Hashtable();
 		string name = string.Empty;
 	}
-	: (LBRACKET param_attributes[attributes] RBRACKET)* param_nonattribute_modifiers strType:param_type_spec ("const")? (name=declarator[attributes])?
+	: (LBRACKET param_attributes[attributes] RBRACKET)* param_nonattribute_modifiers strType:param_type_spec ("const" (STAR)*)? (name=declarator[attributes])?
 		{
 			string str = null;
 			if (#strType != null && name != string.Empty) 
