@@ -1097,7 +1097,7 @@ function_attribute [IDictionary attributes]
 	;
 	
 raises
-	: "raises" LPAREN! identifier RPAREN!
+	: "raises" LPAREN! identifier (COMMA identifier)* RPAREN!
 	;
 
 parameter_dcls returns [CodeParameterDeclarationExpressionCollection paramColl]
