@@ -282,6 +282,12 @@ attribute [IDictionary attributes]
 	| "Undefined" LPAREN identifier RPAREN
 	| "noscript"
 	| "Null" LPAREN identifier RPAREN
+	| "nsid"
+	| "domstring"
+	| "utf8string"
+	| "cstring"
+	| "astring"
+	| "jsval"
 	;
 	
 non_rparen
@@ -1092,7 +1098,7 @@ function_attribute [IDictionary attributes]
 	| "vararg"
 	| "optional_argc"
 	| "implicit_jscontext"
-	| "binaryname" LPAREN! identifier RPAREN!
+	| "binaryname" LPAREN! identifier RPAREN!	
 	| attribute[attributes]
 	;
 	
@@ -1226,7 +1232,7 @@ floating_pt_or_integer_literal
 identifier
 	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
-	| "callback" | "import" | "union" | "struct" | "entry"
+	| "callback" | "import" | "union" | "struct" | "entry" | "jsval"
 	| IDENT
   	;
 
