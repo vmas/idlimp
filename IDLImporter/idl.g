@@ -105,6 +105,7 @@ definition
 					m_Namespace.UserData.Add(type.Name, type);
 				}
 			}
+		| import SEMI!
 	    | c:const_dcl SEMI!
 			{ 
 			#if DEBUG_IDLGRAMMAR
@@ -171,8 +172,7 @@ definition
 			#if DEBUG_IDLGRAMMAR
 				System.Diagnostics.Debug.WriteLine(string.Format("\nModule found {0}\n\n", m_AST != null ? m_AST.ToStringList() : "<null>"));
 			#endif
-			}
-	    | import SEMI!
+			}	    
 		| importlib SEMI!
 	    | cpp_quote!
 	    | mi:midl_pragma_warning!
