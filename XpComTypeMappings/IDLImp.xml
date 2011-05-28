@@ -15,6 +15,10 @@
     <Replace>System.Void</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <Match>unsigned long long</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
     <Match>long long</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
@@ -22,8 +26,28 @@
     <Match>unsigned long</Match>
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>unsigned short</Match>
+    <Replace>System.UInt16</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>unsigned</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>    
     <Match>long</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRUint32</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>unsigned int</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>int</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -31,15 +55,23 @@
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
-    <Match>string</Match>
-    <Replace>System.String</Replace>
+    <Match>PRBool</Match>
+    <Replace>System.Boolean</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>float</Match>
+    <Replace>System.Double</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
     <Match>wstring</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
+    <Match>string</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -57,6 +89,12 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
+    <Match>ACString</Match>
+    <Replace>nsAString</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>AUTF8String</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
@@ -67,5 +105,51 @@
     <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
     <Match>^\s*(?&lt;type&gt;nsI[^\s]+)</Match>
     <Replace>${type}</Replace>
+  </ParamTypeConversion>
+  <!-- unusual stuff -->
+  <ParamTypeConversion>    
+    <Match>SAFEARRAY[.]*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>VARIANT_BOOL[.]*</Match>
+    <Replace>System.Boolean</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>IUnknown[.]*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>IDispatch[.]*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>SCODE[.]*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>DATE[.]*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <!-- explicit renames -->
+  <ParamTypeConversion>
+    <Match>nsPresContext</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>nsIPresContext</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>nsIWidgetPtr</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>nsIntRectRef</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>nsILayoutHistoryState</Match>
+    <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
 </IDLConversions>
