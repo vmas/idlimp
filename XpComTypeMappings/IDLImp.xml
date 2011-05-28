@@ -14,6 +14,14 @@
     <Match>void</Match>
     <Replace>System.Void</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>long long</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>unsigned long</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>    
     <Match>long</Match>
     <Replace>System.Int32</Replace>
@@ -23,9 +31,33 @@
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
+    <Match>string</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
+    <Match>wstring</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>DOMString</Match>
+    <Replace>nsAString</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
+    <Match>AString</Match>
+    <Replace>nsAString</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
+    <Match>AUTF8String</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any type beginning with 'nsI'  -->
