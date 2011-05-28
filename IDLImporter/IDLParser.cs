@@ -4333,7 +4333,7 @@ _loop218_breakloop:						;
 			{
 				
 							name = IDLConversions.UpperFirstLetter(name);						
-							CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name/*, ReturnType=new CodeTypeReference(#type.getText())*/};			
+							CodeMemberMethod getter = new CodeMemberMethod() { Name=name};			
 				
 							CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
 							IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(type_AST.ToStringList(), param, attributes);

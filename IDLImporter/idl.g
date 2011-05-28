@@ -986,7 +986,7 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
 		{
 			name = IDLConversions.UpperFirstLetter(name);						
-			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name};			
+			CodeMemberMethod getter = new CodeMemberMethod() { Name=name};			
 
 			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
 			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#type.ToStringList(), param, attributes);
