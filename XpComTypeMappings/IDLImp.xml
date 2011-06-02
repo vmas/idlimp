@@ -29,8 +29,8 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
-    <Match>(^|\s+)(void)</Match>
-    <Replace>System.Void</Replace>
+    <Match>(^|\s+)(void)[*\s]*</Match>
+    <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>unsigned long long</Match>
@@ -89,11 +89,11 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>octet(Ptr)*</Match>
+    <Match>(^|\s+)octet(Ptr)*</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
-    <Match>unsigned short</Match>
+    <Match>unsigned short[*\s]*</Match>
     <Replace>System.UInt16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -113,7 +113,7 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>unsigned int</Match>
+    <Match>unsigned int[*\s]*</Match>
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -234,12 +234,12 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing|nsIScriptContext|nsIPresShell|nsIntSizePtr|nsIntRectPtr|nsIFrame|nsIDRef|nsIDPtr|(^|\s+)nsID\s|nsIContent|nsIAtomPtr|nsIWordBreaker|nsISupportsArrayEnumFunc|nsIScriptGlobalObject|nsIScriptElement|nsIRegion|nsIPluginInstanceRef|nsIDocument)</Match>
+    <Match>(^|\s+)(nsILayoutHistoryState\s|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox\s|nsIXPCComponents_Results\s|nsIXPCComponents_ID\s|nsIXPCComponents_Exception\s|nsIXPCComponents_Constructor\s|nsIXPCComponents_ClassesByID\s|nsIXPCComponents_Classes\s|nsITestXPCSomeUselessThing\s|nsIScriptContext\s|nsIPresShell\s|nsIntSizePtr\s|nsIntRectPtr\s|nsIFrame\s|nsIDRef\s|nsIDPtr\s|(^|\s+)nsID\s|nsIContent\s|nsIAtomPtr\s|nsIWordBreaker\s|nsISupportsArrayEnumFunc\s|nsIScriptGlobalObject\s|nsIScriptElement\s|nsIRegion\s|nsIPluginInstanceRef\s|nsIDocument\s|nsIObjectFrame\s|nsINodePtr\s|nsILDAPURL\s|nsIDOMDOMStringList\s|nsIContentViewer\s|nsIContentURIGrouper\s|nsIDocumentStateListener\s|nsIContentSecurityPolicy\s|nsIDocumentPtr\s|nsIContentPrefObserver\s|nsIContentPrefCallback\s|nsIContentPermissionPrompt\s|nsIFrameMessageListener\s|nsIFrameLoaderOwner\s|nsIFrameLoader\s|nsIContentFilter\s|nsIDocumentCharsetInfo\s)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <!-- end explicit renames that start with nsI-->
   <ParamTypeConversion>
-    <Match>(^|\s+)(nsSize|size_t|nsIntSize)</Match>
+    <Match>(^|\s+)(nsSize|size_t|nsIntSize)</Match>\s
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any other type beginning with 'nsI'  -->
@@ -275,6 +275,10 @@
     <Match>DATE[.]*</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(COMVARIANT)(Ptr)?</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>  
   <!-- explicit renames -->
   <ParamTypeConversion>
     <Match>(^|\s+)nsPresContext</Match>
@@ -337,7 +341,15 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef|nsDocShellEditorDataPtr|nsContentViewId|nsCIDRef|nsCIDPtr|nsCCTraversalCallbackRef|JSEqualityOp|nsAXPCNativeCallContextPtr|nsASocketHandlerPtr|NPWindowPtr|NPRectPtr|NPRegion|NPPVariable|NPPrintPtr|nativeWindow|nativeChar|jsval|JSRuntime|JSEqualityOp|JSDValue)</Match>
+    <Match>(^|\s+)(ResultArray\s|(^|\s+)RangeArray\s|(^|\s+)triggerInfoPtr\s|(^|\s+)PRLibraryPtr\s|(^|\s+)PRFileDescPtr\s|(^|\s+)nsWriteUnicharSegmentFun\s|(^|\s+)nsWrapperCachePtr\s|(^|\s+)NSWindowPtr\s|(^|\s+)nsViewID\s|(^|\s+)nsTimerCallbackFunc\s|(^|\s+)nsScriptObjectTracerPtr\s|(^|\s+)NSSCMSContentCallback\s|(^|\s+)nsReadSegmentFun\s|(^|\s+)nsTaskbarProgressState\s|(^|\s+)nsStringRef\s|(^|\s+)nsPreferencesArrayPtr\s|(^|\s+)nsPreferencePtrConst\s|(^|\s+)nsPreferencePtr\s|(^|\s+)nsPointRef\s|(^|\s+)nsPluginTagType\s|(^|\s+)nsPluginNativeWindowPtr\s|(^|\s+)nsPIDOMWindow\s|(^|\s+)nsNonConstIDPtr\s|(^|\s+)nsNativeIntMarginRef\s|(^|\s+)nsDocShellEditorDataPtr\s|(^|\s+)nsContentViewId\s|(^|\s+)nsCIDRef\s|(^|\s+)nsCIDPtr\s|nsCCTraversalCallbackRef\s|(^|\s+)JSEqualityOp\s|(^|\s+)nsAXPCNativeCallContextPtr\s|(^|\s+)nsASocketHandlerPtr\s|(^|\s+)NPWindowPtr\s|(^|\s+)NPRectPtr\s|(^|\s+)NPRegion\s|(^|\s+)NPPVariable\s|(^|\s+)NPPrintPtr\s|(^|\s+)nativeWindow\s|(^|\s+)nativeChar\s|(^|\s+)jsval\s|(^|\s+)JSRuntime\s|(^|\s+)JSEqualityOp\s|(^|\s+)JSDValue\s|(^|\s+)nsHandlerInfoAction\s|(^|\s+)nsDocShellInfoLoadType\s|(^|\s+)nsDocshellIDArray\s|(^|\s+)nsDevMode\s|(^|\s+)nsCSSStyleSheet\s|(^|\s+)nsCookieStatus\s|(^|\s+)nsCookiePolicy\s|(^|\s+)nsCookieAccess\s|(^|\s+)nsCID\s|nsCharPtrArray\s|(^|\s+)nsCacheStoragePolicy\s|(^|\s+)nsCacheAccessMode\s|(^|\s+)nsAccessibleTextBoundary\s|(^|\s+)NPWindowStarRef\s|(^|\s+)NPByteRangePtr\s|(^|\s+)MSCOMIIDRef\s|(^|\s+)JSTracerPtr\s|(^|\s+)JSStackFramePtr\s|(^|\s+)jsid\s|(^|\s+)JSGCCallback\s|(^|\s+)JSDThreadState\s|(^|\s+)JSDStackFrameInfo\s|(^|\s+)JSDScript\s|(^|\s+)JSDProperty\s|(^|\s+)JSDObject\s|(^|\s+)JSDContext\s|(^|\s+)JSCompartment\s|(^|\s+)Iterator\s|(^|\s+)ConstMessage\s|(^|\s+)HKEY\s|(^|\s+)GuidShared\s|(^|\s+)GuidBTransaction\s|(^|\s+)GuidBObjectStore\s|(^|\s+)GuidBKeyRange\s|(^|\s+)GuidBFactory\s|(^|\s+)GuidBDatabase\s|(^|\s+)gfxContextPtr\s|(^|\s+)gfxContext\s|(^|\s+)gfxASurfacePtr\s|(^|\s+)FSRefPtr\s|(^|\s+)FILE\s|(^|\s+)constTextRangeStyleRef\s|(^|\s+)ConstMessage\s|(^|\s+)constCharStarRef\s|(^|\s+)constCharStarConstStar\s|(^|\s+)const_octet_ptr\s|(^|\s+)CFURLRef\s|(^|\s+)FSRefPtr\s|(^|\s+)AutoCompleteStatus\s)</Match>
     <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>  
+  </ParamTypeConversion>
+  <!-- Interfaces : any other type beginning with 'I'  -->
+  <ParamTypeConversion>
+    <Attribute>~size_is</Attribute>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
+    <Match>^\s*(?&lt;type&gt;I[^\s]+)</Match>
+    <Replace>${type}</Replace>
+  </ParamTypeConversion>
 </IDLConversions>
