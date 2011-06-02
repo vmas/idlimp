@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
+<IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ParamTypeConversion>
+    <Attribute>~out</Attribute>
+    <Match>(^|\s+)nsIIDPtr</Match>
+    <Replace>System.Guid</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
     <Match>(^|\s+)nsIIDRef</Match>
@@ -7,6 +12,10 @@
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>retval</Attribute>
+    <Match>(^|\s+)(ns)?(QIResult)</Match>
+    <Replace>System.Object</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>    
     <Match>(^|\s+)(ns)?(QIResult)</Match>
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
@@ -36,7 +45,7 @@
   </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>(^|\s+)PRUint16Ref</Match>
-    <Replace>ref PRUint16</Replace>
+    <Replace>ref System.UInt16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)PRUint16</Match>
@@ -129,7 +138,14 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.LPWStr</NewAttrValue>
-    <Match>(^|\s+)(PRUniChar)[\s]*[*]+[\s*]*</Match>
+    <Match>(^|\s+)(PRUnichar)[\s]*[*]+[\s*]*</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <!-- PRUniChar (no *) looks like it should be marshaled as a string as well -->
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPWStr</NewAttrValue>
+    <Match>(^|\s+)(PRUnichar)</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
@@ -151,7 +167,7 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
-    <Match>AString</Match>
+    <Match>(nsIXPCTestns)?(AString)</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -242,7 +258,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)nsIWidget(Ptr)?</Match>
+    <Match>(^|\s+)(nsIWidget)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -314,7 +330,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun)</Match>
+    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef|nsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
 </IDLConversions>
