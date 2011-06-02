@@ -11,7 +11,7 @@
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
-    <Match>void</Match>
+    <Match>(^|\s+)(void)</Match>
     <Replace>System.Void</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -29,9 +29,17 @@
   <ParamTypeConversion>
     <Match>unsigned short</Match>
     <Replace>System.UInt16</Replace>
-  </ParamTypeConversion>  
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(short)\s+</Match>
+    <Replace>System.Int16</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>    
-    <Match>long</Match>
+    <Match>(^|\s+)(long)</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRInt32</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -43,7 +51,7 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>int</Match>
+    <Match>(^|\s+)(int)</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -59,19 +67,17 @@
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>float</Match>
+    <Match>(^|\s+)(float)\s+</Match>
+    <Replace>System.Double</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(double)\s+</Match>
     <Replace>System.Double</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
-    <Match>wstring</Match>
-    <Replace>System.String</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
-    <Match>string</Match>
+    <Match>(^|\s+)(wstring)\s+</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -97,6 +103,34 @@
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>AUTF8String</Match>
     <Replace>nsAString</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
+    <Match>(^|\s+)(string)</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.BStr</NewAttrValue>
+    <Match>(^|\s+)BSTR[*\s]*</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>buffer</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>char</Match>
+    <Replace>System.Char</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>charPtr</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>constCharPtr</Match>
+    <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any type beginning with 'nsI'  -->
   <ParamTypeConversion>
@@ -152,4 +186,20 @@
     <Match>nsILayoutHistoryState</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>JSContext(Ptr)?</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>DOMTimeStamp</Match>
+    <Replace>System.Int64</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(ImageContainerPtr|ImagePtr)</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>nsresult</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>  
 </IDLConversions>
