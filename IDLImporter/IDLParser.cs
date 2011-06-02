@@ -4333,7 +4333,7 @@ _loop218_breakloop:						;
 			{
 				
 							name = IDLConversions.UpperFirstLetter(name);						
-							CodeMemberMethod getter = new CodeMemberMethod() { Name=name};			
+							CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name + "Attribute"};			
 				
 							CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
 							IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(type_AST.ToStringList(), param, attributes);
@@ -4368,7 +4368,7 @@ _loop218_breakloop:						;
 				
 							if (!fReadonly)
 							{
-								var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("System.Void")};
+								var setter = new CodeMemberMethod() { Name="Set" + name + "Attribute", ReturnType=new CodeTypeReference("System.Void")};
 								setter.Parameters.Add(new CodeParameterDeclarationExpression(type_AST.getText(), "a" + name));
 				
 								param = new CodeParameterDeclarationExpression();
@@ -10424,6 +10424,9 @@ _loop238_breakloop:						;
 							{
 								str = strType_AST.ToStringList();
 								param.Name = IDLConversions.ConvertParamName(name);
+								int paramNameIndex = str.LastIndexOf(name);
+								if (paramNameIndex != -1)
+									str = str.Substring(0, paramNameIndex);
 								param.Type = m_Conv.ConvertParamType(str, param, attributes);
 							}
 						

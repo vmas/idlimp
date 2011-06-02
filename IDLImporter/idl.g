@@ -986,7 +986,7 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
 		{
 			name = IDLConversions.UpperFirstLetter(name);						
-			CodeMemberMethod getter = new CodeMemberMethod() { Name=name};			
+			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name + "Attribute"};			
 
 			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
 			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#type.ToStringList(), param, attributes);
@@ -1021,7 +1021,7 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 
 			if (!fReadonly)
 			{
-				var setter = new CodeMemberMethod() { Name="Set" + name, ReturnType=new CodeTypeReference("System.Void")};
+				var setter = new CodeMemberMethod() { Name="Set" + name + "Attribute", ReturnType=new CodeTypeReference("System.Void")};
 				setter.Parameters.Add(new CodeParameterDeclarationExpression(#type.getText(), "a" + name));
 
 				param = new CodeParameterDeclarationExpression();
@@ -1135,6 +1135,9 @@ param_dcl returns [CodeParameterDeclarationExpression param]
 			{
 				str = #strType.ToStringList();
 				param.Name = IDLConversions.ConvertParamName(name);
+				int paramNameIndex = str.LastIndexOf(name);
+				if (paramNameIndex != -1)
+					str = str.Substring(0, paramNameIndex);
 				param.Type = m_Conv.ConvertParamType(str, param, attributes);
 			}
 		}
