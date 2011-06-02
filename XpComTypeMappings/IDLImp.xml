@@ -215,7 +215,24 @@
     <Match>(^|\s+)char</Match>
     <Replace>System.Char</Replace>
   </ParamTypeConversion>
-  <!-- Interfaces : any type beginning with 'nsI'  -->
+  <!-- explicit renames that start with nsI-->
+  <ParamTypeConversion>
+    <Match>(^|\s+)nsIPresContext</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(nsIWidget)(Ptr)?</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)nsIntRectRef</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing)</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <!-- Interfaces : any other type beginning with 'nsI'  -->
   <ParamTypeConversion>
     <Attribute>~size_is</Attribute>
     <NewAttribute>MarshalAs</NewAttribute>
@@ -252,23 +269,7 @@
   <ParamTypeConversion>
     <Match>(^|\s+)nsPresContext</Match>
     <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)nsIPresContext</Match>
-    <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)(nsIWidget)(Ptr)?</Match>
-    <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)nsIntRectRef</Match>
-    <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)nsILayoutHistoryState</Match>
-    <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
+  </ParamTypeConversion> 
   <ParamTypeConversion>
     <Match>(^|\s+)(xpcex)?(JSContext)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
@@ -306,7 +307,7 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr|nsIWebGLRenderbuffer)</Match>
+    <Match>(^|\s+)(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -330,7 +331,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef|nsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing)</Match>
+    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
 </IDLConversions>
