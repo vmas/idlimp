@@ -1132,9 +1132,7 @@ namespace SIL.FieldWorks.Tools
 				}
 			}
 
-			/// Remove the parameter name from the end
-			Regex regex = new Regex("\\s+[^\\s]+[^\\w]*$");
-			type.BaseType = regex.Replace(sParameter.TrimStart(null), "");
+			type.BaseType = sParameter.TrimStart(null);
 			
 			Regex regexArray = new Regex("\\[\\s*\\]\\s*$");
 			if (regexArray.IsMatch(type.BaseType))
