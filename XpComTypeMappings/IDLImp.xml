@@ -2,12 +2,12 @@
 <IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
-    <Match>((^|\s+))nsIIDRef</Match>
+    <Match>(^|\s+)nsIIDRef</Match>
     <Replace>ref System.Guid</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>retval</Attribute>
-    <Match>ns(^|\s+)(ns)?QIResult</Match>
+    <Match>(^|\s+)(ns)?(QIResult)</Match>
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
