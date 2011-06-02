@@ -2,12 +2,12 @@
 <IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
-    <Match>nsIIDRef</Match>
-    <Replace>ref Guid</Replace>
+    <Match>((^|\s+))nsIIDRef</Match>
+    <Replace>ref System.Guid</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>retval</Attribute>
-    <Match>nsQIResult</Match>
+    <Match>ns(^|\s+)(ns)?QIResult</Match>
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -32,18 +32,26 @@
   </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>(^|\s+)PRUint8</Match>
-    <Replace>System.UInt8</Replace>
+    <Replace>System.Byte</Replace>
+  </ParamTypeConversion>  
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRUint16Ref</Match>
+    <Replace>ref PRUint16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)PRUint16</Match>
     <Replace>System.UInt16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <Match>(^|\s+)PRInt16</Match>
+    <Replace>System.Int16</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
     <Match>(^|\s+)PRUint64</Match>
     <Replace>System.UInt64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)PRint64</Match>
+    <Match>(^|\s+)PRInt64</Match>
     <Replace>System.Int64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -124,6 +132,10 @@
     <Match>(^|\s+)(PRUniChar)[\s]*[*]+[\s*]*</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>    
+    <Match>(^|\s+)(PRUniChar)</Match>
+    <Replace>System.Char</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
@@ -167,11 +179,11 @@
     <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>buffer</Match>
+    <Match>(^|\s+)buffer</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
-    <Match>charPtr</Match>
+    <Match>(UnsignedCharPtr|charPtr)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -222,75 +234,87 @@
   </ParamTypeConversion>
   <!-- explicit renames -->
   <ParamTypeConversion>
-    <Match>nsPresContext</Match>
+    <Match>(^|\s+)nsPresContext</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>nsIPresContext</Match>
+    <Match>(^|\s+)nsIPresContext</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>nsIWidgetPtr</Match>
+    <Match>(^|\s+)nsIWidget(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>nsIntRectRef</Match>
+    <Match>(^|\s+)nsIntRectRef</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>nsILayoutHistoryState</Match>
+    <Match>(^|\s+)nsILayoutHistoryState</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>[.]*JSContext(Ptr)?</Match>
+    <Match>(^|\s+)(xpcex)?(JSContext)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>[.]*JSVal(Ptr)?</Match>
+    <Match>(^|\s+)(xpcex)?(JSVal)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>  
+  </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>DOMTimeStamp</Match>
+    <Match>(^|\s+)(JSObject)(Ptr)?</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)DOMTimeStamp</Match>
     <Replace>System.Int64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(ImageContainerPtr|ImagePtr)</Match>
+    <Match>(^|\s+)(ImageContainerPtr|ImagePtr)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>nsresult</Match>
+    <Match>(^|\s+)nsresult</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>ref</Match>
+    <Match>(^|\s+)(ns)?(ref)(cnt)?</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>size_t</Match>
-    <Replace>System.Int32</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(WebGLuint|WebGLenum|WebGLbitfield)</Match>
+    <Match>(^|\s+)(nsSize|size_t)</Match>
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr)</Match>
+    <Match>(^|\s+)(WebGLuint|WebGLenum|WebGLbitfield|nsLoadFlags)</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr|nsIWebGLRenderbuffer)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(WebGLsizei|WebGLint)</Match>
+    <Match>(^|\s+)(WebGLsizei|WebGLint)</Match>
     <Replace>System.Int32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(WebGLfloat|WebGLclampf)</Match>
+    <Match>(^|\s+)(WebGLfloat|WebGLclampf)</Match>
     <Replace>System.Double</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>WebGLboolean</Match>
+    <Replace>System.Boolean</Replace>
+  </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>RequestHeaderTuples</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(nsXPTParamInfoPtr|nsXPTMethodInfoPtr|nsXPTConstantPtr)</Match>
+    <Match>(^|\s+)(nsXPTParamInfoPtr|nsXPTMethodInfoPtr|nsXPTConstantPtr)</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
 </IDLConversions>
