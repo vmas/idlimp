@@ -166,7 +166,7 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
-    <Match>(nsIXPCTestns)?DOMString</Match>
+    <Match>(nsIXPCTest)?(ns)?DOMString</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -220,10 +220,6 @@
     <Match>(^|\s+)char</Match>
     <Replace>System.Char</Replace>
   </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)(nsSize|size_t|nsIntSize)</Match>
-    <Replace>System.UInt32</Replace>
-  </ParamTypeConversion>
   <!-- explicit renames that start with nsI-->
   <ParamTypeConversion>
     <Match>(^|\s+)nsIPresContext</Match>
@@ -238,8 +234,13 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing|nsIScriptContext|nsIPresShell|nsIntSizePtr|nsIntRectPtr|nsIFrame|nsIDRef|nsIDPtr|(^|\s+)nsID\s|nsIContent|nsIAtomPtr|nsDocShellEditorDataPtr|nsContentViewId|nsCIDRef|nsCIDPtr|nsCCTraversalCallbackRef|JSEqualityOp|nsAXPCNativeCallContextPtr|nsASocketHandlerPtr|NPWindowPtr|NPRectPtr|NPRegion|NPPVariable|NPPrintPtr|nativeWindow|nativeChar|jsval|JSRuntime|JSEqualityOp|JSDValue)</Match>
+    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing|nsIScriptContext|nsIPresShell|nsIntSizePtr|nsIntRectPtr|nsIFrame|nsIDRef|nsIDPtr|(^|\s+)nsID\s|nsIContent|nsIAtomPtr|nsIWordBreaker|nsISupportsArrayEnumFunc|nsIScriptGlobalObject|nsIScriptElement|nsIRegion|nsIPluginInstanceRef|nsIDocument)</Match>
     <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <!-- end explicit renames that start with nsI-->
+  <ParamTypeConversion>
+    <Match>(^|\s+)(nsSize|size_t|nsIntSize)</Match>
+    <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any other type beginning with 'nsI'  -->
   <ParamTypeConversion>
@@ -336,7 +337,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef)</Match>
+    <Match>(^|\s+)(ResultArray|RangeArray|triggerInfoPtr|PRLibraryPtr|PRFileDescPtr|nsWriteUnicharSegmentFun|nsWrapperCachePtr|NSWindowPtr|nsViewID|nsTimerCallbackFunc|nsScriptObjectTracerPtr|NSSCMSContentCallback|nsReadSegmentFun|nsTaskbarProgressState|nsStringRef|nsPreferencesArrayPtr|nsPreferencePtrConst|nsPreferencePtr|nsPointRef|nsPluginTagType|nsPluginNativeWindowPtr|nsPIDOMWindow|nsNonConstIDPtr|nsNativeIntMarginRef|nsDocShellEditorDataPtr|nsContentViewId|nsCIDRef|nsCIDPtr|nsCCTraversalCallbackRef|JSEqualityOp|nsAXPCNativeCallContextPtr|nsASocketHandlerPtr|NPWindowPtr|NPRectPtr|NPRegion|NPPVariable|NPPrintPtr|nativeWindow|nativeChar|jsval|JSRuntime|JSEqualityOp|JSDValue)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
 </IDLConversions>
