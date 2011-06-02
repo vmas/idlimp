@@ -10,6 +10,10 @@
     <Match>nsQIResult</Match>
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(voidPtr)</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>    
     <Match>(^|\s+)(void)</Match>
     <Replace>System.Void</Replace>
@@ -25,13 +29,53 @@
   <ParamTypeConversion>
     <Match>unsigned long</Match>
     <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>  
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRUint8</Match>
+    <Replace>System.UInt8</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRUint16</Match>
+    <Replace>System.UInt16</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRUint64</Match>
+    <Replace>System.UInt64</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRint64</Match>
+    <Replace>System.Int64</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRTime</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRThread</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRNetAddrPtr</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>PRFileDescStar</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>OSType</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>octet(Ptr)*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>unsigned short</Match>
     <Replace>System.UInt16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(short)\s+</Match>
+    <Match>(^|\s+)(short)[*\s]*</Match>
     <Replace>System.Int16</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
@@ -59,25 +103,31 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>boolean</Match>
+    <Match>(^|\s+)boolean</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>PRBool</Match>
+    <Match>(^|\s+)PRBool</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(float)\s+</Match>
+    <Match>(^|\s+)(float)[*\s]*</Match>
     <Replace>System.Double</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(double)\s+</Match>
+    <Match>(^|\s+)(double)[*\s]*</Match>
     <Replace>System.Double</Replace>
+  </ParamTypeConversion>  
+  <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.LPWStr</NewAttrValue>
+    <Match>(^|\s+)(PRUniChar)[\s]*[*]+[\s*]*</Match>
+    <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
-    <Match>(^|\s+)(wstring)\s+</Match>
+    <Match>(^|\s+)(wstring)[*\s]*</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -119,11 +169,7 @@
   <ParamTypeConversion>
     <Match>buffer</Match>
     <Replace>System.IntPtr</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>char</Match>
-    <Replace>System.Char</Replace>
-  </ParamTypeConversion>
+  </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>charPtr</Match>
     <Replace>System.IntPtr</Replace>
@@ -131,6 +177,15 @@
   <ParamTypeConversion>
     <Match>constCharPtr</Match>
     <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)wchar</Match>
+    <Replace>System.Char</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <!-- TODO - should be converted to utf16 -->
+    <Match>(^|\s+)char</Match>
+    <Replace>System.Char</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any type beginning with 'nsI'  -->
   <ParamTypeConversion>
@@ -187,9 +242,13 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>JSContext(Ptr)?</Match>
+    <Match>[.]*JSContext(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>[.]*JSVal(Ptr)?</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>DOMTimeStamp</Match>
     <Replace>System.Int64</Replace>
@@ -201,5 +260,37 @@
   <ParamTypeConversion>
     <Match>nsresult</Match>
     <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>ref</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>size_t</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(WebGLuint|WebGLenum|WebGLbitfield)</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr)</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(WebGLsizei|WebGLint)</Match>
+    <Replace>System.Int32</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(WebGLfloat|WebGLclampf)</Match>
+    <Replace>System.Double</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>RequestHeaderTuples</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(nsXPTParamInfoPtr|nsXPTMethodInfoPtr|nsXPTConstantPtr)</Match>
+    <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>  
 </IDLConversions>
