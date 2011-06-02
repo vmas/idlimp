@@ -1308,6 +1308,12 @@ _loop19_breakloop:				;
 				case LBRACE:
 				{
 					match(LBRACE);
+					if (0==inputState.guessing)
+					{
+						
+									fForwardDeclaration = false;
+								
+					}
 					{    // ( ... )*
 						for (;;)
 						{

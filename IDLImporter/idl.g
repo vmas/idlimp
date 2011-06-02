@@ -324,7 +324,11 @@ interf returns [CodeTypeDeclaration type]
 		type.IsInterface = true;
 	}
 	: ("interface"^ | "dispinterface"^) name:identifier inherits=inheritance_spec
- 	    (LBRACE! (fForwardDeclaration=interface_body[type])*  RBRACE!)?
+ 	    (LBRACE! 
+		{
+			fForwardDeclaration = false;
+		}
+		(fForwardDeclaration=interface_body[type])*  RBRACE!)?
  		{
  			/// we don't treat a forward declaration as real declaration
 			type.Name = name_AST.getText();
