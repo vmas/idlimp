@@ -985,11 +985,16 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 	}
 	: ("readonly" {fReadonly=true;})? "attribute" type:param_type_spec name=declarator_list[attributes]
 		{
+			string str = #type.ToStringList();
+			int paramNameIndex = str.LastIndexOf(name);
+			if (paramNameIndex != -1)
+				str = str.Substring(0, paramNameIndex);
+
 			name = IDLConversions.UpperFirstLetter(name);						
 			CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name + "Attribute"};			
 
-			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
-			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#type.ToStringList(), param, attributes);
+			CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();					
+			IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(str, param, attributes);
 			param.Type = results.newType;			
 
 			// if this config files explicitly doesn't want this attribute to be a retval, then add type as first parameter.
@@ -1025,7 +1030,7 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 				setter.Parameters.Add(new CodeParameterDeclarationExpression(#type.getText(), "a" + name));
 
 				param = new CodeParameterDeclarationExpression();
-				param.Type = m_Conv.ConvertParamType(#type.getText(), param, attributes);
+				param.Type = m_Conv.ConvertParamType(str, param, attributes);
 				setter.Parameters[0].Type = param.Type;
 				setter.Parameters[0].CustomAttributes = param.CustomAttributes;
 

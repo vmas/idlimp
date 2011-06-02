@@ -4332,11 +4332,16 @@ _loop218_breakloop:						;
 			if (0==inputState.guessing)
 			{
 				
+							string str = type_AST.ToStringList();
+							int paramNameIndex = str.LastIndexOf(name);
+							if (paramNameIndex != -1)
+								str = str.Substring(0, paramNameIndex);
+				
 							name = IDLConversions.UpperFirstLetter(name);						
 							CodeMemberMethod getter = new CodeMemberMethod() { Name="Get" + name + "Attribute"};			
 				
-							CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();						
-							IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(type_AST.ToStringList(), param, attributes);
+							CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();					
+							IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(str, param, attributes);
 							param.Type = results.newType;			
 				
 							// if this config files explicitly doesn't want this attribute to be a retval, then add type as first parameter.
@@ -4372,7 +4377,7 @@ _loop218_breakloop:						;
 								setter.Parameters.Add(new CodeParameterDeclarationExpression(type_AST.getText(), "a" + name));
 				
 								param = new CodeParameterDeclarationExpression();
-								param.Type = m_Conv.ConvertParamType(type_AST.getText(), param, attributes);
+								param.Type = m_Conv.ConvertParamType(str, param, attributes);
 								setter.Parameters[0].Type = param.Type;
 								setter.Parameters[0].CustomAttributes = param.CustomAttributes;
 				
