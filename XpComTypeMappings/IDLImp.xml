@@ -11,6 +11,11 @@
     <Replace>ref System.Guid</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <Attribute>~out</Attribute>
+    <Match>(^|\s+)nsIID</Match>
+    <Replace>System.Guid</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
     <Attribute>retval</Attribute>
     <Match>(^|\s+)(ns)?(QIResult)</Match>
     <Replace>System.Object</Replace>
@@ -161,7 +166,7 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
-    <Match>DOMString</Match>
+    <Match>(nsIXPCTestns)?DOMString</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -215,6 +220,10 @@
     <Match>(^|\s+)char</Match>
     <Replace>System.Char</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(nsSize|size_t|nsIntSize)</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
   <!-- explicit renames that start with nsI-->
   <ParamTypeConversion>
     <Match>(^|\s+)nsIPresContext</Match>
@@ -229,7 +238,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing)</Match>
+    <Match>(^|\s+)(nsILayoutHistoryState|nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox|nsIXPCComponents_Results|nsIXPCComponents_ID|nsIXPCComponents_Exception|nsIXPCComponents_Constructor|nsIXPCComponents_ClassesByID|nsIXPCComponents_Classes|nsITestXPCSomeUselessThing|nsIScriptContext|nsIPresShell|nsIntSizePtr|nsIntRectPtr|nsIFrame|nsIDRef|nsIDPtr|(^|\s+)nsID\s|nsIContent|nsIAtomPtr|nsDocShellEditorDataPtr|nsContentViewId|nsCIDRef|nsCIDPtr|nsCCTraversalCallbackRef|JSEqualityOp|nsAXPCNativeCallContextPtr|nsASocketHandlerPtr|NPWindowPtr|NPRectPtr|NPRegion|NPPVariable|NPPrintPtr|nativeWindow|nativeChar|jsval|JSRuntime|JSEqualityOp|JSDValue)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any other type beginning with 'nsI'  -->
@@ -297,10 +306,6 @@
   <ParamTypeConversion>
     <Match>(^|\s+)(ns)?(ref)(cnt)?</Match>
     <Replace>System.Int32</Replace>
-  </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Match>(^|\s+)(nsSize|size_t)</Match>
-    <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)(WebGLuint|WebGLenum|WebGLbitfield|nsLoadFlags)</Match>
