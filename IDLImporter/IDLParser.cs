@@ -10308,7 +10308,7 @@ _loop222_breakloop:				;
 				}
 _loop235_breakloop:				;
 			}    // ( ... )*
-			param_nonattribute_modifiers();
+			param_nonattribute_modifiers(attributes);
 			if (0 == inputState.guessing)
 			{
 				astFactory.addASTChild(ref currentAST, returnAST);
@@ -10460,7 +10460,9 @@ _loop238_breakloop:						;
 		return param;
 	}
 	
-	public void param_nonattribute_modifiers() //throws RecognitionException, TokenStreamException
+	public void param_nonattribute_modifiers(
+		IDictionary attributes
+	) //throws RecognitionException, TokenStreamException
 {
 		
 		returnAST = null;
@@ -10548,6 +10550,10 @@ _loop238_breakloop:						;
 						astFactory.addASTChild(ref currentAST, tmp357_AST);
 						match(LITERAL_in);
 					}
+					if (0==inputState.guessing)
+					{
+						attributes["in"] = true;
+					}
 					break;
 				}
 				case LITERAL_out:
@@ -10558,6 +10564,10 @@ _loop238_breakloop:						;
 						astFactory.addASTChild(ref currentAST, tmp358_AST);
 						match(LITERAL_out);
 					}
+					if (0==inputState.guessing)
+					{
+						attributes["out"] = true;
+					}
 					break;
 				}
 				case LITERAL_inout:
@@ -10567,6 +10577,13 @@ _loop238_breakloop:						;
 						tmp359_AST = astFactory.create(LT(1));
 						astFactory.addASTChild(ref currentAST, tmp359_AST);
 						match(LITERAL_inout);
+					}
+					if (0==inputState.guessing)
+					{
+						
+									attributes["out"] = true;
+									attributes["in"] = true;
+								
 					}
 					break;
 				}

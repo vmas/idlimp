@@ -1127,8 +1127,17 @@ parameter_dcls returns [CodeParameterDeclarationExpressionCollection paramColl]
 		)*)? RPAREN!
 	;
 
-param_nonattribute_modifiers
-	: ("const")? ( ("in") | ("out") | ("inout") )?
+param_nonattribute_modifiers [IDictionary attributes]
+	: ("const")? ( ("in") 
+		{ attributes["in"] = true;}
+	| ("out") 
+		{ attributes["out"] = true;}
+	| ("inout") 
+		{ 
+			attributes["out"] = true;
+			attributes["in"] = true;
+		}
+		)?
 	;
 
 param_dcl returns [CodeParameterDeclarationExpression param]
@@ -1137,7 +1146,7 @@ param_dcl returns [CodeParameterDeclarationExpression param]
 		Hashtable attributes = new Hashtable();
 		string name = string.Empty;
 	}
-	: (LBRACKET param_attributes[attributes] RBRACKET)* param_nonattribute_modifiers strType:param_type_spec ("const" (STAR)*)? (name=declarator[attributes])?
+	: (LBRACKET param_attributes[attributes] RBRACKET)* param_nonattribute_modifiers[attributes] strType:param_type_spec ("const" (STAR)*)? (name=declarator[attributes])?
 		{
 			string str = null;
 			if (#strType != null && name != string.Empty) 
