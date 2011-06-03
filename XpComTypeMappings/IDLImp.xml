@@ -2,7 +2,11 @@
 <IDLConversions xmlns="http://dummy.sil.org/IDLConversions.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
-    <Match>(^|\s+)nsIIDPtr(Shared)?\s</Match>
+    <Match>(^|\s+)nsIIDPtr(Shared)?($|\s)</Match>
+    <Replace>System.Guid</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>    
+    <Match>(^|\s+)nsIIDPtr(Shared)?($|\s)</Match>
     <Replace>System.Guid</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -12,12 +16,16 @@
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
-    <Match>(^|\s+)nsCIDRef\s</Match>
+    <Match>(^|\s+)nsCIDRef($|\s)</Match>
     <Replace>ref System.Guid</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
     <Attribute>~out</Attribute>
-    <Match>(^|\s+)nsIID\s</Match>
+    <Match>(^|\s+)nsIID($|\s)</Match>
+    <Replace>System.Guid</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>    
+    <Match>(^|\s+)nsIID($|\s)</Match>
     <Replace>System.Guid</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -30,7 +38,7 @@
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(voidPtr)</Match>
+    <Match>(^|\s+)(voidPtr)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
@@ -50,7 +58,7 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
-    <Match>(^|\s+)PRUint8</Match>
+    <Match>(^|\s+)PRUint8($|\s)</Match>
     <Replace>System.Byte</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
@@ -82,9 +90,13 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>PRNetAddrPtr</Match>
+    <Match>(^|\s+)PRNetAddr(Ptr)*</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)PRLibraryStar(Ptr)*</Match>
+    <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>  
   <ParamTypeConversion>
     <Match>PRFileDescStar</Match>
     <Replace>System.IntPtr</Replace>
@@ -144,6 +156,10 @@
   <ParamTypeConversion>
     <Match>(^|\s+)(double)[*\s]*</Match>
     <Replace>System.Double</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)HRESULT</Match>
+    <Replace>System.UInt32</Replace>
   </ParamTypeConversion>  
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
@@ -171,13 +187,13 @@
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
-    <Match>(^|\s+)(nsIXPCTest)?(ns)?(DOMString)\s</Match>
+    <Match>(^|\s+)(nsIXPCTest)?(ns)?(DOMString)($|\s)</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
-    <Match>(^|\s+)(nsIXPCTestns)?(AString)\s</Match>
+    <Match>(^|\s+)(nsIXPCTestns)?(AString)($|\s)</Match>
     <Replace>nsAString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
@@ -239,7 +255,7 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)((^|\s+)nsILayoutHistoryState\s|(^|\s+)nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox\s|(^|\s+)nsIXPCComponents_Results\s|(^|\s+)nsIXPCComponents_ID\s|(^|\s+)nsIXPCComponents_Exception\s|(^|\s+)nsIXPCComponents_Constructor\s|(^|\s+)nsIXPCComponents_ClassesByID\s|(^|\s+)nsIXPCComponents_Classes\s|(^|\s+)nsITestXPCSomeUselessThing\s|(^|\s+)nsIScriptContext\s|(^|\s+)nsIPresShell\s|(^|\s+)nsIntSizePtr\s|(^|\s+)nsIntRectPtr\s|(^|\s+)nsIFrame\s|(^|\s+)nsIDRef\s|(^|\s+)nsIDPtr\s|(^|\s+)nsID\s|(^|\s+)nsIContent\s|nsIAtomPtr\s|(^|\s+)nsIWordBreaker\s|(^|\s+)nsISupportsArrayEnumFunc\s|(^|\s+)nsIScriptGlobalObject\s|(^|\s+)nsIScriptElement\s|(^|\s+)nsIRegion\s|(^|\s+)nsIPluginInstanceRef\s|(^|\s+)nsIDocument\s|(^|\s+)nsIObjectFrame\s|(^|\s+)nsINodePtr\s|(^|\s+)nsILDAPURL\s|(^|\s+)nsIDOMDOMStringList\s|(^|\s+)nsIContentViewer\s|(^|\s+)nsIContentURIGrouper\s|(^|\s+)nsIDocumentStateListener\s|(^|\s+)nsIContentSecurityPolicy\s|(^|\s+)nsIDocumentPtr\s|(^|\s+)nsIContentPrefObserver\s|(^|\s+)nsIContentPrefCallback\s|(^|\s+)nsIContentPermissionPrompt\s|(^|\s+)nsIFrameMessageListener\s|(^|\s+)nsIFrameLoaderOwner\s|(^|\s+)nsIFrameLoader\s|(^|\s+)nsIContentFilter\s|(^|\s+)nsIDocumentCharsetInfo\s|(^|\s+)nsIPresShellPtr\s)</Match>
+    <Match>(^|\s+)((^|\s+)nsILayoutHistoryState($|\s)|(^|\s+)nsIWebGLRenderbuffernsIXPCComponents_utils_Sandbox($|\s)|(^|\s+)nsIXPCComponents_Results($|\s)|(^|\s+)nsIXPCComponents_ID($|\s)|(^|\s+)nsIXPCComponents_Exception($|\s)|(^|\s+)nsIXPCComponents_Constructor($|\s)|(^|\s+)nsIXPCComponents_ClassesByID($|\s)|(^|\s+)nsIXPCComponents_Classes($|\s)|(^|\s+)nsITestXPCSomeUselessThing($|\s)|(^|\s+)nsIScriptContext($|\s)|(^|\s+)nsIPresShell($|\s)|(^|\s+)nsIntSizePtr($|\s)|(^|\s+)nsIntRectPtr($|\s)|(^|\s+)nsIFrame($|\s)|(^|\s+)nsIDRef($|\s)|(^|\s+)nsIDPtr($|\s)|(^|\s+)nsID($|\s)|(^|\s+)nsIContent($|\s)|nsIAtomPtr($|\s)|(^|\s+)nsIWordBreaker($|\s)|(^|\s+)nsISupportsArrayEnumFunc($|\s)|(^|\s+)nsIScriptGlobalObject($|\s)|(^|\s+)nsIScriptElement($|\s)|(^|\s+)nsIRegion($|\s)|(^|\s+)nsIPluginInstanceRef($|\s)|(^|\s+)nsIDocument($|\s)|(^|\s+)nsIObjectFrame($|\s)|(^|\s+)nsINodePtr($|\s)|(^|\s+)nsILDAPURL($|\s)|(^|\s+)nsIDOMDOMStringList($|\s)|(^|\s+)nsIContentViewer($|\s)|(^|\s+)nsIContentURIGrouper($|\s)|(^|\s+)nsIDocumentStateListener($|\s)|(^|\s+)nsIContentSecurityPolicy($|\s)|(^|\s+)nsIDocumentPtr($|\s)|(^|\s+)nsIContentPrefObserver($|\s)|(^|\s+)nsIContentPrefCallback($|\s)|(^|\s+)nsIContentPermissionPrompt($|\s)|(^|\s+)nsIFrameMessageListener($|\s)|(^|\s+)nsIFrameLoaderOwner($|\s)|(^|\s+)nsIFrameLoader($|\s)|(^|\s+)nsIContentFilter($|\s)|(^|\s+)nsIDocumentCharsetInfo($|\s)|(^|\s+)nsIPresShellPtr($|\s))|(^|\s+)nsIUnicode(Decoder|Encoder)($|\s)|(^|\s+)nsIFrame($|\s)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <!-- end explicit renames that start with nsI-->
@@ -342,11 +358,11 @@
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(nsXPTParamInfoPtr|nsXPTMethodInfoPtr|nsXPTConstantPtr)</Match>
+    <Match>(^|\s+)(nsXPTParamInfoPtr|nsXPTMethodInfoPtr|nsXPTConstantPtr|nsXPTType)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(ResultArray\s|(^|\s+)RangeArray\s|(^|\s+)triggerInfoPtr\s|(^|\s+)PRLibraryPtr\s|(^|\s+)PRFileDescPtr\s|(^|\s+)nsWriteUnicharSegmentFun\s|(^|\s+)nsWrapperCachePtr\s|(^|\s+)NSWindowPtr\s|(^|\s+)nsViewID\s|(^|\s+)nsTimerCallbackFunc\s|(^|\s+)nsScriptObjectTracerPtr\s|(^|\s+)NSSCMSContentCallback\s|(^|\s+)nsReadSegmentFun\s|(^|\s+)nsTaskbarProgressState\s|(^|\s+)nsStringRef\s|(^|\s+)nsPreferencesArrayPtr\s|(^|\s+)nsPreferencePtrConst\s|(^|\s+)nsPreferencePtr\s|(^|\s+)nsPointRef\s|(^|\s+)nsPluginTagType\s|(^|\s+)nsPluginNativeWindowPtr\s|(^|\s+)nsPIDOMWindow\s|(^|\s+)nsNonConstIDPtr\s|(^|\s+)nsNativeIntMarginRef\s|(^|\s+)nsDocShellEditorDataPtr\s|(^|\s+)nsContentViewId\s|(^|\s+)(nsCIDPtr)($|\s)|nsCCTraversalCallbackRef\s|(^|\s+)JSEqualityOp\s|(^|\s+)nsAXPCNativeCallContextPtr\s|(^|\s+)nsASocketHandlerPtr\s|(^|\s+)NPWindowPtr\s|(^|\s+)NPRectPtr\s|(^|\s+)NPRegion\s|(^|\s+)NPPVariable\s|(^|\s+)NPPrintPtr\s|(^|\s+)nativeWindow\s|(^|\s+)nativeChar\s|(^|\s+)jsval\s|(^|\s+)JSRuntime\s|(^|\s+)JSEqualityOp\s|(^|\s+)JSDValue\s|(^|\s+)nsHandlerInfoAction\s|(^|\s+)nsDocShellInfoLoadType\s|(^|\s+)nsDocshellIDArray\s|(^|\s+)nsDevMode\s|(^|\s+)nsCSSStyleSheet\s|(^|\s+)nsCookieStatus\s|(^|\s+)nsCookiePolicy\s|(^|\s+)nsCookieAccess\s|(^|\s+)nsCID\s|nsCharPtrArray\s|(^|\s+)nsCacheStoragePolicy\s|(^|\s+)nsCacheAccessMode\s|(^|\s+)nsAccessibleTextBoundary\s|(^|\s+)NPWindowStarRef\s|(^|\s+)NPByteRangePtr\s|(^|\s+)MSCOMIIDRef\s|(^|\s+)JSTracerPtr\s|(^|\s+)JSStackFramePtr\s|(^|\s+)jsid\s|(^|\s+)JSGCCallback\s|(^|\s+)JSDThreadState\s|(^|\s+)JSDStackFrameInfo\s|(^|\s+)JSDScript\s|(^|\s+)JSDProperty\s|(^|\s+)JSDObject\s|(^|\s+)JSDContext\s|(^|\s+)JSCompartment\s|(^|\s+)Iterator\s|(^|\s+)ConstMessage\s|(^|\s+)HKEY\s|(^|\s+)GuidShared\s|(^|\s+)GuidBTransaction\s|(^|\s+)GuidBObjectStore\s|(^|\s+)GuidBKeyRange\s|(^|\s+)GuidBFactory\s|(^|\s+)GuidBDatabase\s|(^|\s+)gfxContextPtr\s|(^|\s+)gfxContext\s|(^|\s+)gfxASurfacePtr\s|(^|\s+)FSRefPtr\s|(^|\s+)FILE\s|(^|\s+)constTextRangeStyleRef\s|(^|\s+)ConstMessage\s|(^|\s+)constCharStarRef\s|(^|\s+)constCharStarConstStar\s|(^|\s+)const_octet_ptr\s|(^|\s+)CFURLRef\s|(^|\s+)FSRefPtr\s|(^|\s+)AutoCompleteStatus\s)|(^|\s+)NPByteRange\s</Match>
+    <Match>(^|\s+)(ResultArray($|\s)|(^|\s+)RangeArray($|\s)|(^|\s+)triggerInfoPtr($|\s)|(^|\s+)PRLibraryPtr($|\s)|(^|\s+)PRFileDescPtr($|\s)|(^|\s+)nsWriteUnicharSegmentFun($|\s)|(^|\s+)nsWrapperCachePtr($|\s)|(^|\s+)NSWindowPtr($|\s)|(^|\s+)nsViewID($|\s)|(^|\s+)nsTimerCallbackFunc($|\s)|(^|\s+)nsScriptObjectTracerPtr($|\s)|(^|\s+)NSSCMSContentCallback($|\s)|(^|\s+)nsReadSegmentFun($|\s)|(^|\s+)nsTaskbarProgressState($|\s)|(^|\s+)nsStringRef($|\s)|(^|\s+)nsPreferencesArrayPtr($|\s)|(^|\s+)nsPreferencePtrConst($|\s)|(^|\s+)nsPreferencePtr($|\s)|(^|\s+)nsPointRef($|\s)|(^|\s+)nsPluginTagType($|\s)|(^|\s+)nsPluginNativeWindowPtr($|\s)|(^|\s+)nsPIDOMWindow($|\s)|(^|\s+)nsNonConstIDPtr($|\s)|(^|\s+)nsNativeIntMarginRef($|\s)|(^|\s+)nsDocShellEditorDataPtr($|\s)|(^|\s+)nsContentViewId($|\s)|(^|\s+)(nsCIDPtr)($|\s)|nsCCTraversalCallbackRef($|\s)|(^|\s+)JSEqualityOp($|\s)|(^|\s+)nsAXPCNativeCallContextPtr($|\s)|(^|\s+)nsASocketHandlerPtr($|\s)|(^|\s+)NPWindowPtr($|\s)|(^|\s+)NPRectPtr($|\s)|(^|\s+)NPRegion($|\s)|(^|\s+)NPPVariable($|\s)|(^|\s+)NPPrintPtr($|\s)|(^|\s+)nativeWindow($|\s)|(^|\s+)nativeChar($|\s)|(^|\s+)jsval($|\s)|(^|\s+)JSRuntime($|\s)|(^|\s+)JSEqualityOp($|\s)|(^|\s+)JSDValue($|\s)|(^|\s+)nsHandlerInfoAction($|\s)|(^|\s+)nsDocShellInfoLoadType($|\s)|(^|\s+)nsDocshellIDArray($|\s)|(^|\s+)nsDevMode($|\s)|(^|\s+)nsCSSStyleSheet($|\s)|(^|\s+)nsCookieStatus($|\s)|(^|\s+)nsCookiePolicy($|\s)|(^|\s+)nsCookieAccess($|\s)|(^|\s+)nsCID($|\s)|nsCharPtrArray($|\s)|(^|\s+)nsCacheStoragePolicy($|\s)|(^|\s+)nsCacheAccessMode($|\s)|(^|\s+)nsAccessibleTextBoundary($|\s)|(^|\s+)NPWindowStarRef($|\s)|(^|\s+)NPByteRangePtr($|\s)|(^|\s+)MSCOMIIDRef($|\s)|(^|\s+)JSTracerPtr($|\s)|(^|\s+)JSStackFramePtr($|\s)|(^|\s+)jsid($|\s)|(^|\s+)JSGCCallback($|\s)|(^|\s+)JSDThreadState($|\s)|(^|\s+)JSDStackFrameInfo($|\s)|(^|\s+)JSDScript($|\s)|(^|\s+)JSDProperty($|\s)|(^|\s+)JSDObject($|\s)|(^|\s+)JSDContext($|\s)|(^|\s+)JSCompartment($|\s)|(^|\s+)Iterator($|\s)|(^|\s+)ConstMessage($|\s)|(^|\s+)HKEY($|\s)|(^|\s+)GuidShared($|\s)|(^|\s+)GuidBTransaction($|\s)|(^|\s+)GuidBObjectStore($|\s)|(^|\s+)GuidBKeyRange($|\s)|(^|\s+)GuidBFactory($|\s)|(^|\s+)GuidBDatabase($|\s)|(^|\s+)gfxContextPtr($|\s)|(^|\s+)gfxContext($|\s)|(^|\s+)gfx(A|Image)?Surface(Ptr)?($|\s)|(^|\s+)FSRef(Ptr)?($|\s)|(^|\s+)FSSpec(Ptr)?($|\s)|(^|\s+)FILE($|\s)|(^|\s+)constTextRangeStyleRef($|\s)|(^|\s+)ConstMessage($|\s)|(^|\s+)constCharStarRef($|\s)|(^|\s+)constCharStarConstStar($|\s)|(^|\s+)const_octet_ptr($|\s)|(^|\s+)CFURLRef($|\s)|(^|\s+)FSRefPtr($|\s)|(^|\s+)AutoCompleteStatus\s)|(^|\s+)NPByteRange($|\s)|(^|\s+)txAExprResultPtr($|\s)|(^|\s+)alreadyAddRefed_nsFrameLoader($|\s)|(^|\s+)CERTCertificatePtr($|\s)|(^|\s+)const_nsID_ptr($|\s)|(^|\s+)JSPrincipals($|\s)|(^|\s+)nsCocoaWindow($|\s)|(^|\s+)nsFrameSelection($|\s)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <!-- Interfaces : any other type beginning with 'I'  -->
