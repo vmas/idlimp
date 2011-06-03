@@ -371,8 +371,13 @@ namespace SIL.FieldWorks.Tools
 
 			if (!fPreserveSig)
 			{
-				CodeParameterDeclarationExpression retParam = GetReturnType(member.Parameters);
-				member.ReturnType = retParam.Type;
+				bool success;
+				CodeParameterDeclarationExpression retParam = TryGetReturnType(member.Parameters, out success);
+				if (success)
+					member.ReturnType = retParam.Type;
+				else
+					member.ReturnType = rt;
+				
 				member.CustomAttributes.AddRange(retParam.CustomAttributes);
 				for (int i = 0; i < member.CustomAttributes.Count; i++)
 				{
@@ -425,11 +430,12 @@ namespace SIL.FieldWorks.Tools
 		/// <param name="parameters">The parameters.</param>
 		/// <returns></returns>
 		/// ------------------------------------------------------------------------------------
-		private CodeParameterDeclarationExpression GetReturnType(
-			CodeParameterDeclarationExpressionCollection parameters)
+		private CodeParameterDeclarationExpression TryGetReturnType(
+			CodeParameterDeclarationExpressionCollection parameters, out bool success)
 		{
 			CodeParameterDeclarationExpression retType = new CodeParameterDeclarationExpression(typeof(void), 
 				"return");
+			success = false;
 			foreach (CodeParameterDeclarationExpression exp in parameters)
 			{
 				if (exp.UserData["retval"] != null && (bool)exp.UserData["retval"] && 
@@ -437,6 +443,7 @@ namespace SIL.FieldWorks.Tools
 				{	/// Marshalling arrays as return value doesn't work!
 					retType = exp;
 					parameters.Remove(exp);
+					success = true;
 					break;
 				}
 			}
