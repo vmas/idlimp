@@ -31,6 +31,8 @@
   <ParamTypeConversion>
     <Attribute>retval</Attribute>
     <Match>(^|\s+)(ns)?(QIResult)</Match>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
     <Replace>System.Object</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
@@ -265,10 +267,10 @@
   </ParamTypeConversion>
   <!-- Interfaces : any other type beginning with 'nsI'  -->
   <ParamTypeConversion>
-    <Attribute>~size_is</Attribute>
+    <Attribute>~size_is</Attribute>    
+    <Match>^\s*(?&lt;type&gt;nsI[^\s]+)</Match>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
-    <Match>^\s*(?&lt;type&gt;nsI[^\s]+)</Match>
     <Replace>${type}</Replace>
   </ParamTypeConversion>
   <!-- unusual stuff -->
