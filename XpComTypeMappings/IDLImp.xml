@@ -28,26 +28,21 @@
     <Match>(^|\s+)nsIID($|\s)</Match>
     <Replace>System.Guid</Replace>
   </ParamTypeConversion>
-  <ParamTypeConversion>
-    <Attribute>retval</Attribute>
-    <Match>(^|\s+)(ns)?(QIResult)</Match>
-    <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
-    <Replace>System.Object</Replace>
-  </ParamTypeConversion>
   <ParamTypeConversion>    
-    <Match>(^|\s+)(ns)?(QIResult)</Match>
-    <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.Interface</NewAttrValue>
-    <Replace>System.Object</Replace>
+    <Match>(^|\s+)(ns)?(QIResult)</Match>    
+    <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)(voidPtr)(Ptr)?</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>    
-    <Match>(^|\s+)(void)[*\s]*</Match>
+    <Match>(^|\s+)(void)[\s]*[*]+[\s*]*</Match>
     <Replace>System.IntPtr</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Match>(^|\s+)(void)($|\s)</Match>
+    <Replace>System.Void</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>unsigned long long</Match>
