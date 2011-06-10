@@ -205,7 +205,7 @@
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>AUTF8String</Match>
-    <Replace>nsAString</Replace>
+    <Replace>nsAUTF8String</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
