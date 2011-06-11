@@ -236,7 +236,7 @@ namespace SIL.FieldWorks.Tools
 		private static Dictionary<CodeFieldReferenceExpression, string> s_NeedsAdjustment =
 			new Dictionary<CodeFieldReferenceExpression, string>();
 		private static Dictionary<string, string> s_EnumMemberMapping =
-			new Dictionary<string, string>();
+			new Dictionary<string, string>();		
 		#endregion
 
 		/// ------------------------------------------------------------------------------------
@@ -1392,7 +1392,9 @@ namespace SIL.FieldWorks.Tools
 					fieldRef.FieldName, fieldRef, true);
 			}
 		}
+
 		#endregion
+	
 	}
 
 }

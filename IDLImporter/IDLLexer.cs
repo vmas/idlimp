@@ -1186,7 +1186,7 @@ _loop316_breakloop:			;
 _loop319_breakloop:			;
 		}    // ( ... )*
 		match('\n');
-		_ttype = Token.SKIP; newline();
+		_ttype = Token.SKIP; CommentSnatcher.StoreComment(text.ToString(_begin, text.Length-_begin), false); newline();
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
 			_token = makeToken(_ttype);
@@ -1289,7 +1289,7 @@ _loop324_breakloop:			;
 _loop328_breakloop:			;
 		}    // ( ... )*
 		match("*/");
-		_ttype = Token.SKIP;
+		_ttype = Token.SKIP; CommentSnatcher.StoreComment(text.ToString(_begin, text.Length-_begin), true);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
 			_token = makeToken(_ttype);

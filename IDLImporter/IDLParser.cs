@@ -1312,6 +1312,9 @@ _loop19_breakloop:				;
 					{
 						
 									fForwardDeclaration = false;
+									var comment = CommentSnatcher.GetLastComment();
+									if (!string.IsNullOrEmpty(comment))
+										type.Comments.Add(new CodeCommentStatement(comment, true));
 								
 					}
 					{    // ( ... )*
@@ -4374,6 +4377,9 @@ _loop218_breakloop:						;
 								
 								m_Conv.HandleSizeIs(getter, funcAttributes);
 								getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
+								var comment = CommentSnatcher.GetLastComment();
+								if (!string.IsNullOrEmpty(comment))
+									getter.Comments.Add(new CodeCommentStatement(comment, true));
 				
 								membersRet.Add(getter);			
 				
@@ -4389,9 +4395,13 @@ _loop218_breakloop:						;
 				
 								m_Conv.HandleSizeIs(setter, funcAttributes);
 								setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
+								comment = CommentSnatcher.GetLastComment();
+								if (!string.IsNullOrEmpty(comment))
+									setter.Comments.Add(new CodeCommentStatement(comment, true));				
 				
 								membersRet.Add(setter);
 							}
+							CommentSnatcher.ClearComment();
 						
 			}
 			attr_dcl_AST = currentAST.root;
@@ -4550,6 +4560,11 @@ _loop218_breakloop:						;
 								
 								m_Conv.HandleSizeIs(member, funcAttributes);
 								memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes);
+				
+								var comment = CommentSnatcher.GetLastComment();
+								if (!string.IsNullOrEmpty(comment))
+									memberRet.Comments.Add(new CodeCommentStatement(comment, true));
+								CommentSnatcher.ClearComment();
 							}
 						
 			}

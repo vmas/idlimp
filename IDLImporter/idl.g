@@ -327,6 +327,9 @@ interf returns [CodeTypeDeclaration type]
  	    (LBRACE! 
 		{
 			fForwardDeclaration = false;
+			var comment = CommentSnatcher.GetLastComment();
+			if (!string.IsNullOrEmpty(comment))
+				type.Comments.Add(new CodeCommentStatement(comment, true));
 		}
 		(fForwardDeclaration=interface_body[type])*  RBRACE!)?
  		{
@@ -1025,6 +1028,9 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 				
 				m_Conv.HandleSizeIs(getter, funcAttributes);
 				getter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(getter, param.Type, types, attributes, true);
+				var comment = CommentSnatcher.GetLastComment();
+				if (!string.IsNullOrEmpty(comment))
+					getter.Comments.Add(new CodeCommentStatement(comment, true));
 
 				membersRet.Add(getter);			
 
@@ -1040,9 +1046,13 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 
 				m_Conv.HandleSizeIs(setter, funcAttributes);
 				setter = (CodeMemberMethod)m_Conv.HandleFunction_dcl(setter, param.Type, types, attributes, true);
+				comment = CommentSnatcher.GetLastComment();
+				if (!string.IsNullOrEmpty(comment))
+					setter.Comments.Add(new CodeCommentStatement(comment, true));				
 
 				membersRet.Add(setter);
 			}
+			CommentSnatcher.ClearComment();
 		}
 	;
 
@@ -1074,6 +1084,11 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 				
 				m_Conv.HandleSizeIs(member, funcAttributes);
 				memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes);
+
+				var comment = CommentSnatcher.GetLastComment();
+				if (!string.IsNullOrEmpty(comment))
+					memberRet.Comments.Add(new CodeCommentStatement(comment, true));
+				CommentSnatcher.ClearComment();
 			}
 		}
 	;
@@ -1509,7 +1524,7 @@ options {
 	:
 	"//" 
 	(~'\n')* '\n'
-	{ $setType(Token.SKIP); newline(); }
+	{ $setType(Token.SKIP); CommentSnatcher.StoreComment($getText, false); newline(); }
 	;
 
 OTHER_LANG_BLOCK
@@ -1541,7 +1556,7 @@ options {
 		| ~('*'|'\n'|'\r')
 	)*
 	"*/"
-	{ $setType(Token.SKIP);  }
+	{ $setType(Token.SKIP); CommentSnatcher.StoreComment($getText, true);  }
 	;
 
 CHAR_LITERAL 	

@@ -96,6 +96,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommentSnatcher.cs" />
     <Compile Include="CSharpCodeProviderEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -152,7 +153,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>cd $(ProjectDir)
-java -classpath "..\antlr-2.7.7\lib\antlr.jar" antlr.Tool -traceParser idl.g</PreBuildEvent>
+java -classpath "..\antlr-2.7.7\lib\antlr.jar" antlr.Tool   idl.g</PreBuildEvent>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
