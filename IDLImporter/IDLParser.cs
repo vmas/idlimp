@@ -4559,6 +4559,7 @@ _loop218_breakloop:						;
 								param.Type = m_Conv.ConvertParamType(rt_AST.ToString(), param, attributes);
 								
 								m_Conv.HandleSizeIs(member, funcAttributes);
+								member.CustomAttributes.AddRange(param.CustomAttributes);
 								memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes);
 				
 								var comment = CommentSnatcher.GetLastComment();

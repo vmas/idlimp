@@ -1083,6 +1083,7 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 				param.Type = m_Conv.ConvertParamType(#rt.ToString(), param, attributes);
 				
 				m_Conv.HandleSizeIs(member, funcAttributes);
+				member.CustomAttributes.AddRange(param.CustomAttributes);
 				memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes);
 
 				var comment = CommentSnatcher.GetLastComment();
