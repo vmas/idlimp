@@ -141,10 +141,14 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.Bool</NewAttrValue>
     <Match>(^|\s+)boolean</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.Bool</NewAttrValue>
     <Match>(^|\s+)PRBool</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
