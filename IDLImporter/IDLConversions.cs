@@ -1100,7 +1100,7 @@ namespace SIL.FieldWorks.Tools
 									}
 									else if (iAttribute == 1 && param != null)
 									{
-										results.attributesRemoved.Add(attribute);
+										results.attributesAdded.Add(attribute);
 										// we only deal with one attribute to add
 										if (entry.NewAttrValue == null)
 										{

@@ -4357,7 +4357,7 @@ _loop218_breakloop:						;
 							if (results.attributesRemoved.Contains("retval"))
 							{			
 								getter.ReturnType = new CodeTypeReference("System.Void");
-								getter.Parameters.Add(new CodeParameterDeclarationExpression(param.Type, "a" + name));				
+								getter.Parameters.Add(new CodeParameterDeclarationExpression(param.Type, "a" + name));
 								getter.Parameters[0].CustomAttributes = param.CustomAttributes;
 							}
 							else
@@ -4554,13 +4554,30 @@ _loop218_breakloop:						;
 								memberRet = null;
 							else
 							{
+								bool fPreserveSig = false;
 								CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();
 								Hashtable attributes = new Hashtable();
-								param.Type = m_Conv.ConvertParamType(rt_AST.ToString(), param, attributes);
+								IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(rt_AST.ToString(), param, attributes);
+								param.Type = results.newType;
+				
+								
+								// if this config files explicitly doesn't want this method to have a retval, then add the return type as last parameter.
+								if (results.attributesRemoved.Contains("retval"))
+								{										
+									member.Parameters.Add(new CodeParameterDeclarationExpression(param.Type, "retval"));
+									member.Parameters[member.Parameters.Count - 1].CustomAttributes.AddRange(param.CustomAttributes);
+									param.CustomAttributes.Clear();
+				
+									// Make return type void.
+									param.Type = member.ReturnType = new CodeTypeReference("System.Void");
+				
+									// Tell HandleFunction_dcl not to place last parameter as a return type.
+									fPreserveSig = true;
+								}
 								
 								m_Conv.HandleSizeIs(member, funcAttributes);
 								member.CustomAttributes.AddRange(param.CustomAttributes);
-								memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes);
+								memberRet = m_Conv.HandleFunction_dcl(member, param.Type, types, funcAttributes, fPreserveSig);
 				
 								var comment = CommentSnatcher.GetLastComment();
 								if (!string.IsNullOrEmpty(comment))
