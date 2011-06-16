@@ -183,7 +183,7 @@
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.XpCom.WStringMarshaler"</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Skybound.Gecko.CustomMarshalers.WStringMarshaler"</NewAttrValue>
     <Match>(^|\s+)(wstring)[*\s]*</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
