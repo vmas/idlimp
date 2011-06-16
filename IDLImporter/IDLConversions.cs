@@ -1016,7 +1016,7 @@ namespace SIL.FieldWorks.Tools
 			results.sOriginalParameter = sOriginalParameter;
 
 			CodeTypeReference type = new CodeTypeReference(string.Empty);
-			string sParameter = sOriginalParameter;
+			string sParameter = sOriginalParameter.Trim();
 
 			if (m_ParamTypes != null)
 			{

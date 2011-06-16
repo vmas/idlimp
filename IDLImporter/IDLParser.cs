@@ -10453,7 +10453,7 @@ _loop238_breakloop:						;
 								param.Name = IDLConversions.ConvertParamName(name);
 								int paramNameIndex = str.LastIndexOf(name);
 								if (paramNameIndex != -1)
-									str = str.Substring(0, paramNameIndex);
+									str = str.Substring(0, paramNameIndex - 1);
 								param.Type = m_Conv.ConvertParamType(str, param, attributes);
 							}
 						
