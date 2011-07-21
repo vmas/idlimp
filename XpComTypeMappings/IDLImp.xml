@@ -154,7 +154,7 @@
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)(float)[*\s]*</Match>
-    <Replace>System.Double</Replace>
+    <Replace>System.Single</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Match>(^|\s+)(double)[*\s]*</Match>
