@@ -203,7 +203,7 @@
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>ACString</Match>
-    <Replace>nsAString</Replace>
+    <Replace>nsACString</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
