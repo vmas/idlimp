@@ -288,6 +288,7 @@ attribute [IDictionary attributes]
 	| "cstring"
 	| "astring"
 	| "jsval"
+	| "builtinclass"
 	;
 	
 non_rparen
@@ -1073,6 +1074,12 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 		{			
 			member.Name = IDLConversions.UpperFirstLetter(#name.getText());
 			member.Parameters.AddRange(pars);
+			
+			if (funcAttributes["extraArgcParam"] != null)
+			{
+				member.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.Int32"), "argc"));
+				funcAttributes.Remove("extraArgcParam");
+			}
 
 			if (#rt == null)
 				memberRet = null;
@@ -1083,7 +1090,6 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 				Hashtable attributes = new Hashtable();
 				IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#rt.ToString(), param, attributes);
 				param.Type = results.newType;
-
 				
 				// if this config files explicitly doesn't want this method to have a retval, then add the return type as last parameter.
 				if (results.attributesRemoved.Contains("retval"))
@@ -1123,6 +1129,7 @@ function_attribute [IDictionary attributes]
 	| "ignore"
 	| "context_handle"	
 	| "notxpcom"
+	| "nostdcall"
 	| "propget"
 		{
 			attributes.Add("propget", new CodeAttributeArgument());
@@ -1139,6 +1146,9 @@ function_attribute [IDictionary attributes]
 	| "usesgetlasterror"
 	| "vararg"
 	| "optional_argc"
+		{
+			attributes.Add("extraArgcParam", new CodeAttributeArgument());
+		}
 	| "implicit_jscontext"
 	| "binaryname" LPAREN! identifier RPAREN!	
 	| attribute[attributes]

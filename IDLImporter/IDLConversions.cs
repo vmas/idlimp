@@ -1224,7 +1224,8 @@ namespace SIL.FieldWorks.Tools
 					param.Direction = FieldDirection.Ref;
 				}
 				else
-					param.Direction = FieldDirection.Out;
+					// Seems more sensible to be a Ref rather than an out.
+					param.Direction = FieldDirection.Ref;
 			}
 			else
 				param.Direction = FieldDirection.In;
