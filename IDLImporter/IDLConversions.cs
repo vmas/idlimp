@@ -1158,6 +1158,7 @@ namespace SIL.FieldWorks.Tools
 			if (varName != null && varName.Length > 0 && param != null)
 				param.UserData.Add("size_is", varName);
 			attributes.Remove("size_is");
+			attributes.Remove("array");
 			attributes.Remove("string");
 
 			if (attributes["retval"] != null)

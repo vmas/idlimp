@@ -1222,6 +1222,10 @@ param_attribute [IDictionary attributes]
 	| "iid_is" LPAREN attr_vars RPAREN 
 	| "range" LPAREN integer_literal COMMA integer_literal RPAREN
 	| "array"
+		{ 
+			// Mark parameter as needing to be converted into an array type.
+			attributes["array"] = true;
+		}
 	| "const"
 	| "shared"
 	| field_attribute[attributes]

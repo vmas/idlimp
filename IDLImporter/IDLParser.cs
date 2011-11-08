@@ -10954,6 +10954,12 @@ _loop245_breakloop:					;
 				tmp380_AST = astFactory.create(LT(1));
 				astFactory.addASTChild(ref currentAST, tmp380_AST);
 				match(LITERAL_array);
+				if (0==inputState.guessing)
+				{					
+								// Mark parameter as needing to be converted into an array type.
+								attributes["array"] = true;
+							
+				}
 				param_attribute_AST = currentAST.root;
 				break;
 			}
