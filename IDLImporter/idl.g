@@ -1033,6 +1033,11 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 				if (!string.IsNullOrEmpty(comment))
 					getter.Comments.Add(new CodeCommentStatement(comment, true));
 
+				if (funcAttributes["extraJsContextParam"] != null)
+				{
+					getter.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));					
+				}				
+
 				membersRet.Add(getter);			
 
 			if (!fReadonly)
@@ -1051,8 +1056,17 @@ attr_dcl [CodeTypeMemberCollection types,  Hashtable funcAttributes] returns [Co
 				if (!string.IsNullOrEmpty(comment))
 					setter.Comments.Add(new CodeCommentStatement(comment, true));				
 
+				if (funcAttributes["extraJsContextParam"] != null)
+				{
+					setter.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));					
+				}				
+
 				membersRet.Add(setter);
 			}
+
+			if (funcAttributes["extraJsContextParam"] != null)
+				funcAttributes.Remove("extraJsContextParam");
+
 			CommentSnatcher.ClearComment();
 		}
 	;
@@ -1075,11 +1089,17 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 			member.Name = IDLConversions.UpperFirstLetter(#name.getText());
 			member.Parameters.AddRange(pars);
 			
+			if (funcAttributes["extraJsContextParam"] != null)
+			{
+				member.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));
+				funcAttributes.Remove("extraJsContextParam");
+			}
+
 			if (funcAttributes["extraArgcParam"] != null)
 			{
 				member.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.Int32"), "argc"));
 				funcAttributes.Remove("extraArgcParam");
-			}
+			}									
 
 			if (#rt == null)
 				memberRet = null;
@@ -1150,6 +1170,9 @@ function_attribute [IDictionary attributes]
 			attributes.Add("extraArgcParam", new CodeAttributeArgument());
 		}
 	| "implicit_jscontext"
+		{
+			attributes.Add("extraJsContextParam", new CodeAttributeArgument());
+		}
 	| "binaryname" LPAREN! identifier RPAREN!	
 	| attribute[attributes]
 	;

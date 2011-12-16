@@ -4394,6 +4394,11 @@ _loop218_breakloop:						;
 								if (!string.IsNullOrEmpty(comment))
 									getter.Comments.Add(new CodeCommentStatement(comment, true));
 				
+								if (funcAttributes["extraJsContextParam"] != null)
+								{
+									getter.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));					
+								}				
+				
 								membersRet.Add(getter);			
 				
 							if (!fReadonly)
@@ -4412,8 +4417,17 @@ _loop218_breakloop:						;
 								if (!string.IsNullOrEmpty(comment))
 									setter.Comments.Add(new CodeCommentStatement(comment, true));				
 				
+								if (funcAttributes["extraJsContextParam"] != null)
+								{
+									setter.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));					
+								}				
+				
 								membersRet.Add(setter);
 							}
+				
+							if (funcAttributes["extraJsContextParam"] != null)
+								funcAttributes.Remove("extraJsContextParam");
+				
 							CommentSnatcher.ClearComment();
 						
 			}
@@ -4563,11 +4577,17 @@ _loop218_breakloop:						;
 							member.Name = IDLConversions.UpperFirstLetter(name_AST.getText());
 							member.Parameters.AddRange(pars);
 							
+							if (funcAttributes["extraJsContextParam"] != null)
+							{
+								member.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.IntPtr"), "jsContext"));
+								funcAttributes.Remove("extraJsContextParam");
+							}
+				
 							if (funcAttributes["extraArgcParam"] != null)
 							{
 								member.Parameters.Add(new CodeParameterDeclarationExpression(new CodeTypeReference("System.Int32"), "argc"));
 								funcAttributes.Remove("extraArgcParam");
-							}
+							}									
 				
 							if (rt_AST == null)
 								memberRet = null;
@@ -10274,6 +10294,12 @@ _loop222_breakloop:				;
 				tmp350_AST = astFactory.create(LT(1));
 				astFactory.addASTChild(ref currentAST, tmp350_AST);
 				match(LITERAL_implicit_jscontext);
+				if (0==inputState.guessing)
+				{
+					
+								attributes.Add("extraJsContextParam", new CodeAttributeArgument());
+							
+				}
 				function_attribute_AST = currentAST.root;
 				break;
 			}
@@ -10955,7 +10981,8 @@ _loop245_breakloop:					;
 				astFactory.addASTChild(ref currentAST, tmp380_AST);
 				match(LITERAL_array);
 				if (0==inputState.guessing)
-				{					
+				{
+					
 								// Mark parameter as needing to be converted into an array type.
 								attributes["array"] = true;
 							
