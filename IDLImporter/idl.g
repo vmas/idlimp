@@ -289,6 +289,9 @@ attribute [IDictionary attributes]
 	| "astring"
 	| "jsval"
 	| "builtinclass"
+	| "getter"
+	| "setter"
+	| "forward" LPAREN identifier RPAREN
 	;
 	
 non_rparen
@@ -1324,7 +1327,7 @@ identifier
 	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
 	| "callback" | "import" | "union" | "struct" | "entry" | "jsval"
-	| "retval"
+	| "retval" | "forward"
 	| IDENT
   	;
 
