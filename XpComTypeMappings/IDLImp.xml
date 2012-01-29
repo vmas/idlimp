@@ -178,7 +178,7 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.Bool</NewAttrValue>
+    <NewAttrValue>UnmanagedType.U1</NewAttrValue>
     <Match>(^|\s+)bool(ean)?</Match>
     <Replace>System.Boolean</Replace>
   </ParamTypeConversion>
