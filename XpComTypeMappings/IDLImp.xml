@@ -103,7 +103,7 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <Match>PRTime</Match>
-    <Replace>System.UInt32</Replace>
+    <Replace>System.UInt64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
