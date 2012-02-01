@@ -69,126 +69,129 @@ LITERAL_cstring="cstring"=69
 LITERAL_astring="astring"=70
 LITERAL_jsval="jsval"=71
 LITERAL_builtinclass="builtinclass"=72
-LITERAL_importlib="importlib"=73
-LITERAL_interface="interface"=74
-LITERAL_dispinterface="dispinterface"=75
-LITERAL_readonly="readonly"=76
-LITERAL_attribute="attribute"=77
-COLON(":")=78
-SCOPEOP("::")=79
-LITERAL_const="const"=80
-ASSIGN("=")=81
-STAR("*")=82
-OR("|")=83
-XOR("^")=84
-AND("&")=85
-LSHIFT("<<")=86
-RSHIFT(">>")=87
-PLUS("+")=88
-MINUS("-")=89
-DIV("/")=90
-MOD("%")=91
-TILDE("~")=92
-LITERAL_TRUE="TRUE"=93
-LITERAL_true="true"=94
-LITERAL_FALSE="FALSE"=95
-LITERAL_false="false"=96
-LITERAL_typedef="typedef"=97
-LITERAL_native="native"=98
-LITERAL_context_handle="context_handle"=99
-LITERAL_handle="handle"=100
-LITERAL_pipe="pipe"=101
-LITERAL_transmit_as="transmit_as"=102
-LITERAL_wire_marshal="wire_marshal"=103
-LITERAL_represent_as="represent_as"=104
-LITERAL_user_marshal="user_marshal"=105
-LITERAL_public="public"=106
-LITERAL_switch_type="switch_type"=107
-LITERAL_signed="signed"=108
-LITERAL_unsigned="unsigned"=109
-LITERAL_octet="octet"=110
-LITERAL_any="any"=111
-LITERAL_void="void"=112
-LITERAL_byte="byte"=113
-LITERAL_wchar_t="wchar_t"=114
-LITERAL_handle_t="handle_t"=115
-INT("an integer value")=116
-HEX("a hexadecimal value value")=117
-LITERAL_unique="unique"=118
-LITERAL_small="small"=119
-LITERAL_short="short"=120
-LITERAL_long="long"=121
-LITERAL_int="int"=122
-LITERAL_hyper="hyper"=123
-LITERAL_char="char"=124
-LITERAL_float="float"=125
-LITERAL_double="double"=126
-LITERAL_boolean="boolean"=127
-LITERAL_struct="struct"=128
-LITERAL_union="union"=129
-LITERAL_switch="switch"=130
-LITERAL_case="case"=131
-LITERAL_enum="enum"=132
-LITERAL_sequence="sequence"=133
-LT_("<")=134
-GT(">")=135
-LITERAL_string="string"=136
-RANGE("..")=137
-LITERAL_exception="exception"=138
-LITERAL_callback="callback"=139
-LITERAL_broadcast="broadcast"=140
-LITERAL_ignore="ignore"=141
-LITERAL_notxpcom="notxpcom"=142
-LITERAL_nostdcall="nostdcall"=143
-LITERAL_propget="propget"=144
-LITERAL_propput="propput"=145
-LITERAL_propputref="propputref"=146
-LITERAL_uidefault="uidefault"=147
-LITERAL_usesgetlasterror="usesgetlasterror"=148
-LITERAL_vararg="vararg"=149
-LITERAL_optional_argc="optional_argc"=150
-LITERAL_implicit_jscontext="implicit_jscontext"=151
-LITERAL_binaryname="binaryname"=152
-LITERAL_raises="raises"=153
-LITERAL_in="in"=154
-LITERAL_out="out"=155
-LITERAL_inout="inout"=156
-LITERAL_retval="retval"=157
-LITERAL_defaultvalue="defaultvalue"=158
-LITERAL_optional="optional"=159
-LITERAL_requestedit="requestedit"=160
-LITERAL_iid_is="iid_is"=161
-LITERAL_range="range"=162
-LITERAL_array="array"=163
-LITERAL_shared="shared"=164
-LITERAL_size_is="size_is"=165
-LITERAL_max_is="max_is"=166
-LITERAL_length_is="length_is"=167
-LITERAL_first_is="first_is"=168
-LITERAL_last_is="last_is"=169
-LITERAL_switch_is="switch_is"=170
-LITERAL_source="source"=171
-LITERAL_context="context"=172
-LITERAL_SAFEARRAY="SAFEARRAY"=173
-OCTAL=174
-LITERAL_L="L"=175
-STRING_LITERAL("a string literal")=176
-CHAR_LITERAL("a character literal")=177
-FLOAT("an floating point value")=178
-IDENT("an identifer")=179
-LITERAL_cpp_quote="cpp_quote"=180
-LITERAL_midl_pragma_warning="midl_pragma_warning"=181
-QUESTION("?")=182
-DOT(".")=183
-NOT("!")=184
-QUOTE("double quotes")=185
-WS_("white space")=186
-PREPROC_DIRECTIVE("a preprocessor directive")=187
-SL_COMMENT("a comment")=188
-OTHER_LANG_BLOCK("Other lang block like C++")=189
-ML_COMMENT("a comment")=190
-ESC("an escape sequence")=191
-VOCAB("an escaped character value")=192
-DIGIT("a digit")=193
-OCTDIGIT("an octal digit")=194
-HEXDIGIT("a hexadecimal digit")=195
+LITERAL_getter="getter"=73
+LITERAL_setter="setter"=74
+LITERAL_forward="forward"=75
+LITERAL_importlib="importlib"=76
+LITERAL_interface="interface"=77
+LITERAL_dispinterface="dispinterface"=78
+LITERAL_readonly="readonly"=79
+LITERAL_attribute="attribute"=80
+COLON(":")=81
+SCOPEOP("::")=82
+LITERAL_const="const"=83
+ASSIGN("=")=84
+STAR("*")=85
+OR("|")=86
+XOR("^")=87
+AND("&")=88
+LSHIFT("<<")=89
+RSHIFT(">>")=90
+PLUS("+")=91
+MINUS("-")=92
+DIV("/")=93
+MOD("%")=94
+TILDE("~")=95
+LITERAL_TRUE="TRUE"=96
+LITERAL_true="true"=97
+LITERAL_FALSE="FALSE"=98
+LITERAL_false="false"=99
+LITERAL_typedef="typedef"=100
+LITERAL_native="native"=101
+LITERAL_context_handle="context_handle"=102
+LITERAL_handle="handle"=103
+LITERAL_pipe="pipe"=104
+LITERAL_transmit_as="transmit_as"=105
+LITERAL_wire_marshal="wire_marshal"=106
+LITERAL_represent_as="represent_as"=107
+LITERAL_user_marshal="user_marshal"=108
+LITERAL_public="public"=109
+LITERAL_switch_type="switch_type"=110
+LITERAL_signed="signed"=111
+LITERAL_unsigned="unsigned"=112
+LITERAL_octet="octet"=113
+LITERAL_any="any"=114
+LITERAL_void="void"=115
+LITERAL_byte="byte"=116
+LITERAL_wchar_t="wchar_t"=117
+LITERAL_handle_t="handle_t"=118
+INT("an integer value")=119
+HEX("a hexadecimal value value")=120
+LITERAL_unique="unique"=121
+LITERAL_small="small"=122
+LITERAL_short="short"=123
+LITERAL_long="long"=124
+LITERAL_int="int"=125
+LITERAL_hyper="hyper"=126
+LITERAL_char="char"=127
+LITERAL_float="float"=128
+LITERAL_double="double"=129
+LITERAL_boolean="boolean"=130
+LITERAL_struct="struct"=131
+LITERAL_union="union"=132
+LITERAL_switch="switch"=133
+LITERAL_case="case"=134
+LITERAL_enum="enum"=135
+LITERAL_sequence="sequence"=136
+LT_("<")=137
+GT(">")=138
+LITERAL_string="string"=139
+RANGE("..")=140
+LITERAL_exception="exception"=141
+LITERAL_callback="callback"=142
+LITERAL_broadcast="broadcast"=143
+LITERAL_ignore="ignore"=144
+LITERAL_notxpcom="notxpcom"=145
+LITERAL_nostdcall="nostdcall"=146
+LITERAL_propget="propget"=147
+LITERAL_propput="propput"=148
+LITERAL_propputref="propputref"=149
+LITERAL_uidefault="uidefault"=150
+LITERAL_usesgetlasterror="usesgetlasterror"=151
+LITERAL_vararg="vararg"=152
+LITERAL_optional_argc="optional_argc"=153
+LITERAL_implicit_jscontext="implicit_jscontext"=154
+LITERAL_binaryname="binaryname"=155
+LITERAL_raises="raises"=156
+LITERAL_in="in"=157
+LITERAL_out="out"=158
+LITERAL_inout="inout"=159
+LITERAL_retval="retval"=160
+LITERAL_defaultvalue="defaultvalue"=161
+LITERAL_optional="optional"=162
+LITERAL_requestedit="requestedit"=163
+LITERAL_iid_is="iid_is"=164
+LITERAL_range="range"=165
+LITERAL_array="array"=166
+LITERAL_shared="shared"=167
+LITERAL_size_is="size_is"=168
+LITERAL_max_is="max_is"=169
+LITERAL_length_is="length_is"=170
+LITERAL_first_is="first_is"=171
+LITERAL_last_is="last_is"=172
+LITERAL_switch_is="switch_is"=173
+LITERAL_source="source"=174
+LITERAL_context="context"=175
+LITERAL_SAFEARRAY="SAFEARRAY"=176
+OCTAL=177
+LITERAL_L="L"=178
+STRING_LITERAL("a string literal")=179
+CHAR_LITERAL("a character literal")=180
+FLOAT("an floating point value")=181
+IDENT("an identifer")=182
+LITERAL_cpp_quote="cpp_quote"=183
+LITERAL_midl_pragma_warning="midl_pragma_warning"=184
+QUESTION("?")=185
+DOT(".")=186
+NOT("!")=187
+QUOTE("double quotes")=188
+WS_("white space")=189
+PREPROC_DIRECTIVE("a preprocessor directive")=190
+SL_COMMENT("a comment")=191
+OTHER_LANG_BLOCK("Other lang block like C++")=192
+ML_COMMENT("a comment")=193
+ESC("an escape sequence")=194
+VOCAB("an escaped character value")=195
+DIGIT("a digit")=196
+OCTDIGIT("an octal digit")=197
+HEXDIGIT("a hexadecimal digit")=198
