@@ -53,12 +53,12 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <Match>unsigned long long</Match>
-    <Replace>System.UInt32</Replace>
+    <Replace>System.UInt64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <Match>long long</Match>
-    <Replace>System.Int32</Replace>
+    <Replace>System.Int64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
@@ -103,7 +103,7 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <Match>PRTime</Match>
-    <Replace>System.UInt64</Replace>
+    <Replace>System.Int64</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
