@@ -236,14 +236,14 @@
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTest)?(ns)?(DOMString)($|\s)</Match>
-    <Replace>nsAString</Replace>
+    <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTestns)?(AString)($|\s)</Match>
-    <Replace>nsAString</Replace>
+    <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
@@ -257,7 +257,7 @@
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>AUTF8String</Match>
-    <Replace>nsAUTF8String</Replace>
+    <Replace>nsAUTF8StringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
