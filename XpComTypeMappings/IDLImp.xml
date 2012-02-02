@@ -250,7 +250,7 @@
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
     <Match>ACString</Match>
-    <Replace>nsACString</Replace>
+    <Replace>nsACStringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
