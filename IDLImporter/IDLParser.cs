@@ -642,11 +642,15 @@ _loop3_breakloop:				;
 															System.Diagnostics.Debug.WriteLine(string.Format("\nInterface declaration found {0}\n\n", decl.Name));
 															#endif
 															m_Conv.HandleInterface(decl, m_Namespace, attributes);
-															m_Namespace.Types.Add(decl);
+															m_Namespace.Types.Add(decl);						
 															// Remove any existing definition of the interface (maybe a forward declare) 
 															if (m_Namespace.UserData[decl.Name] != null)
 																m_Namespace.UserData.Remove(decl.Name);
 															m_Namespace.UserData.Add(decl.Name, decl);
+									
+															var constClass = IDLConversions.CreateClassContainingConsts(decl);
+															if (constClass != null)
+																m_Namespace.Types.Add(constClass);
 														}
 														else
 														{
@@ -1028,13 +1032,16 @@ _loop13_breakloop:				;
 		returnAST = import_AST;
 	}
 	
-	public void const_dcl() //throws RecognitionException, TokenStreamException
+	public ConstType  const_dcl() //throws RecognitionException, TokenStreamException
 {
+		ConstType t;
 		
 		returnAST = null;
 		ASTPair currentAST = new ASTPair();
 		AST const_dcl_AST = null;
-		string ignored;
+		AST ct_AST = null;
+		AST i_AST = null;
+		string const_value; t = null;
 		
 		try {      // for error handling
 			AST tmp17_AST = null;
@@ -1044,21 +1051,27 @@ _loop13_breakloop:				;
 			const_type();
 			if (0 == inputState.guessing)
 			{
+				ct_AST = (AST)returnAST;
 				astFactory.addASTChild(ref currentAST, returnAST);
 			}
 			identifier();
 			if (0 == inputState.guessing)
 			{
+				i_AST = (AST)returnAST;
 				astFactory.addASTChild(ref currentAST, returnAST);
 			}
 			AST tmp18_AST = null;
 			tmp18_AST = astFactory.create(LT(1));
 			astFactory.addASTChild(ref currentAST, tmp18_AST);
 			match(ASSIGN);
-			ignored=const_exp();
+			const_value=const_exp();
 			if (0 == inputState.guessing)
 			{
 				astFactory.addASTChild(ref currentAST, returnAST);
+			}
+			if (0==inputState.guessing)
+			{
+				t = new ConstType(ct_AST.getText(), i_AST.getText(), const_value, CommentSnatcher.GetLastComment()); CommentSnatcher.ClearComment();
 			}
 			const_dcl_AST = currentAST.root;
 		}
@@ -1075,6 +1088,7 @@ _loop13_breakloop:				;
 			}
 		}
 		returnAST = const_dcl_AST;
+		return t;
 	}
 	
 	public void except_dcl() //throws RecognitionException, TokenStreamException
@@ -1270,7 +1284,9 @@ _loop19_breakloop:				;
 				bool fForwardDeclaration = true;
 				StringCollection inherits;
 				type = new CodeTypeDeclaration(); 
-				type.IsInterface = true;
+				type.IsInterface = true;		
+				var currentInterfacesConsts = new List<ConstType>();
+				type.UserData.Add("consts", currentInterfacesConsts);
 			
 		
 		try {      // for error handling
@@ -3962,6 +3978,7 @@ _loop38_breakloop:				;
 				CodeTypeMember ignored;
 				fForwardDeclaration = false;
 				Hashtable funcAttributes = new Hashtable();
+				ConstType constType;
 			
 		
 		try {      // for error handling
@@ -3969,7 +3986,7 @@ _loop38_breakloop:				;
 			{
 			case LITERAL_const:
 			{
-				const_dcl();
+				constType=const_dcl();
 				if (0 == inputState.guessing)
 				{
 					astFactory.addASTChild(ref currentAST, returnAST);
@@ -3978,6 +3995,12 @@ _loop38_breakloop:				;
 				tmp200_AST = astFactory.create(LT(1));
 				astFactory.addASTChild(ref currentAST, tmp200_AST);
 				match(SEMI);
+				if (0==inputState.guessing)
+				{
+					if (constType != null)
+								((List<ConstType>)type.UserData["consts"]).Add(constType); 
+							
+				}
 				interface_body_AST = currentAST.root;
 				break;
 			}

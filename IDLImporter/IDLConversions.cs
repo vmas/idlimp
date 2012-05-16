@@ -976,6 +976,46 @@ namespace SIL.FieldWorks.Tools
 			return str.Substring(0, 1).ToUpper() + str.Substring(1);
 		}
 
+		/// <summary>
+		/// If type contains a UserData("const") (which is a List<ConstType>) that isn't an empty list
+		/// Generate a class containing the consts with a name like 'class {InterfaceName}Consts { }'
+		/// </summary>
+		/// <param name="type">the interface type that may contain consts</param>
+		public static CodeTypeDeclaration CreateClassContainingConsts(CodeTypeDeclaration type)
+		{
+			List<ConstType> constsList = (List<ConstType>)type.UserData["consts"];
+			if (constsList.Count == 0)
+				return null;
+
+			CodeTypeDeclaration constClass = new CodeTypeDeclaration(type.Name + "Consts");			
+			foreach (var i in constsList)
+			{
+				string convertedType = i.Type;
+				// TODO: functionarilze this type convertion
+				if (convertedType == "long")
+					convertedType = "System.Int64";
+				else if (convertedType == "unsigned")
+					convertedType = "System.UInt64";
+				else if (convertedType == "short")
+					convertedType = "System.Int32";
+				else if (convertedType == "PRInt32")
+					convertedType = "System.Int32";
+				else
+					// default to long
+					// TODO: add more types - or allow specifying const type replacement in xml file...
+					convertedType = "System.Int64";					
+					
+				CodeMemberField m = new CodeMemberField(new CodeTypeReference(new CodeTypeParameter(convertedType)), i.Label);
+				m.Attributes = (m.Attributes & ~MemberAttributes.AccessMask & ~MemberAttributes.ScopeMask) | MemberAttributes.Public | MemberAttributes.Const;
+				m.Comments.Add(new CodeCommentStatement(i.Comment));				
+				m.InitExpression = new CodeSnippetExpression(i.Value);
+
+				constClass.Members.Add(m);
+			}
+
+			return constClass;
+		}
+
 		#endregion
 
 		#region Conversions based on XML configuration file

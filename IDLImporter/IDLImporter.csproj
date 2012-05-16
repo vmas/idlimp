@@ -97,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CommentSnatcher.cs" />
+    <Compile Include="ConstType.cs" />
     <Compile Include="CSharpCodeProviderEx.cs">
       <SubType>Component</SubType>
     </Compile>

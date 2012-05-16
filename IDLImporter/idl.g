@@ -133,11 +133,15 @@ definition
 						System.Diagnostics.Debug.WriteLine(string.Format("\nInterface declaration found {0}\n\n", decl.Name));
 						#endif
 						m_Conv.HandleInterface(decl, m_Namespace, attributes);
- 						m_Namespace.Types.Add(decl);
+ 						m_Namespace.Types.Add(decl);						
 						// Remove any existing definition of the interface (maybe a forward declare) 
 						if (m_Namespace.UserData[decl.Name] != null)
 							m_Namespace.UserData.Remove(decl.Name);
  						m_Namespace.UserData.Add(decl.Name, decl);
+
+						var constClass = IDLConversions.CreateClassContainingConsts(decl);
+						if (constClass != null)
+							m_Namespace.Types.Add(constClass);
  					}
 					else
 					{
@@ -325,7 +329,9 @@ interf returns [CodeTypeDeclaration type]
 		bool fForwardDeclaration = true;
 		StringCollection inherits;
 		type = new CodeTypeDeclaration(); 
-		type.IsInterface = true;
+		type.IsInterface = true;		
+		var currentInterfacesConsts = new List<ConstType>();
+		type.UserData.Add("consts", currentInterfacesConsts);
 	}
 	: ("interface"^ | "dispinterface"^) name:identifier inherits=inheritance_spec
  	    (LBRACE! 
@@ -358,9 +364,13 @@ interface_body [CodeTypeDeclaration type] returns [bool fForwardDeclaration]
 		CodeTypeMember ignored;
 		fForwardDeclaration = false;
 		Hashtable funcAttributes = new Hashtable();
+		ConstType constType;
 	}
 	: ignored=type_dcl SEMI
-	| const_dcl SEMI
+	| constType = const_dcl SEMI
+		{ if (constType != null)
+			((List<ConstType>)type.UserData["consts"]).Add(constType); 
+		}
 	| except_dcl SEMI
 	| ( (function_attribute_list[funcAttributes])? ("readonly")? "attribute" ) => (function_attribute_list[funcAttributes])? members=attr_dcl[type.Members, funcAttributes] SEMI
 		{
@@ -393,9 +403,10 @@ scoped_name
 	: (SCOPEOP)? identifier (SCOPEOP identifier)*
 	;
 
-const_dcl
-	{ string ignored; }
-	: "const" const_type identifier ASSIGN ignored=const_exp
+const_dcl returns [ConstType t]
+	{ string const_value; t = null;}
+	: "const" ct:const_type i:identifier ASSIGN const_value=const_exp
+		{ t = new ConstType(#ct.getText(), #i.getText(), const_value, CommentSnatcher.GetLastComment()); CommentSnatcher.ClearComment(); }	
 	;
 
 const_type 
