@@ -105,6 +105,7 @@ definition
 					m_Namespace.UserData.Add(type.Name, type);
 				}
 			}
+		| ("dictionary" identifier (COLON identifier)? LBRACE (dictionary_entry)* RBRACE) => dictionary SEMI!
 		| import SEMI!
 	    | c:const_dcl SEMI!
 			{ 
@@ -178,7 +179,7 @@ definition
 			#endif
 			}	    
 		| importlib SEMI!
-	    | cpp_quote!
+	    | cpp_quote!		
 	    | mi:midl_pragma_warning!
 			{ 
 			#if DEBUG_IDLGRAMMAR
@@ -294,6 +295,7 @@ attribute [IDictionary attributes]
 	| "jsval"
 	| "builtinclass"
 	| "getter"
+	| "stringifier"
 	| "setter"
 	| "forward" LPAREN identifier RPAREN
 	;
@@ -322,6 +324,15 @@ importlib
 				System.Diagnostics.Debug.WriteLine("importlib " + str_AST.getText());
 			#endif
 			}
+	;
+
+// poorly parse and ignore dictionary entries
+dictionary
+	: "dictionary" identifier (COLON identifier)? LBRACE (dictionary_entry)* RBRACE
+	;
+
+dictionary_entry
+	:  param_type_spec (QUESTION)? identifier (ASSIGN const_exp)? SEMI
 	;
 	
 interf returns [CodeTypeDeclaration type]
@@ -1282,7 +1293,7 @@ field_attribute [IDictionary attributes]
 	| "first_is" LPAREN attr_vars RPAREN
 	| "last_is" LPAREN attr_vars RPAREN
 	| "switch_is" LPAREN attr_var RPAREN
-	| "source"
+	| "source"	
 	| string_type
 		{ attributes.Add("string", new CodeAttributeArgument());}
 	| ptr_attr
@@ -1309,7 +1320,7 @@ uuid_literal
 param_type_spec
 	: (base_type_spec 
 		| string_type
-		| scoped_name (LT_ identifier (COMMA identifier)* (STAR)* GT)? (STAR)* // TODO
+		| scoped_name (LT_ identifier (LT_ identifier GT)? (COMMA identifier)* (STAR)* GT)? (STAR)* // TODO
 		| "SAFEARRAY" LPAREN identifier (STAR)* RPAREN (STAR)*
 		)
 	;
@@ -1337,8 +1348,8 @@ floating_pt_or_integer_literal
 identifier
 	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
-	| "callback" | "import" | "union" | "struct" | "entry" | "jsval"
-	| "retval" | "forward"
+	| "callback" | "import" | "union" | "struct" | "entry" | "jsval" | "boolean"
+	| "retval" | "forward" | "dictionary"
 	| IDENT
   	;
 

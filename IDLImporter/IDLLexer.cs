@@ -68,197 +68,199 @@ namespace SIL.FieldWorks.Tools
 		public const int INT3264 = 5;
 		public const int INT64 = 6;
 		public const int SEMI = 7;
-		public const int LBRACKET = 8;
-		public const int RBRACKET = 9;
-		public const int LITERAL_module = 10;
-		public const int LBRACE = 11;
-		public const int RBRACE = 12;
-		public const int LITERAL_import = 13;
-		public const int COMMA = 14;
-		public const int LITERAL_library = 15;
-		public const int LITERAL_coclass = 16;
-		public const int LITERAL_uuid = 17;
-		public const int LITERAL_version = 18;
-		public const int LPAREN = 19;
-		public const int RPAREN = 20;
-		public const int LITERAL_async_uuid = 21;
-		public const int LITERAL_local = 22;
-		public const int LITERAL_object = 23;
-		public const int LITERAL_pointer_default = 24;
-		public const int LITERAL_endpoint = 25;
-		public const int LITERAL_odl = 26;
-		public const int LITERAL_optimize = 27;
-		public const int LITERAL_proxy = 28;
-		public const int LITERAL_aggregatable = 29;
-		public const int LITERAL_appobject = 30;
-		public const int LITERAL_bindable = 31;
-		public const int LITERAL_control = 32;
-		public const int LITERAL_custom = 33;
-		public const int LITERAL_default = 34;
-		public const int LITERAL_defaultbind = 35;
-		public const int LITERAL_defaultcollelem = 36;
-		public const int LITERAL_defaultvtable = 37;
-		public const int LITERAL_displaybind = 38;
-		public const int LITERAL_dllname = 39;
-		public const int LITERAL_dual = 40;
-		public const int LITERAL_entry = 41;
-		public const int LITERAL_helpcontext = 42;
-		public const int LITERAL_helpfile = 43;
-		public const int LITERAL_helpstring = 44;
-		public const int LITERAL_helpstringdll = 45;
-		public const int LITERAL_hidden = 46;
-		public const int LITERAL_id = 47;
-		public const int LITERAL_idempotent = 48;
-		public const int LITERAL_immediatebind = 49;
-		public const int LITERAL_lcid = 50;
-		public const int LITERAL_licensed = 51;
-		public const int LITERAL_message = 52;
-		public const int LITERAL_nonbrowsable = 53;
-		public const int LITERAL_noncreatable = 54;
-		public const int LITERAL_nonextensible = 55;
-		public const int LITERAL_oleautomation = 56;
-		public const int LITERAL_restricted = 57;
-		public const int LITERAL_ref = 58;
-		public const int LITERAL_ptr = 59;
-		public const int LITERAL_function = 60;
-		public const int LITERAL_scriptable = 61;
-		public const int LITERAL_deprecated = 62;
-		public const int LITERAL_Undefined = 63;
-		public const int LITERAL_noscript = 64;
-		public const int LITERAL_Null = 65;
-		public const int LITERAL_nsid = 66;
-		public const int LITERAL_domstring = 67;
-		// "utf8string" = 68
-		public const int LITERAL_cstring = 69;
-		public const int LITERAL_astring = 70;
-		public const int LITERAL_jsval = 71;
-		public const int LITERAL_builtinclass = 72;
-		public const int LITERAL_getter = 73;
-		public const int LITERAL_setter = 74;
-		public const int LITERAL_forward = 75;
-		public const int LITERAL_importlib = 76;
-		public const int LITERAL_interface = 77;
-		public const int LITERAL_dispinterface = 78;
-		public const int LITERAL_readonly = 79;
-		public const int LITERAL_attribute = 80;
-		public const int COLON = 81;
-		public const int SCOPEOP = 82;
-		public const int LITERAL_const = 83;
-		public const int ASSIGN = 84;
-		public const int STAR = 85;
-		public const int OR = 86;
-		public const int XOR = 87;
-		public const int AND = 88;
-		public const int LSHIFT = 89;
-		public const int RSHIFT = 90;
-		public const int PLUS = 91;
-		public const int MINUS = 92;
-		public const int DIV = 93;
-		public const int MOD = 94;
-		public const int TILDE = 95;
-		public const int LITERAL_TRUE = 96;
-		public const int LITERAL_true = 97;
-		public const int LITERAL_FALSE = 98;
-		public const int LITERAL_false = 99;
-		public const int LITERAL_typedef = 100;
-		public const int LITERAL_native = 101;
-		public const int LITERAL_context_handle = 102;
-		public const int LITERAL_handle = 103;
-		public const int LITERAL_pipe = 104;
-		public const int LITERAL_transmit_as = 105;
-		public const int LITERAL_wire_marshal = 106;
-		public const int LITERAL_represent_as = 107;
-		public const int LITERAL_user_marshal = 108;
-		public const int LITERAL_public = 109;
-		public const int LITERAL_switch_type = 110;
-		public const int LITERAL_signed = 111;
-		public const int LITERAL_unsigned = 112;
-		public const int LITERAL_octet = 113;
-		public const int LITERAL_any = 114;
-		public const int LITERAL_void = 115;
-		public const int LITERAL_byte = 116;
-		public const int LITERAL_wchar_t = 117;
-		public const int LITERAL_handle_t = 118;
-		public const int INT = 119;
-		public const int HEX = 120;
-		public const int LITERAL_unique = 121;
-		public const int LITERAL_small = 122;
-		public const int LITERAL_short = 123;
-		public const int LITERAL_long = 124;
-		public const int LITERAL_int = 125;
-		public const int LITERAL_hyper = 126;
-		public const int LITERAL_char = 127;
-		public const int LITERAL_float = 128;
-		public const int LITERAL_double = 129;
-		public const int LITERAL_boolean = 130;
-		public const int LITERAL_struct = 131;
-		public const int LITERAL_union = 132;
-		public const int LITERAL_switch = 133;
-		public const int LITERAL_case = 134;
-		public const int LITERAL_enum = 135;
-		public const int LITERAL_sequence = 136;
-		public const int LT_ = 137;
-		public const int GT = 138;
-		public const int LITERAL_string = 139;
-		public const int RANGE = 140;
-		public const int LITERAL_exception = 141;
-		public const int LITERAL_callback = 142;
-		public const int LITERAL_broadcast = 143;
-		public const int LITERAL_ignore = 144;
-		public const int LITERAL_notxpcom = 145;
-		public const int LITERAL_nostdcall = 146;
-		public const int LITERAL_propget = 147;
-		public const int LITERAL_propput = 148;
-		public const int LITERAL_propputref = 149;
-		public const int LITERAL_uidefault = 150;
-		public const int LITERAL_usesgetlasterror = 151;
-		public const int LITERAL_vararg = 152;
-		public const int LITERAL_optional_argc = 153;
-		public const int LITERAL_implicit_jscontext = 154;
-		public const int LITERAL_binaryname = 155;
-		public const int LITERAL_raises = 156;
-		public const int LITERAL_in = 157;
-		public const int LITERAL_out = 158;
-		public const int LITERAL_inout = 159;
-		public const int LITERAL_retval = 160;
-		public const int LITERAL_defaultvalue = 161;
-		public const int LITERAL_optional = 162;
-		public const int LITERAL_requestedit = 163;
-		public const int LITERAL_iid_is = 164;
-		public const int LITERAL_range = 165;
-		public const int LITERAL_array = 166;
-		public const int LITERAL_shared = 167;
-		public const int LITERAL_size_is = 168;
-		public const int LITERAL_max_is = 169;
-		public const int LITERAL_length_is = 170;
-		public const int LITERAL_first_is = 171;
-		public const int LITERAL_last_is = 172;
-		public const int LITERAL_switch_is = 173;
-		public const int LITERAL_source = 174;
-		public const int LITERAL_context = 175;
-		public const int LITERAL_SAFEARRAY = 176;
-		public const int OCTAL = 177;
-		public const int LITERAL_L = 178;
-		public const int STRING_LITERAL = 179;
-		public const int CHAR_LITERAL = 180;
-		public const int FLOAT = 181;
-		public const int IDENT = 182;
-		public const int LITERAL_cpp_quote = 183;
-		public const int LITERAL_midl_pragma_warning = 184;
-		public const int QUESTION = 185;
-		public const int DOT = 186;
-		public const int NOT = 187;
-		public const int QUOTE = 188;
-		public const int WS_ = 189;
-		public const int PREPROC_DIRECTIVE = 190;
-		public const int SL_COMMENT = 191;
-		public const int OTHER_LANG_BLOCK = 192;
-		public const int ML_COMMENT = 193;
-		public const int ESC = 194;
-		public const int VOCAB = 195;
-		public const int DIGIT = 196;
-		public const int OCTDIGIT = 197;
-		public const int HEXDIGIT = 198;
+		public const int LITERAL_dictionary = 8;
+		public const int COLON = 9;
+		public const int LBRACE = 10;
+		public const int RBRACE = 11;
+		public const int LBRACKET = 12;
+		public const int RBRACKET = 13;
+		public const int LITERAL_module = 14;
+		public const int LITERAL_import = 15;
+		public const int COMMA = 16;
+		public const int LITERAL_library = 17;
+		public const int LITERAL_coclass = 18;
+		public const int LITERAL_uuid = 19;
+		public const int LITERAL_version = 20;
+		public const int LPAREN = 21;
+		public const int RPAREN = 22;
+		public const int LITERAL_async_uuid = 23;
+		public const int LITERAL_local = 24;
+		public const int LITERAL_object = 25;
+		public const int LITERAL_pointer_default = 26;
+		public const int LITERAL_endpoint = 27;
+		public const int LITERAL_odl = 28;
+		public const int LITERAL_optimize = 29;
+		public const int LITERAL_proxy = 30;
+		public const int LITERAL_aggregatable = 31;
+		public const int LITERAL_appobject = 32;
+		public const int LITERAL_bindable = 33;
+		public const int LITERAL_control = 34;
+		public const int LITERAL_custom = 35;
+		public const int LITERAL_default = 36;
+		public const int LITERAL_defaultbind = 37;
+		public const int LITERAL_defaultcollelem = 38;
+		public const int LITERAL_defaultvtable = 39;
+		public const int LITERAL_displaybind = 40;
+		public const int LITERAL_dllname = 41;
+		public const int LITERAL_dual = 42;
+		public const int LITERAL_entry = 43;
+		public const int LITERAL_helpcontext = 44;
+		public const int LITERAL_helpfile = 45;
+		public const int LITERAL_helpstring = 46;
+		public const int LITERAL_helpstringdll = 47;
+		public const int LITERAL_hidden = 48;
+		public const int LITERAL_id = 49;
+		public const int LITERAL_idempotent = 50;
+		public const int LITERAL_immediatebind = 51;
+		public const int LITERAL_lcid = 52;
+		public const int LITERAL_licensed = 53;
+		public const int LITERAL_message = 54;
+		public const int LITERAL_nonbrowsable = 55;
+		public const int LITERAL_noncreatable = 56;
+		public const int LITERAL_nonextensible = 57;
+		public const int LITERAL_oleautomation = 58;
+		public const int LITERAL_restricted = 59;
+		public const int LITERAL_ref = 60;
+		public const int LITERAL_ptr = 61;
+		public const int LITERAL_function = 62;
+		public const int LITERAL_scriptable = 63;
+		public const int LITERAL_deprecated = 64;
+		public const int LITERAL_Undefined = 65;
+		public const int LITERAL_noscript = 66;
+		public const int LITERAL_Null = 67;
+		public const int LITERAL_nsid = 68;
+		public const int LITERAL_domstring = 69;
+		// "utf8string" = 70
+		public const int LITERAL_cstring = 71;
+		public const int LITERAL_astring = 72;
+		public const int LITERAL_jsval = 73;
+		public const int LITERAL_builtinclass = 74;
+		public const int LITERAL_getter = 75;
+		public const int LITERAL_stringifier = 76;
+		public const int LITERAL_setter = 77;
+		public const int LITERAL_forward = 78;
+		public const int LITERAL_importlib = 79;
+		public const int QUESTION = 80;
+		public const int ASSIGN = 81;
+		public const int LITERAL_interface = 82;
+		public const int LITERAL_dispinterface = 83;
+		public const int LITERAL_readonly = 84;
+		public const int LITERAL_attribute = 85;
+		public const int SCOPEOP = 86;
+		public const int LITERAL_const = 87;
+		public const int STAR = 88;
+		public const int OR = 89;
+		public const int XOR = 90;
+		public const int AND = 91;
+		public const int LSHIFT = 92;
+		public const int RSHIFT = 93;
+		public const int PLUS = 94;
+		public const int MINUS = 95;
+		public const int DIV = 96;
+		public const int MOD = 97;
+		public const int TILDE = 98;
+		public const int LITERAL_TRUE = 99;
+		public const int LITERAL_true = 100;
+		public const int LITERAL_FALSE = 101;
+		public const int LITERAL_false = 102;
+		public const int LITERAL_typedef = 103;
+		public const int LITERAL_native = 104;
+		public const int LITERAL_context_handle = 105;
+		public const int LITERAL_handle = 106;
+		public const int LITERAL_pipe = 107;
+		public const int LITERAL_transmit_as = 108;
+		public const int LITERAL_wire_marshal = 109;
+		public const int LITERAL_represent_as = 110;
+		public const int LITERAL_user_marshal = 111;
+		public const int LITERAL_public = 112;
+		public const int LITERAL_switch_type = 113;
+		public const int LITERAL_signed = 114;
+		public const int LITERAL_unsigned = 115;
+		public const int LITERAL_octet = 116;
+		public const int LITERAL_any = 117;
+		public const int LITERAL_void = 118;
+		public const int LITERAL_byte = 119;
+		public const int LITERAL_wchar_t = 120;
+		public const int LITERAL_handle_t = 121;
+		public const int INT = 122;
+		public const int HEX = 123;
+		public const int LITERAL_unique = 124;
+		public const int LITERAL_small = 125;
+		public const int LITERAL_short = 126;
+		public const int LITERAL_long = 127;
+		public const int LITERAL_int = 128;
+		public const int LITERAL_hyper = 129;
+		public const int LITERAL_char = 130;
+		public const int LITERAL_float = 131;
+		public const int LITERAL_double = 132;
+		public const int LITERAL_boolean = 133;
+		public const int LITERAL_struct = 134;
+		public const int LITERAL_union = 135;
+		public const int LITERAL_switch = 136;
+		public const int LITERAL_case = 137;
+		public const int LITERAL_enum = 138;
+		public const int LITERAL_sequence = 139;
+		public const int LT_ = 140;
+		public const int GT = 141;
+		public const int LITERAL_string = 142;
+		public const int RANGE = 143;
+		public const int LITERAL_exception = 144;
+		public const int LITERAL_callback = 145;
+		public const int LITERAL_broadcast = 146;
+		public const int LITERAL_ignore = 147;
+		public const int LITERAL_notxpcom = 148;
+		public const int LITERAL_nostdcall = 149;
+		public const int LITERAL_propget = 150;
+		public const int LITERAL_propput = 151;
+		public const int LITERAL_propputref = 152;
+		public const int LITERAL_uidefault = 153;
+		public const int LITERAL_usesgetlasterror = 154;
+		public const int LITERAL_vararg = 155;
+		public const int LITERAL_optional_argc = 156;
+		public const int LITERAL_implicit_jscontext = 157;
+		public const int LITERAL_binaryname = 158;
+		public const int LITERAL_raises = 159;
+		public const int LITERAL_in = 160;
+		public const int LITERAL_out = 161;
+		public const int LITERAL_inout = 162;
+		public const int LITERAL_retval = 163;
+		public const int LITERAL_defaultvalue = 164;
+		public const int LITERAL_optional = 165;
+		public const int LITERAL_requestedit = 166;
+		public const int LITERAL_iid_is = 167;
+		public const int LITERAL_range = 168;
+		public const int LITERAL_array = 169;
+		public const int LITERAL_shared = 170;
+		public const int LITERAL_size_is = 171;
+		public const int LITERAL_max_is = 172;
+		public const int LITERAL_length_is = 173;
+		public const int LITERAL_first_is = 174;
+		public const int LITERAL_last_is = 175;
+		public const int LITERAL_switch_is = 176;
+		public const int LITERAL_source = 177;
+		public const int LITERAL_context = 178;
+		public const int LITERAL_SAFEARRAY = 179;
+		public const int OCTAL = 180;
+		public const int LITERAL_L = 181;
+		public const int STRING_LITERAL = 182;
+		public const int CHAR_LITERAL = 183;
+		public const int FLOAT = 184;
+		public const int IDENT = 185;
+		public const int LITERAL_cpp_quote = 186;
+		public const int LITERAL_midl_pragma_warning = 187;
+		public const int DOT = 188;
+		public const int NOT = 189;
+		public const int QUOTE = 190;
+		public const int WS_ = 191;
+		public const int PREPROC_DIRECTIVE = 192;
+		public const int SL_COMMENT = 193;
+		public const int OTHER_LANG_BLOCK = 194;
+		public const int ML_COMMENT = 195;
+		public const int ESC = 196;
+		public const int VOCAB = 197;
+		public const int DIGIT = 198;
+		public const int OCTDIGIT = 199;
+		public const int HEXDIGIT = 200;
 		
 		public IDLLexer(Stream ins) : this(new ByteBuffer(ins))
 		{
@@ -281,155 +283,157 @@ namespace SIL.FieldWorks.Tools
 			caseSensitiveLiterals = true;
 			setCaseSensitive(true);
 			literals = new Hashtable(100, (float) 0.4, null, Comparer.Default);
-			literals.Add("local", 22);
-			literals.Add("size_is", 168);
-			literals.Add("optional", 162);
-			literals.Add("proxy", 28);
-			literals.Add("last_is", 172);
-			literals.Add("nsid", 66);
-			literals.Add("byte", 116);
-			literals.Add("public", 109);
-			literals.Add("represent_as", 107);
-			literals.Add("case", 134);
-			literals.Add("message", 52);
-			literals.Add("short", 123);
-			literals.Add("uidefault", 150);
-			literals.Add("raises", 156);
-			literals.Add("defaultbind", 35);
-			literals.Add("object", 23);
-			literals.Add("ignore", 144);
-			literals.Add("readonly", 79);
-			literals.Add("lcid", 50);
-			literals.Add("propputref", 149);
-			literals.Add("octet", 113);
-			literals.Add("wire_marshal", 106);
-			literals.Add("implicit_jscontext", 154);
-			literals.Add("shared", 167);
-			literals.Add("licensed", 51);
-			literals.Add("module", 10);
-			literals.Add("unsigned", 112);
-			literals.Add("const", 83);
-			literals.Add("float", 128);
-			literals.Add("context_handle", 102);
-			literals.Add("context", 175);
-			literals.Add("length_is", 170);
-			literals.Add("inout", 159);
-			literals.Add("source", 174);
-			literals.Add("retval", 160);
-			literals.Add("defaultvalue", 161);
-			literals.Add("ptr", 59);
-			literals.Add("appobject", 30);
-			literals.Add("first_is", 171);
-			literals.Add("optional_argc", 153);
-			literals.Add("noncreatable", 54);
-			literals.Add("control", 32);
-			literals.Add("handle", 103);
-			literals.Add("Null", 65);
-			literals.Add("optimize", 27);
-			literals.Add("importlib", 76);
-			literals.Add("small", 122);
-			literals.Add("binaryname", 155);
-			literals.Add("ref", 58);
-			literals.Add("handle_t", 118);
-			literals.Add("setter", 74);
-			literals.Add("cstring", 69);
-			literals.Add("cpp_quote", 183);
-			literals.Add("notxpcom", 145);
-			literals.Add("custom", 33);
-			literals.Add("range", 165);
-			literals.Add("function", 60);
-			literals.Add("out", 158);
-			literals.Add("callback", 142);
-			literals.Add("library", 15);
-			literals.Add("displaybind", 38);
-			literals.Add("native", 101);
-			literals.Add("iid_is", 164);
-			literals.Add("hyper", 126);
-			literals.Add("L", 178);
-			literals.Add("deprecated", 62);
-			literals.Add("entry", 41);
-			literals.Add("FALSE", 98);
-			literals.Add("usesgetlasterror", 151);
-			literals.Add("oleautomation", 56);
-			literals.Add("jsval", 71);
-			literals.Add("propput", 148);
-			literals.Add("version", 18);
-			literals.Add("typedef", 100);
-			literals.Add("nonbrowsable", 53);
-			literals.Add("interface", 77);
-			literals.Add("sequence", 136);
-			literals.Add("uuid", 17);
-			literals.Add("array", 166);
-			literals.Add("switch_type", 110);
-			literals.Add("pointer_default", 24);
-			literals.Add("broadcast", 143);
-			literals.Add("immediatebind", 49);
-			literals.Add("coclass", 16);
-			literals.Add("aggregatable", 29);
-			literals.Add("midl_pragma_warning", 184);
-			literals.Add("dispinterface", 78);
-			literals.Add("any", 114);
-			literals.Add("double", 129);
-			literals.Add("SAFEARRAY", 176);
-			literals.Add("utf8string", 68);
-			literals.Add("nonextensible", 55);
-			literals.Add("noscript", 64);
-			literals.Add("Undefined", 63);
-			literals.Add("union", 132);
-			literals.Add("getter", 73);
+			literals.Add("local", 24);
+			literals.Add("size_is", 171);
+			literals.Add("optional", 165);
+			literals.Add("proxy", 30);
+			literals.Add("last_is", 175);
+			literals.Add("nsid", 68);
+			literals.Add("byte", 119);
+			literals.Add("public", 112);
+			literals.Add("represent_as", 110);
+			literals.Add("case", 137);
+			literals.Add("message", 54);
+			literals.Add("short", 126);
+			literals.Add("uidefault", 153);
+			literals.Add("raises", 159);
+			literals.Add("dictionary", 8);
+			literals.Add("defaultbind", 37);
+			literals.Add("object", 25);
+			literals.Add("ignore", 147);
+			literals.Add("readonly", 84);
+			literals.Add("lcid", 52);
+			literals.Add("propputref", 152);
+			literals.Add("octet", 116);
+			literals.Add("wire_marshal", 109);
+			literals.Add("implicit_jscontext", 157);
+			literals.Add("shared", 170);
+			literals.Add("licensed", 53);
+			literals.Add("module", 14);
+			literals.Add("unsigned", 115);
+			literals.Add("const", 87);
+			literals.Add("float", 131);
+			literals.Add("context_handle", 105);
+			literals.Add("context", 178);
+			literals.Add("length_is", 173);
+			literals.Add("inout", 162);
+			literals.Add("source", 177);
+			literals.Add("retval", 163);
+			literals.Add("defaultvalue", 164);
+			literals.Add("ptr", 61);
+			literals.Add("appobject", 32);
+			literals.Add("first_is", 174);
+			literals.Add("optional_argc", 156);
+			literals.Add("noncreatable", 56);
+			literals.Add("control", 34);
+			literals.Add("handle", 106);
+			literals.Add("Null", 67);
+			literals.Add("optimize", 29);
+			literals.Add("importlib", 79);
+			literals.Add("small", 125);
+			literals.Add("binaryname", 158);
+			literals.Add("ref", 60);
+			literals.Add("handle_t", 121);
+			literals.Add("setter", 77);
+			literals.Add("cstring", 71);
+			literals.Add("cpp_quote", 186);
+			literals.Add("notxpcom", 148);
+			literals.Add("custom", 35);
+			literals.Add("range", 168);
+			literals.Add("function", 62);
+			literals.Add("out", 161);
+			literals.Add("callback", 145);
+			literals.Add("library", 17);
+			literals.Add("displaybind", 40);
+			literals.Add("native", 104);
+			literals.Add("iid_is", 167);
+			literals.Add("hyper", 129);
+			literals.Add("L", 181);
+			literals.Add("deprecated", 64);
+			literals.Add("entry", 43);
+			literals.Add("FALSE", 101);
+			literals.Add("usesgetlasterror", 154);
+			literals.Add("oleautomation", 58);
+			literals.Add("jsval", 73);
+			literals.Add("propput", 151);
+			literals.Add("version", 20);
+			literals.Add("typedef", 103);
+			literals.Add("nonbrowsable", 55);
+			literals.Add("interface", 82);
+			literals.Add("sequence", 139);
+			literals.Add("uuid", 19);
+			literals.Add("array", 169);
+			literals.Add("switch_type", 113);
+			literals.Add("pointer_default", 26);
+			literals.Add("broadcast", 146);
+			literals.Add("immediatebind", 51);
+			literals.Add("coclass", 18);
+			literals.Add("aggregatable", 31);
+			literals.Add("midl_pragma_warning", 187);
+			literals.Add("dispinterface", 83);
+			literals.Add("any", 117);
+			literals.Add("double", 132);
+			literals.Add("SAFEARRAY", 179);
+			literals.Add("stringifier", 76);
+			literals.Add("utf8string", 70);
+			literals.Add("nonextensible", 57);
+			literals.Add("noscript", 66);
+			literals.Add("Undefined", 65);
+			literals.Add("union", 135);
+			literals.Add("getter", 75);
 			literals.Add("__int3264", 5);
-			literals.Add("enum", 135);
-			literals.Add("pipe", 104);
-			literals.Add("propget", 147);
-			literals.Add("int", 125);
-			literals.Add("exception", 141);
-			literals.Add("switch_is", 173);
-			literals.Add("boolean", 130);
-			literals.Add("max_is", 169);
-			literals.Add("requestedit", 163);
-			literals.Add("char", 127);
-			literals.Add("astring", 70);
-			literals.Add("defaultvtable", 37);
-			literals.Add("string", 139);
-			literals.Add("default", 34);
-			literals.Add("odl", 26);
-			literals.Add("id", 47);
-			literals.Add("dual", 40);
-			literals.Add("helpstringdll", 45);
-			literals.Add("builtinclass", 72);
-			literals.Add("false", 99);
-			literals.Add("nostdcall", 146);
-			literals.Add("user_marshal", 108);
-			literals.Add("restricted", 57);
-			literals.Add("helpfile", 43);
-			literals.Add("bindable", 31);
-			literals.Add("dllname", 39);
-			literals.Add("attribute", 80);
+			literals.Add("enum", 138);
+			literals.Add("pipe", 107);
+			literals.Add("propget", 150);
+			literals.Add("int", 128);
+			literals.Add("exception", 144);
+			literals.Add("switch_is", 176);
+			literals.Add("boolean", 133);
+			literals.Add("max_is", 172);
+			literals.Add("requestedit", 166);
+			literals.Add("char", 130);
+			literals.Add("astring", 72);
+			literals.Add("defaultvtable", 39);
+			literals.Add("string", 142);
+			literals.Add("default", 36);
+			literals.Add("odl", 28);
+			literals.Add("id", 49);
+			literals.Add("dual", 42);
+			literals.Add("helpstringdll", 47);
+			literals.Add("builtinclass", 74);
+			literals.Add("false", 102);
+			literals.Add("nostdcall", 149);
+			literals.Add("user_marshal", 111);
+			literals.Add("restricted", 59);
+			literals.Add("helpfile", 45);
+			literals.Add("bindable", 33);
+			literals.Add("dllname", 41);
+			literals.Add("attribute", 85);
 			literals.Add("v1_enum", 4);
-			literals.Add("async_uuid", 21);
-			literals.Add("struct", 131);
+			literals.Add("async_uuid", 23);
+			literals.Add("struct", 134);
 			literals.Add("__int64", 6);
-			literals.Add("helpcontext", 42);
-			literals.Add("forward", 75);
-			literals.Add("signed", 111);
-			literals.Add("import", 13);
-			literals.Add("endpoint", 25);
-			literals.Add("in", 157);
-			literals.Add("TRUE", 96);
-			literals.Add("void", 115);
-			literals.Add("wchar_t", 117);
-			literals.Add("transmit_as", 105);
-			literals.Add("switch", 133);
-			literals.Add("defaultcollelem", 36);
-			literals.Add("helpstring", 44);
-			literals.Add("true", 97);
-			literals.Add("long", 124);
-			literals.Add("hidden", 46);
-			literals.Add("scriptable", 61);
-			literals.Add("unique", 121);
-			literals.Add("domstring", 67);
-			literals.Add("idempotent", 48);
-			literals.Add("vararg", 152);
+			literals.Add("helpcontext", 44);
+			literals.Add("forward", 78);
+			literals.Add("signed", 114);
+			literals.Add("import", 15);
+			literals.Add("endpoint", 27);
+			literals.Add("in", 160);
+			literals.Add("TRUE", 99);
+			literals.Add("void", 118);
+			literals.Add("wchar_t", 120);
+			literals.Add("transmit_as", 108);
+			literals.Add("switch", 136);
+			literals.Add("defaultcollelem", 38);
+			literals.Add("helpstring", 46);
+			literals.Add("true", 100);
+			literals.Add("long", 127);
+			literals.Add("hidden", 48);
+			literals.Add("scriptable", 63);
+			literals.Add("unique", 124);
+			literals.Add("domstring", 69);
+			literals.Add("idempotent", 50);
+			literals.Add("vararg", 155);
 		}
 		
 		override public IToken nextToken()			//throws TokenStreamException
@@ -1158,11 +1162,11 @@ tryAgain:
 				}
 				else
 				{
-					goto _loop318_breakloop;
+					goto _loop331_breakloop;
 				}
 				
 			}
-_loop318_breakloop:			;
+_loop331_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		newline(); _ttype = Token.SKIP;
@@ -1189,11 +1193,11 @@ _loop318_breakloop:			;
 				}
 				else
 				{
-					goto _loop321_breakloop;
+					goto _loop334_breakloop;
 				}
 				
 			}
-_loop321_breakloop:			;
+_loop334_breakloop:			;
 		}    // ( ... )*
 		match('\n');
 		_ttype = Token.SKIP; CommentSnatcher.StoreComment(text.ToString(_begin, text.Length-_begin), false); newline();
@@ -1228,11 +1232,11 @@ _loop321_breakloop:			;
 				}
 				else
 				{
-					goto _loop324_breakloop;
+					goto _loop337_breakloop;
 				}
 				
 			}
-_loop324_breakloop:			;
+_loop337_breakloop:			;
 		}    // ( ... )*
 		match("%}");
 		{    // ( ... )*
@@ -1244,11 +1248,11 @@ _loop324_breakloop:			;
 				}
 				else
 				{
-					goto _loop326_breakloop;
+					goto _loop339_breakloop;
 				}
 				
 			}
-_loop326_breakloop:			;
+_loop339_breakloop:			;
 		}    // ( ... )*
 		_ttype = Token.SKIP;
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
@@ -1292,11 +1296,11 @@ _loop326_breakloop:			;
 				}
 				else
 				{
-					goto _loop330_breakloop;
+					goto _loop343_breakloop;
 				}
 				
 			}
-_loop330_breakloop:			;
+_loop343_breakloop:			;
 		}    // ( ... )*
 		match("*/");
 		_ttype = Token.SKIP; CommentSnatcher.StoreComment(text.ToString(_begin, text.Length-_begin), true);
@@ -1514,11 +1518,11 @@ _loop330_breakloop:			;
 				}
 				else
 				{
-					goto _loop335_breakloop;
+					goto _loop348_breakloop;
 				}
 				
 			}
-_loop335_breakloop:			;
+_loop348_breakloop:			;
 		}    // ( ... )*
 		_saveIndex = text.Length;
 		match('"');
@@ -1634,7 +1638,7 @@ _loop335_breakloop:			;
 			
 		}
 		{ // ( ... )+
-			int _cnt350=0;
+			int _cnt363=0;
 			for (;;)
 			{
 				if ((tokenSet_5_.member(cached_LA1)))
@@ -1643,12 +1647,12 @@ _loop335_breakloop:			;
 				}
 				else
 				{
-					if (_cnt350 >= 1) { goto _loop350_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt363 >= 1) { goto _loop363_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt350++;
+				_cnt363++;
 			}
-_loop350_breakloop:			;
+_loop363_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1664,7 +1668,7 @@ _loop350_breakloop:			;
 		_ttype = INT;
 		
 		{ // ( ... )+
-			int _cnt353=0;
+			int _cnt366=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1673,12 +1677,12 @@ _loop350_breakloop:			;
 				}
 				else
 				{
-					if (_cnt353 >= 1) { goto _loop353_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt366 >= 1) { goto _loop366_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt353++;
+				_cnt366++;
 			}
-_loop353_breakloop:			;
+_loop366_breakloop:			;
 		}    // ( ... )+
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
 		{
@@ -1695,7 +1699,7 @@ _loop353_breakloop:			;
 		
 		match('.');
 		{ // ( ... )+
-			int _cnt356=0;
+			int _cnt369=0;
 			for (;;)
 			{
 				if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1704,12 +1708,12 @@ _loop353_breakloop:			;
 				}
 				else
 				{
-					if (_cnt356 >= 1) { goto _loop356_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+					if (_cnt369 >= 1) { goto _loop369_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 				}
 				
-				_cnt356++;
+				_cnt369++;
 			}
-_loop356_breakloop:			;
+_loop369_breakloop:			;
 		}    // ( ... )+
 		{
 			if ((cached_LA1=='E'||cached_LA1=='e'))
@@ -1759,7 +1763,7 @@ _loop356_breakloop:			;
 					 }
 				}
 				{ // ( ... )+
-					int _cnt361=0;
+					int _cnt374=0;
 					for (;;)
 					{
 						if (((cached_LA1 >= '0' && cached_LA1 <= '9')))
@@ -1768,12 +1772,12 @@ _loop356_breakloop:			;
 						}
 						else
 						{
-							if (_cnt361 >= 1) { goto _loop361_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
+							if (_cnt374 >= 1) { goto _loop374_breakloop; } else { throw new NoViableAltForCharException(cached_LA1, getFilename(), getLine(), getColumn());; }
 						}
 						
-						_cnt361++;
+						_cnt374++;
 					}
-_loop361_breakloop:					;
+_loop374_breakloop:					;
 				}    // ( ... )+
 			}
 			else {
@@ -1870,11 +1874,11 @@ _loop361_breakloop:					;
 				}
 				default:
 				{
-					goto _loop365_breakloop;
+					goto _loop378_breakloop;
 				}
 				 }
 			}
-_loop365_breakloop:			;
+_loop378_breakloop:			;
 		}    // ( ... )*
 		_ttype = testLiteralsTable(_ttype);
 		if (_createToken && (null == _token) && (_ttype != Token.SKIP))
