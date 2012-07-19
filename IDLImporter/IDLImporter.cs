@@ -331,8 +331,7 @@ namespace SIL.FieldWorks.Tools
 				codeNamespace.Imports.Add(new CodeNamespaceImport("System"));
 				codeNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.InteropServices"));
 				codeNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.InteropServices.ComTypes"));
-				codeNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.CompilerServices"));
-				codeNamespace.Imports.Add(new CodeNamespaceImport("System.Windows.Forms"));
+				codeNamespace.Imports.Add(new CodeNamespaceImport("System.Runtime.CompilerServices"));				
 
 				// And now parse the IDL file
 				parser.specification(codeNamespace, conversions);
