@@ -506,7 +506,7 @@
     <Replace>System.UInt32</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
-    <Match>(^|\s+)(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr)</Match>
+    <Match>(^|\s+)(WebGLsizeiptr|WebGLArrayPtr|WebGLArrayBufferPtr|WebGLintptr)</Match>
     <Replace>System.IntPtr</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
