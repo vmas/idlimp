@@ -1199,6 +1199,7 @@ function_attribute [IDictionary attributes]
 			attributes.Add("extraJsContextParam", new CodeAttributeArgument());
 		}
 	| "binaryname" LPAREN! identifier RPAREN!	
+	| "infallible" /* this means that the function doesn't use a return code (as it always succeeds) and so out param should be the return*/
 	| attribute[attributes]
 	;
 	
@@ -1320,7 +1321,7 @@ uuid_literal
 param_type_spec
 	: (base_type_spec 
 		| string_type
-		| scoped_name (LT_ identifier (LT_ identifier GT)? (COMMA identifier)* (STAR)* GT)? (STAR)* // TODO
+		| scoped_name (LT_ scoped_name (LT_ identifier GT)? (COMMA identifier)* (STAR)* GT)? (STAR)* // TODO
 		| "SAFEARRAY" LPAREN identifier (STAR)* RPAREN (STAR)*
 		)
 	;
@@ -1349,7 +1350,7 @@ identifier
 	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
 	| "callback" | "import" | "union" | "struct" | "entry" | "jsval" | "boolean"
-	| "retval" | "forward" | "dictionary"
+	| "retval" | "forward" | "dictionary" | "broadcast" | "context"
 	| IDENT
   	;
 

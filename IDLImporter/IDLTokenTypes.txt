@@ -155,45 +155,46 @@ LITERAL_vararg="vararg"=155
 LITERAL_optional_argc="optional_argc"=156
 LITERAL_implicit_jscontext="implicit_jscontext"=157
 LITERAL_binaryname="binaryname"=158
-LITERAL_raises="raises"=159
-LITERAL_in="in"=160
-LITERAL_out="out"=161
-LITERAL_inout="inout"=162
-LITERAL_retval="retval"=163
-LITERAL_defaultvalue="defaultvalue"=164
-LITERAL_optional="optional"=165
-LITERAL_requestedit="requestedit"=166
-LITERAL_iid_is="iid_is"=167
-LITERAL_range="range"=168
-LITERAL_array="array"=169
-LITERAL_shared="shared"=170
-LITERAL_size_is="size_is"=171
-LITERAL_max_is="max_is"=172
-LITERAL_length_is="length_is"=173
-LITERAL_first_is="first_is"=174
-LITERAL_last_is="last_is"=175
-LITERAL_switch_is="switch_is"=176
-LITERAL_source="source"=177
-LITERAL_context="context"=178
-LITERAL_SAFEARRAY="SAFEARRAY"=179
-OCTAL=180
-LITERAL_L="L"=181
-STRING_LITERAL("a string literal")=182
-CHAR_LITERAL("a character literal")=183
-FLOAT("an floating point value")=184
-IDENT("an identifer")=185
-LITERAL_cpp_quote="cpp_quote"=186
-LITERAL_midl_pragma_warning="midl_pragma_warning"=187
-DOT(".")=188
-NOT("!")=189
-QUOTE("double quotes")=190
-WS_("white space")=191
-PREPROC_DIRECTIVE("a preprocessor directive")=192
-SL_COMMENT("a comment")=193
-OTHER_LANG_BLOCK("Other lang block like C++")=194
-ML_COMMENT("a comment")=195
-ESC("an escape sequence")=196
-VOCAB("an escaped character value")=197
-DIGIT("a digit")=198
-OCTDIGIT("an octal digit")=199
-HEXDIGIT("a hexadecimal digit")=200
+LITERAL_infallible="infallible"=159
+LITERAL_raises="raises"=160
+LITERAL_in="in"=161
+LITERAL_out="out"=162
+LITERAL_inout="inout"=163
+LITERAL_retval="retval"=164
+LITERAL_defaultvalue="defaultvalue"=165
+LITERAL_optional="optional"=166
+LITERAL_requestedit="requestedit"=167
+LITERAL_iid_is="iid_is"=168
+LITERAL_range="range"=169
+LITERAL_array="array"=170
+LITERAL_shared="shared"=171
+LITERAL_size_is="size_is"=172
+LITERAL_max_is="max_is"=173
+LITERAL_length_is="length_is"=174
+LITERAL_first_is="first_is"=175
+LITERAL_last_is="last_is"=176
+LITERAL_switch_is="switch_is"=177
+LITERAL_source="source"=178
+LITERAL_context="context"=179
+LITERAL_SAFEARRAY="SAFEARRAY"=180
+OCTAL=181
+LITERAL_L="L"=182
+STRING_LITERAL("a string literal")=183
+CHAR_LITERAL("a character literal")=184
+FLOAT("an floating point value")=185
+IDENT("an identifer")=186
+LITERAL_cpp_quote="cpp_quote"=187
+LITERAL_midl_pragma_warning="midl_pragma_warning"=188
+DOT(".")=189
+NOT("!")=190
+QUOTE("double quotes")=191
+WS_("white space")=192
+PREPROC_DIRECTIVE("a preprocessor directive")=193
+SL_COMMENT("a comment")=194
+OTHER_LANG_BLOCK("Other lang block like C++")=195
+ML_COMMENT("a comment")=196
+ESC("an escape sequence")=197
+VOCAB("an escaped character value")=198
+DIGIT("a digit")=199
+OCTDIGIT("an octal digit")=200
+HEXDIGIT("a hexadecimal digit")=201
