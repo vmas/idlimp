@@ -1350,7 +1350,7 @@ identifier
 	: "uuid" | "scriptable"	| "id" | "range" | "ptr" | "source" | "array" | "version"
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
 	| "callback" | "import" | "union" | "struct" | "entry" | "jsval" | "boolean"
-	| "retval" | "forward" | "dictionary" | "broadcast" | "context"
+	| "retval" | "forward" | "dictionary" | "broadcast" | "context" | "endpoint"
 	| IDENT
   	;
 
