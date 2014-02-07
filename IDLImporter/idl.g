@@ -1351,6 +1351,7 @@ identifier
 	| "unique" | "object" | "message" | "ref" | "handle" | "control" | "hidden" 
 	| "callback" | "import" | "union" | "struct" | "entry" | "jsval" | "boolean"
 	| "retval" | "forward" | "dictionary" | "broadcast" | "context" | "endpoint"
+    | "default"
 	| IDENT
   	;
 
