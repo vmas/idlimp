@@ -1133,6 +1133,7 @@ function_dcl [CodeTypeMemberCollection types, Hashtable funcAttributes] returns 
 				bool fPreserveSig = false;
 				CodeParameterDeclarationExpression param = new CodeParameterDeclarationExpression();
 				Hashtable attributes = new Hashtable();
+				attributes["retval"] = true;
 				IDLConversions.ConvertParaTypeResults results = m_Conv.ConvertParamTypeExtended(#rt.ToString(), param, attributes);
 				param.Type = results.newType;
 				
