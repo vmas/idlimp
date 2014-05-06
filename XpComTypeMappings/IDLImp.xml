@@ -307,6 +307,13 @@
     <Replace>nsAUTF8StringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
+    <Attribute>~array, retval</Attribute>
+    <NewAttribute>MarshalAs</NewAttribute>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.StringMarshaler"</NewAttrValue>
+    <Match>(^|\s+)(string)</Match>
+    <Replace>System.String</Replace>
+  </ParamTypeConversion>
+  <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs</NewAttribute>
     <NewAttrValue>UnmanagedType.LPStr</NewAttrValue>
