@@ -69,7 +69,12 @@
     <Attribute>~array</Attribute>
     <Match>unsigned long</Match>
     <Replace>System.UInt32</Replace>
-  </ParamTypeConversion>  
+  </ParamTypeConversion>
+  <ParamTypeConversion>
+    <Attribute>~array</Attribute>
+    <Match>(^|\s+)AppTrustedRoot</Match>
+    <Replace>System.UInt32</Replace>
+  </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <Match>(^|\s+)PRUint8($|\s)</Match>
