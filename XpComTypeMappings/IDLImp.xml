@@ -286,14 +286,14 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
-    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.AStringMarshaler"</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTest)?(ns)?(DOMString)($|\s)</Match>
     <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
-    <NewAttrValue>UnmanagedType.LPStruct</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.AStringMarshaler"</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTestns)?(AString)($|\s)</Match>
     <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
