@@ -39,6 +39,8 @@ namespace SIL.FieldWorks.Tools
 	/// ----------------------------------------------------------------------------------------
 	public class IDLImporter
 	{
+		public event EventHandler<ResolveBaseTypeEventArgs> ResolveBaseType;
+
 		private static IdhCommentProcessor s_idhProcessor;
 		internal static Dictionary<string, IdhCommentProcessor.CommentInfo> s_MoreComments = 
 			new Dictionary<string,IdhCommentProcessor.CommentInfo>();
@@ -296,12 +298,7 @@ namespace SIL.FieldWorks.Tools
 			// defined in this IDL file.
 			foreach (string refFile in referencedFiles)
 			{
-				CodeNamespace referencedNamespace = DeserializeData(refFile);
-				if (referencedNamespace != null)
-				{
-					foreach (string key in referencedNamespace.UserData.Keys)
-						codeNamespace.UserData[key] = referencedNamespace.UserData[key];
-				}
+				AddReferences(codeNamespace, refFile);
 			}
 
 			// Load the IDL conversion rules
@@ -312,6 +309,16 @@ namespace SIL.FieldWorks.Tools
 			}
 			IDLConversions conversions = IDLConversions.Deserialize(sXmlFile);
 			conversions.Namespace = codeNamespace;
+
+			string outPath = Path.GetFullPath(Path.GetDirectoryName(sOutFile));
+			conversions.ResolveBaseType += (s, e) => {
+				string rFile = Path.Combine(outPath, e.TypeName + ".iip");
+				if(!AddReferences(e.NameSpace, rFile))
+				{
+					if (ResolveBaseType != null) ResolveBaseType(this, e);
+					AddReferences(e.NameSpace, rFile);
+				}
+			};
 
 #if SINGLE_THREADED
 			ParseIdhFile(idhFiles);
@@ -358,6 +365,18 @@ namespace SIL.FieldWorks.Tools
 			}
 		
 			return fOk;
+		}
+
+		private static bool AddReferences(CodeNamespace codeNamespace, string refFile)
+		{
+			CodeNamespace referencedNamespace = DeserializeData(refFile);
+			if (referencedNamespace != null)
+			{
+				foreach (string key in referencedNamespace.UserData.Keys)
+					codeNamespace.UserData[key] = referencedNamespace.UserData[key];
+				return true;
+			}
+			return false;
 		}
 
 		/// ------------------------------------------------------------------------------------

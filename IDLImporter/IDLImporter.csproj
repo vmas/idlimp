@@ -5,12 +5,9 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{E14AA497-B901-4626-AE11-321F21431BAC}</ProjectGuid>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>&lt;Project Location In Database&gt;</SccProjectName>
+    <SccLocalPath>&lt;Local Binding Root of Project&gt;</SccLocalPath>
+    <SccProvider>Mercurial Source Control Package</SccProvider>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <AssemblyKeyContainerName>
@@ -29,8 +26,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <SccAuxPath>
-    </SccAuxPath>
+    <SccAuxPath>&lt;Source Control Database&gt;</SccAuxPath>
     <OldToolsVersion>3.5</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -121,6 +117,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CSharpCodeGenerator.cs" />
+    <Compile Include="ResolveBaseTypeEventArgs.cs" />
     <Compile Include="SurveyorLexer.cs" />
     <Compile Include="SurveyorParser.cs" />
     <Compile Include="SurveyorParserTokenTypes.cs" />

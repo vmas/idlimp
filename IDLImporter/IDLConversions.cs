@@ -179,6 +179,8 @@ namespace SIL.FieldWorks.Tools
 		IsNullable=false)]
 	public class IDLConversions
 	{
+		public event EventHandler<ResolveBaseTypeEventArgs> ResolveBaseType;
+
 		#region Serialization
 		public void Serialize(string fileName)
 		{
@@ -909,6 +911,11 @@ namespace SIL.FieldWorks.Tools
 			CodeNamespace nameSpace, out string interfaceType)
 		{
 			interfaceType = null;
+			if (nameSpace.UserData[typeName] == null)
+			{
+				if(ResolveBaseType != null)
+					ResolveBaseType(this, new ResolveBaseTypeEventArgs(typeName, nameSpace));
+			}
 			if (nameSpace.UserData[typeName] == null)
 			{
 				System.Console.WriteLine("Error: base type {0} not found!", typeName);

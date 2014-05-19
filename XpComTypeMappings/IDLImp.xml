@@ -274,7 +274,7 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.WStringMarshaler"</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(Gecko.CustomMarshalers.WStringMarshaler)</NewAttrValue>
     <Match>(^|\s+)(wstring)[*\s]*</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
@@ -286,14 +286,14 @@
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
-    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.AStringMarshaler"</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(Gecko.CustomMarshalers.AStringMarshaler)</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTest)?(ns)?(DOMString)($|\s)</Match>
     <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
   <ParamTypeConversion>
     <Attribute>~array</Attribute>
     <NewAttribute>MarshalAs,-retval,-out</NewAttribute>
-    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.AStringMarshaler"</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(Gecko.CustomMarshalers.AStringMarshaler)</NewAttrValue>
     <Match>(^|\s+)(nsIXPCTestns)?(AString)($|\s)</Match>
     <Replace>nsAStringBase</Replace>
   </ParamTypeConversion>
@@ -314,7 +314,7 @@
   <ParamTypeConversion>
     <Attribute>~array, retval</Attribute>
     <NewAttribute>MarshalAs</NewAttribute>
-    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalType = "Gecko.CustomMarshalers.StringMarshaler"</NewAttrValue>
+    <NewAttrValue>UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(Gecko.CustomMarshalers.StringMarshaler)</NewAttrValue>
     <Match>(^|\s+)(string)</Match>
     <Replace>System.String</Replace>
   </ParamTypeConversion>
