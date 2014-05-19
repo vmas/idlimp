@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<IDLTypeMap>
+	<TypeContainer type="nsICacheEntryInfo" file="nsICacheVisitor.idl" />
+	<TypeContainer type="mozIDOMApplication" file="nsIDOMApplicationRegistry.idl" />
+	<TypeContainer type="mozIDOMApplicationRegistry" file="nsIDOMApplicationRegistry.idl" />
+	<TypeContainer type="nsIDOMXULLabeledControlElement" file="nsIDOMXULLabeledControlEl.idl" />
+	<TypeContainer type="nsIDOMXULSelectControlElement" file="nsIDOMXULSelectCntrlEl.idl" />
+	<TypeContainer type="nsIHandlerApp" file="nsIMIMEInfo.idl" />
+	<TypeContainer type="nsIXULChromeRegistry" file="nsIChromeRegistry.idl" />
+</IDLTypeMap>

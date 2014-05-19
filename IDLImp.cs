@@ -22,6 +22,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SIL.FieldWorks.Tools
 {
@@ -33,6 +34,8 @@ namespace SIL.FieldWorks.Tools
 	public class IDLImpConsole
 	{
 		private static string[] _args;
+		private static string _typemapFile;
+		private static IDictionary<string, string> _idlMap;
 
 		private static void ShowHelp()
 		{
@@ -46,6 +49,7 @@ namespace SIL.FieldWorks.Tools
 			System.Console.WriteLine("\t/o outfile\tname of created file (Default: file.cs)");
 			System.Console.WriteLine("\t/c configfile\tname of XML configuration file ({0}.xml)",
 				Path.GetFileNameWithoutExtension(Application.ExecutablePath));
+			System.Console.WriteLine("\t/m mapfile\ttypename map file (map.xml)");
 			System.Console.WriteLine("\t/i idhfile\tname of IDH file for comments (Default: none)");
 			System.Console.WriteLine("\t/n namespace\tNamespace of the file to be produced");
 			System.Console.WriteLine("\t/u namespace\tadditional using namespaces");
@@ -65,6 +69,7 @@ namespace SIL.FieldWorks.Tools
 		public static int Main(string[] args)
 		{
 			_args = args;
+			_typemapFile = "map.xml";
 			bool fOk = true;
 			try
 			{
@@ -96,6 +101,10 @@ namespace SIL.FieldWorks.Tools
 						case "/c":
 						case "-c":
 							sXmlFile = args[i * 2 + 1];
+							break;
+						case "/m":
+						case "-m":
+							_typemapFile = args[i * 2 + 1];
 							break;
 						case "/n":
 						case "-n":
@@ -138,8 +147,10 @@ namespace SIL.FieldWorks.Tools
 					sNamespace = sNamespace ?? Path.GetFileNameWithoutExtension(sFileName);
 
 					Console.WriteLine("Generating {0}...", Path.GetFileName(sOutFile));
+					imp.ResolveBaseType += importer_ResolveBaseType;
 					fOk = imp.Import(usingNamespaces, sFileName, sXmlFile, sOutFile, sNamespace,
 						idhFiles, refFiles, fCreateComments);
+					imp.ResolveBaseType -= importer_ResolveBaseType;
 				}
 				else
 				{
@@ -180,7 +191,28 @@ namespace SIL.FieldWorks.Tools
 		{
 			var args = new List<string>(_args);
 			int last = args.Count - 1;
-			args[last] = Path.Combine(args[last], e.TypeName + ".idl");
+			string fileName;
+			if (!IdlMap.TryGetValue(e.TypeName, out fileName))
+				fileName = e.TypeName + ".idl";
+
+			if (Directory.Exists(args[last]))
+			{
+				args[last] = Path.Combine(args[last], fileName);
+			}
+			else if(File.Exists(args[last]))
+			{
+				string dir = Path.GetDirectoryName(args[last]);
+				args[last] = Path.Combine(dir, fileName);
+			}
+			else
+			{
+				Console.WriteLine("Path not found: {0}", args[last]);
+				return;
+			}
+			e.IdhFileName = Path.Combine(Path.GetDirectoryName(e.IdhFileName), Path.GetFileNameWithoutExtension(fileName) + ".iip");
+			if (File.Exists(e.IdhFileName))
+				return;
+
 			if (File.Exists(args[last]))
 			{
 				var startInfo = new ProcessStartInfo();
@@ -191,11 +223,47 @@ namespace SIL.FieldWorks.Tools
 				startInfo.UseShellExecute = false;
 				using (var process = Process.Start(startInfo))
 				{
-
 					process.WaitForExit();
 					Console.WriteLine(process.StandardOutput.ReadToEnd());
 				}
 			}
 		}
+
+		private static IDictionary<string, string> IdlMap
+		{
+			get
+			{
+				if (_idlMap == null)
+				{
+					_idlMap = new Dictionary<string, string>();
+					if (_typemapFile != null && File.Exists(_typemapFile))
+					{
+						using (var mapFile = File.OpenRead(_typemapFile))
+						{
+							using (var xml = XmlReader.Create(mapFile))
+							{
+								while (xml.Read())
+								{
+									if (xml.NodeType == XmlNodeType.Element
+										&& xml.Name == "TypeContainer")
+									{
+										string typeName = xml.GetAttribute("type");
+										string fileName = xml.GetAttribute("file");
+										if (string.IsNullOrEmpty(typeName)
+											|| string.IsNullOrEmpty(fileName))
+										{
+											Console.WriteLine("Invalid type map file!");
+										}
+										_idlMap[typeName] = fileName;
+									}
+								}
+							}
+						}
+					}
+				}
+				return _idlMap;
+			}
+		}
+
 	}
 }

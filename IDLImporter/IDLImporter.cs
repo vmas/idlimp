@@ -315,8 +315,9 @@ namespace SIL.FieldWorks.Tools
 				string rFile = Path.Combine(outPath, e.TypeName + ".iip");
 				if(!AddReferences(e.NameSpace, rFile))
 				{
+					e.IdhFileName = rFile;
 					if (ResolveBaseType != null) ResolveBaseType(this, e);
-					AddReferences(e.NameSpace, rFile);
+					AddReferences(e.NameSpace, e.IdhFileName ?? rFile);
 				}
 			};
 

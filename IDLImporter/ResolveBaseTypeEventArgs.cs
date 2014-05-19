@@ -16,5 +16,6 @@ namespace SIL.FieldWorks.Tools
 
 		public string TypeName { get; private set; }
 		public CodeNamespace NameSpace { get; set; }
+		public string IdhFileName { get; set; }
 	}
 }

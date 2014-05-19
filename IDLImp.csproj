@@ -132,6 +132,7 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>copy /B $(ProjectDir)XpComTypeMappings\IDLImp.xml $(TargetDir)IDLImp.xml</PostBuildEvent>
+    <PostBuildEvent>copy /B $(ProjectDir)XpComTypeMappings\IDLImp.xml $(TargetDir)IDLImp.xml
+copy /B $(ProjectDir)XpComTypeMappings\map.xml $(TargetDir)map.xml</PostBuildEvent>
   </PropertyGroup>
 </Project>
